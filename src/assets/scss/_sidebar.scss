@@ -1,0 +1,21 @@
+.sedibar__main {
+  width: 70px;
+  height: 100vh;
+  background-color: aliceblue;
+  position: fixed;
+  z-index: 998;
+  background-color: #33cccc;
+  overflow-x: hidden;
+
+  .sidebar__box__icon {
+    padding: 20px;
+    color: white;
+    transition: background-color 0.5s;
+    transition: color 0.5s;
+
+    &:hover {
+      background-color: white;
+      color: black;
+    }
+  }
+}

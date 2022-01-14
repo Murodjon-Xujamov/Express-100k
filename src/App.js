@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./container/Navbar";
+import Sedibar from "./container/Sedibar";
+import Delivery from "./pages/delivery/Delivery";
+import DeliveryList from "./pages/delivery/DeliveryList";
+import "./assets/scss/_main.scss";
+import Login from "./pages/login/Login";
+const token = window.localStorage.getItem("@token");
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      {token ? (
+        <div>
+          <Navbar />
+          <div className="main__content">
+            <Sedibar />
+            <div className="content__page">
+              <Routes>
+                <Route path="/" element={<Delivery />} />
+                <Route path="/delivery" element={<DeliveryList />} />
+              </Routes>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <Login />
+      )}
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
