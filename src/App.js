@@ -6,6 +6,7 @@ import Delivery from "./pages/delivery/Delivery";
 import DeliveryList from "./pages/delivery/DeliveryList";
 import "./assets/scss/_main.scss";
 import Login from "./pages/login/Login";
+import CreateDeliveryPage from "./pages/delivery/CreateDeliveryPage";
 const token = window.localStorage.getItem("@token");
 
 const App = () => {
@@ -14,12 +15,16 @@ const App = () => {
       {token ? (
         <div>
           <Navbar />
-          <div className="main__content">
+          <div className='main__content'>
             <Sedibar />
-            <div className="content__page">
+            <div className='content__page'>
               <Routes>
-                <Route path="/" element={<Delivery />} />
-                <Route path="/delivery" element={<DeliveryList />} />
+                <Route path='/' element={<Delivery />} />
+                <Route path='/delivery' element={<DeliveryList />} />
+                <Route
+                  path='/create-delivery'
+                  element={<CreateDeliveryPage />}
+                />
               </Routes>
             </div>
           </div>
