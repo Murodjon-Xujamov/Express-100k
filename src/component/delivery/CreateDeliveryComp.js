@@ -70,11 +70,11 @@ const CreateDeliveryComp = () => {
         </div>
         <div className='grid__columns'>
           <label htmlFor='fromAddress'>Yetkazib berish summasi:</label>
-          <input id='fromAddress' type={"text"} />
+          <input id='fromAddress' type='number' />
         </div>
         <div className='grid__columns'>
           <label htmlFor='fromAddress'>Jami summa:</label>
-          <input id='fromAddress' type={"text"} />
+          <input id='fromAddress' type='number' />
         </div>
         <div className='grid__columns'>
           <button>
