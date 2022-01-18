@@ -8,7 +8,36 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+input {
+  width: 350px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  outline-style: none;
+}
+
+button {
+  width: 200px;
+  height: 30px;
+  border-radius: 10px;
+  border: 1px solid black;
+  outline-style: none;
+  transition: ease-in-out 1px;
+  background-color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  transition: ease-in-out 1px;
+  background-color: green;
+  color: white;
+}
+
+select {
+  width: 350px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  outline-style: none;
 }

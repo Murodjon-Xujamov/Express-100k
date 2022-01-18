@@ -8,6 +8,7 @@ import "./assets/scss/_main.scss";
 import Login from "./pages/login/Login";
 import CreateDeliveryPage from "./pages/delivery/CreateDeliveryPage";
 import SettingsPage from "./pages/user/SettingsPage";
+import ProfilePage from "./pages/user/ProfilePage";
 const token = window.localStorage.getItem("@token");
 
 const App = () => {
@@ -26,6 +27,7 @@ const App = () => {
                   path='/create-delivery'
                   element={<CreateDeliveryPage />}
                 />
+                <Route path='/profile' element={<ProfilePage />} />
                 <Route path='/settings' element={<SettingsPage />} />
               </Routes>
             </div>

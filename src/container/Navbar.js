@@ -23,9 +23,11 @@ const Navbar = () => {
           </div>
         </div>
         <div className='navbar__link__items'>
-          <div className='navbar__link__item'>
-            <FaUserTie size={21} style={{ cursor: "pointer" }} />
-          </div>
+          <Link to='/profile'>
+            <div className='navbar__link__item'>
+              <FaUserTie size={21} style={{ cursor: "pointer" }} />
+            </div>
+          </Link>
           <div className='navbar__link__item'>
             <BsBell size={21} style={{ cursor: "pointer" }} />
           </div>
