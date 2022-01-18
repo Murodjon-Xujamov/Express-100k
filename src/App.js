@@ -7,6 +7,7 @@ import DeliveryList from "./pages/delivery/DeliveryList";
 import "./assets/scss/_main.scss";
 import Login from "./pages/login/Login";
 import CreateDeliveryPage from "./pages/delivery/CreateDeliveryPage";
+import SettingsPage from "./pages/user/SettingsPage";
 const token = window.localStorage.getItem("@token");
 
 const App = () => {
@@ -25,6 +26,7 @@ const App = () => {
                   path='/create-delivery'
                   element={<CreateDeliveryPage />}
                 />
+                <Route path='/settings' element={<SettingsPage />} />
               </Routes>
             </div>
           </div>
