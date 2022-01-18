@@ -43,19 +43,28 @@
     }
 
     & > input {
+      width: 82%;
       padding: 10px;
       border-radius: 10px;
       outline-style: none;
     }
 
     & > div > button {
-      width: 150px;
-      height: 30px;
-      margin: 10px;
       border-radius: 10px;
       border: 1px solid black;
       cursor: pointer;
       transition: ease-in-out 1s;
+    }
+
+    & > div > button:first-child {
+      background-color: cornflowerblue;
+      color: white;
+    }
+
+    & > div > button:last-child {
+      margin: 10px;
+      background-color: peru;
+      color: white;
     }
 
     & > div > button:hover {
