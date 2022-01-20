@@ -21,7 +21,7 @@ const ProfileComp = ({
         </header>
         <div className='info__row'>
           <h4>Jins:</h4>
-          <h4>{gender}</h4>
+          <h4>{gender === "male" ? "Erkak" : "Ayol"}</h4>
         </div>
         <div className='info__row'>
           <h4>Viloyat:</h4>
