@@ -18,7 +18,7 @@ input {
 
 button {
   width: 200px;
-  height: 30px;
+  padding: 10px;
   border-radius: 10px;
   border: 1px solid black;
   outline-style: none;
@@ -35,7 +35,7 @@ button:hover {
 }
 
 select {
-  width: 350px;
+  width: 370px;
   padding: 10px;
   border: 1px solid black;
   border-radius: 10px;

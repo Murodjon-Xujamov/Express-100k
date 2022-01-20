@@ -1,74 +1,49 @@
 .user__settings__container {
-  background-color: lightgray;
   width: 100%;
-  height: 100vh;
   padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 
-  .container__row {
+  & > h1 {
+    padding: 0;
+    margin: 0;
+  }
+
+  .form {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    flex-direction: row;
-    margin-top: 15px;
-    background-color: white;
-    padding: 20px 10px;
-    border-radius: 10px;
+    justify-content: center;
+    flex-direction: column;
 
-    & > header {
-      font-size: 25px;
-    }
+    .container__row {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      grid-template-rows: auto;
+      margin-top: 10px;
+      grid-gap: 10px;
 
-    & > div {
-      display: flex;
+      .row__column {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-end;
+        flex-direction: column;
 
-      flex-direction: row;
-    }
+        & > button {
+          background-color: rgb(89, 168, 89);
+          margin: 0px 10px;
+          border-radius: 10px;
+          border: 1px solid black;
+          transition: ease-in-out 1s;
+          color: white;
+        }
 
-    & > div > input {
-      width: 300px;
-      padding: 10px;
-      border: 1px solid black;
-      outline-style: none;
-      border-radius: 10px;
-      margin: 0 10px;
-    }
-
-    .select__location {
-      width: 322px;
-      padding: 8px;
-      border: 1px solid black;
-      outline-style: none;
-      border-radius: 10px;
-      margin: 0 10px;
-    }
-
-    & > div > button {
-      width: 322px;
-      padding: 10px;
-      background-color: lightgreen;
-      margin: 0px 10px;
-      border-radius: 10px;
-      border: 1px solid black;
-    }
-  }
-  .save__btn {
-    margin-top: 10px;
-    border-radius: 10px;
-
-    & > button {
-      padding: 10px;
-      width: 200px;
-      border-radius: 10px;
-      border: 1px solid black;
-      transition: ease-in-out 1s;
-      background-color: white;
-    }
-
-    & > button:hover {
-      background-color: green;
-      cursor: pointer;
-      transition: ease-in-out 1s;
-      color: white;
+        & > button:hover {
+          background-color: green;
+          transition: ease-in-out 1s;
+        }
+      }
     }
   }
 }

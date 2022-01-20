@@ -1,52 +1,62 @@
 import React from "react";
 import Select from "react-dropdown-select";
-import { AiOutlineSave } from "react-icons/ai";
+import "../../assets/scss/_settings.scss";
 
 const UserSettingsComp = () => {
   return (
     <div className='user__settings__container'>
       <h1>Sozlamalar</h1>
-      <div className='container__row'>
-        <header>Ism, Familiya, Tel raqam</header>
-        <div>
-          <input type={"text"} placeholder='Ism' />
-          <input type={"text"} placeholder='Familiya' />
-          <input type={"tel"} placeholder='Telefon raqam' />
+      <div className='form'>
+        <div className='container__row'>
+          <div className='row__column'>
+            <label htmlFor='name'>Ism</label>
+            <input type={"text"} id='name' placeholder='Ism' />
+          </div>
+          <div className='row__column'>
+            <label htmlFor='surname'>Familiya</label>
+            <input type={"text"} id='surname' placeholder='Familiya' />
+          </div>
+          <div className='row__column'>
+            <label htmlFor='phone__number'>Telefon raqam</label>
+            <input
+              type={"tel"}
+              id='phone__number'
+              placeholder='Telefon raqam'
+            />
+          </div>
         </div>
-      </div>
-      <div className='container__row'>
-        <header>Joylashuv</header>
-        <div>
-          <Select
-            id='fromRegion'
-            className='select__location'
-            placeholder='Viloyat'
-            options={"options"}
-            onChange={(values) => this.setValues(values)}
-          />
-          <Select
-            id='fromRegion'
-            placeholder='Tuman'
-            className='select__location'
-            options={"options"}
-            onChange={(values) => this.setValues(values)}
-          />
-          <input type='text' placeholder='Mahalla' />
-        </div>
-      </div>
-      <div className='container__row'>
-        <header>Jins, Karta raqami</header>
+        <div className='container__row'>
+          <div className='row__column'>
+            <label htmlFor='region'>Viloyat</label>
+            <select>
+              <option disabled>Viloyatni tanlang</option>
+            </select>
+          </div>
 
-        <div>
-          <button>Erkak</button>
-          <button>Ayol</button>
-          <input type='text' placeholder='Karta raqami' />
+          <div className='row__column'>
+            <label htmlFor='district'>Tuman</label>
+            <select>
+              <option disabled>Tumanni tanlang</option>
+            </select>
+          </div>
+          <div className='row__column'>
+            <label htmlFor='address'>Mahalla</label>
+            <input type='text' id='address' placeholder='Mahalla' />
+          </div>
         </div>
-      </div>
-      <div className='save__btn'>
-        <button>
-          O'zgarishlarni saqlash{""} <AiOutlineSave />
-        </button>
+        <div className='container__row'>
+          <div className='row__column'>
+            <label htmlFor='gender'>Jins</label>
+            <select>
+              <option disabled>Jinsni tanlang</option>
+              <option>Erkak</option>
+              <option>Ayol</option>
+            </select>
+          </div>
+          <div className='row__column'>
+            <button className='save__btn'>O'zgarishlarni saqlash</button>
+          </div>
+        </div>
       </div>
     </div>
   );
