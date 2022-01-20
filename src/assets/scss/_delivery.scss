@@ -42,6 +42,7 @@
     margin-right: 100px;
   }
 }
+
 .card__delivery__table {
   width: 100%;
   table {
@@ -50,6 +51,7 @@
     width: 100%;
 
     .delivery__table__hover__tr {
+      margin: 10px;
       &:hover {
         background-color: antiquewhite;
         cursor: pointer;

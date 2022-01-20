@@ -1,31 +1,42 @@
 import React from "react";
 import avatar from "../../assets/images/user-g6f6f69a6e_1280.png";
 
-const ProfileComp = () => {
+const ProfileComp = ({
+  name,
+  surname,
+  gender,
+  region,
+  district,
+  address,
+  username,
+}) => {
   return (
     <div className='profile__comp__container'>
       <div className='user__card'>
         <img src={avatar} alt='avatar' />
-        <header>Zarrux Jurakulov</header>
+        <header>
+          <h5>{name}</h5>
+          <h5>{surname}</h5>
+        </header>
         <div className='info__row'>
           <h4>Jins:</h4>
-          <h4>Erkak</h4>
+          <h4>{gender}</h4>
         </div>
         <div className='info__row'>
           <h4>Viloyat:</h4>
-          <h4>Toshkent</h4>
+          <h4>{region}</h4>
         </div>
         <div className='info__row'>
           <h4>Tuman: </h4>
-          <h4>Shayhontohur</h4>
+          <h4>{district}</h4>
         </div>
         <div className='info__row'>
           <h4>Mahalla:</h4>
-          <h4>Chorsu</h4>
+          <h4>{address}</h4>
         </div>
         <div className='info__row'>
           <h4>Telefon raqam:</h4>
-          <h4>+998997414691</h4>
+          <h4>{username}</h4>
         </div>
       </div>
       <div className='user__card'>
