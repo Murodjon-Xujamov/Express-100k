@@ -1,4 +1,4 @@
-import { ACTIONS } from "../reducers/appReducers";
+import { ACTIONS } from "../reducers/commonReducers";
 import requests from "../../helpers/requests";
 
 export const fetchLocations = () => (dispatch) => {

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Select from "react-dropdown-select";
 import "../../assets/scss/_settings.scss";
 import avatarLoc from "../../assets/images/user-g6f6f69a6e_1280.png";
@@ -6,8 +6,10 @@ import { useDispatch } from "react-redux";
 import { updateProfileImage } from "../../redux/actions/userActions";
 import { BsCameraFill } from "react-icons/bs";
 
-const UserSettingsComp = ({ userAvatar }) => {
+const UserSettingsComp = ({ userData, locations }) => {
+  const [country, setCountry] = useState(userData.region_id);
   const dispatch = useDispatch();
+  console.log("loc", locations);
 
   const handleUploadAvatar = (file, element) => {
     const fileReader = new FileReader();
@@ -27,7 +29,7 @@ const UserSettingsComp = ({ userAvatar }) => {
       <h1>Sozlamalar</h1>
       <div className='form'>
         <img
-          src={userAvatar ? userAvatar : avatarLoc}
+          src={userData.avatar_url ? userData.avatar_url : avatarLoc}
           alt='avatar'
           className='upload__avatar'
         />
@@ -50,11 +52,21 @@ const UserSettingsComp = ({ userAvatar }) => {
         <div className='container__row'>
           <div className='row__column'>
             <label htmlFor='name'>Ism</label>
-            <input type={"text"} id='name' placeholder='Ism' />
+            <input
+              type={"text"}
+              id='name'
+              placeholder='Ism'
+              defaultValue={userData.name}
+            />
           </div>
           <div className='row__column'>
             <label htmlFor='surname'>Familiya</label>
-            <input type={"text"} id='surname' placeholder='Familiya' />
+            <input
+              type={"text"}
+              id='surname'
+              placeholder='Familiya'
+              defaultValue={userData.surname}
+            />
           </div>
         </div>
         <div className='container__row'>
@@ -64,34 +76,60 @@ const UserSettingsComp = ({ userAvatar }) => {
               type={"tel"}
               id='phone__number'
               placeholder='Telefon raqam'
+              disabled
+              defaultValue={userData.username}
             />
           </div>
           <div className='row__column'>
             <label htmlFor='region'>Viloyat</label>
-            <select>
+            <select
+              onChange={(e) => {
+                setCountry(e.target.value);
+              }}
+              defaultValue={userData.region_name}>
               <option disabled>Viloyatni tanlang</option>
+              {locations.map((i) => (
+                <option key={i.id} value={i.id}>
+                  {i.name}
+                </option>
+              ))}
             </select>
           </div>
         </div>
         <div className='container__row'>
           <div className='row__column'>
             <label htmlFor='district'>Tuman</label>
-            <select>
+            <select defaultValue={userData.state_id}>
               <option disabled>Tumanni tanlang</option>
+              {(() => {
+                const selectedLoc = locations.find((loc) => loc.id == country);
+                if (selectedLoc && selectedLoc.states) {
+                  return selectedLoc.states.map((state) => (
+                    <option value={state.id} key={state.id}>
+                      {state.name}
+                    </option>
+                  ));
+                }
+              })()}
             </select>
           </div>
           <div className='row__column'>
             <label htmlFor='address'>Mahalla</label>
-            <input type='text' id='address' placeholder='Mahalla' />
+            <input
+              type='text'
+              id='address'
+              placeholder='Mahalla'
+              defaultValue={userData.address}
+            />
           </div>
         </div>
         <div className='container__row'>
           <div className='row__column'>
             <label htmlFor='gender'>Jins</label>
-            <select>
+            <select defaultValue={userData.gender}>
               <option disabled>Jinsni tanlang</option>
-              <option>Erkak</option>
-              <option>Ayol</option>
+              <option value={"male"}>Erkak</option>
+              <option value={"female"}>Ayol</option>
             </select>
           </div>
           <div className='row__column'>
