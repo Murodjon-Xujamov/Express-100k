@@ -1,7 +1,8 @@
 import React from "react";
-import avatar from "../../assets/images/user-g6f6f69a6e_1280.png";
+import avatarLoc from "../../assets/images/user-g6f6f69a6e_1280.png";
 
 const ProfileComp = ({
+  avatar,
   name,
   surname,
   gender,
@@ -13,7 +14,7 @@ const ProfileComp = ({
   return (
     <div className='profile__comp__container'>
       <div className='user__card'>
-        <img src={avatar} alt='avatar' />
+        <img src={avatar ? avatar : avatarLoc} alt='avatar' />
         <header>
           <h5>{name}</h5>
           <h5>{surname}</h5>
