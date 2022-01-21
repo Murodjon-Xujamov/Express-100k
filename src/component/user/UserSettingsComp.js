@@ -7,11 +7,41 @@ import {
   updateProfileImage,
 } from "../../redux/actions/userActions";
 import { BsCameraFill } from "react-icons/bs";
+import { useForm } from "react-hook-form";
 
-const UserSettingsComp = ({ userData, locations }) => {
+const UserSettingsComp = ({ userData, locations, updateProfileDatas }) => {
+  const [name, setName] = useState(userData.name);
+  const [surname, setSurname] = useState(userData.surname);
+  const [phoneNumber, setPhoneNumber] = useState(userData.username);
   const [country, setCountry] = useState(userData.region_id);
+  const [district, setDisrtict] = useState(userData.district_id);
+  const [address, setAddress] = useState(userData.address);
+  const [gender, setGender] = useState(userData.gender);
+
   const dispatch = useDispatch();
-  console.log("loc");
+
+  const handleName = (e) => setName(e.target.value);
+  const handleSurname = (e) => setSurname(e.target.value);
+  const handlePhoneNumber = (e) => setPhoneNumber(e.target.value);
+  const handleDistrict = (e) => setDisrtict(e.target.value);
+  const handleAddress = (e) => setAddress(e.target.value);
+  const handleGender = (e) => setGender(e.target.value);
+
+  const { register, handleSubmit } = useForm({
+    defaultValues: {
+      name: userData.name,
+      surname: userData.surname,
+      username: userData.username,
+      region_id: userData.region_id,
+      district_id: userData.district_id,
+      address: userData.address,
+      gender: userData.gender,
+    },
+  });
+
+  const onSubmit = (edit) => {
+    updateProfileDatas(edit);
+  };
 
   const handleUploadAvatar = (file, element) => {
     const fileReader = new FileReader();
@@ -29,7 +59,7 @@ const UserSettingsComp = ({ userData, locations }) => {
   return (
     <div className='user__settings__container'>
       <h1>Sozlamalar</h1>
-      <div className='form'>
+      <form onSubmit={handleSubmit(onSubmit)} className='form'>
         <img
           src={userData.avatar_url ? userData.avatar_url : avatarLoc}
           alt='avatar'
@@ -59,6 +89,7 @@ const UserSettingsComp = ({ userData, locations }) => {
               id='name'
               placeholder='Ism'
               defaultValue={userData.name}
+              {...register("name")}
             />
           </div>
           <div className='row__column'>
@@ -68,6 +99,7 @@ const UserSettingsComp = ({ userData, locations }) => {
               id='surname'
               placeholder='Familiya'
               defaultValue={userData.surname}
+              {...register("surname")}
             />
           </div>
         </div>
@@ -80,11 +112,13 @@ const UserSettingsComp = ({ userData, locations }) => {
               placeholder='Telefon raqam'
               disabled
               defaultValue={userData.username}
+              {...register("username")}
             />
           </div>
           <div className='row__column'>
             <label htmlFor='region'>Viloyat</label>
             <select
+              {...register("region_id")}
               onChange={(e) => {
                 setCountry(e.target.value);
               }}
@@ -101,7 +135,9 @@ const UserSettingsComp = ({ userData, locations }) => {
         <div className='container__row'>
           <div className='row__column'>
             <label htmlFor='district'>Tuman</label>
-            <select defaultValue={userData.state_id}>
+            <select
+              defaultValue={userData.state_id}
+              {...register("district_id")}>
               <option disabled>Tumanni tanlang</option>
               {(() => {
                 const selectedLoc = locations.find((loc) => loc.id == country);
@@ -122,40 +158,24 @@ const UserSettingsComp = ({ userData, locations }) => {
               id='address'
               placeholder='Mahalla'
               defaultValue={userData.address}
+              {...register("address")}
             />
           </div>
         </div>
         <div className='container__row'>
           <div className='row__column'>
             <label htmlFor='gender'>Jins</label>
-            <select defaultValue={userData.gender}>
+            <select defaultValue={userData.gender} {...register("gender")}>
               <option disabled>Jinsni tanlang</option>
               <option value={"male"}>Erkak</option>
               <option value={"female"}>Ayol</option>
             </select>
           </div>
           <div className='row__column'>
-            <button
-              className='save__btn'
-              onClick={() =>
-                dispatch(
-                  updateProfileData({
-                    avatar_url: userData.avatar_url,
-                    name: userData.name,
-                    surname: userData.surname,
-                    username: userData.username,
-                    region_id: userData.region_id,
-                    district_id: userData.district_id,
-                    address: userData.address,
-                    gender: userData.gender,
-                  })
-                )
-              }>
-              O'zgarishlarni saqlash
-            </button>
+            <button className='save__btn'>O'zgarishlarni saqlash</button>
           </div>
         </div>
-      </div>
+      </form>
     </div>
   );
 };

@@ -19,7 +19,11 @@ const SettingsPage = () => {
   }, []);
   return (
     <div>
-      <UserSettingsComp userData={userData} locations={locations} />
+      <UserSettingsComp
+        userData={userData}
+        locations={locations}
+        updateProfileDatas={(edit) => dispatch(updateProfileData(edit))}
+      />
     </div>
   );
 };
