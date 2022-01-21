@@ -10,32 +10,18 @@ import { BsCameraFill } from "react-icons/bs";
 import { useForm } from "react-hook-form";
 
 const UserSettingsComp = ({ userData, locations, updateProfileDatas }) => {
-  const [name, setName] = useState(userData.name);
-  const [surname, setSurname] = useState(userData.surname);
-  const [phoneNumber, setPhoneNumber] = useState(userData.username);
   const [country, setCountry] = useState(userData.region_id);
-  const [district, setDisrtict] = useState(userData.district_id);
-  const [address, setAddress] = useState(userData.address);
-  const [gender, setGender] = useState(userData.gender);
-
   const dispatch = useDispatch();
-
-  const handleName = (e) => setName(e.target.value);
-  const handleSurname = (e) => setSurname(e.target.value);
-  const handlePhoneNumber = (e) => setPhoneNumber(e.target.value);
-  const handleDistrict = (e) => setDisrtict(e.target.value);
-  const handleAddress = (e) => setAddress(e.target.value);
-  const handleGender = (e) => setGender(e.target.value);
 
   const { register, handleSubmit } = useForm({
     defaultValues: {
       name: userData.name,
       surname: userData.surname,
       username: userData.username,
-      region_id: userData.region_id,
-      district_id: userData.district_id,
       address: userData.address,
       gender: userData.gender,
+      region_id: userData.region_id,
+      district_id: userData.district_id,
     },
   });
 
@@ -118,15 +104,16 @@ const UserSettingsComp = ({ userData, locations, updateProfileDatas }) => {
           <div className='row__column'>
             <label htmlFor='region'>Viloyat</label>
             <select
+              className='border-warning form-control'
+              id='region'
+              defaultValue={userData.country_id}
               {...register("region_id")}
               onChange={(e) => {
                 setCountry(e.target.value);
-              }}
-              defaultValue={userData.region_id}>
-              <option disabled>Viloyatni tanlang</option>
-              {locations.map((i) => (
-                <option key={i.id} value={i.id}>
-                  {i.name}
+              }}>
+              {locations.map((region) => (
+                <option key={region.id} value={region.id}>
+                  {region.name}
                 </option>
               ))}
             </select>
@@ -136,9 +123,10 @@ const UserSettingsComp = ({ userData, locations, updateProfileDatas }) => {
           <div className='row__column'>
             <label htmlFor='district'>Tuman</label>
             <select
+              className='border-warning form-control'
               defaultValue={userData.state_id}
+              id='state_id'
               {...register("district_id")}>
-              <option disabled>Tumanni tanlang</option>
               {(() => {
                 const selectedLoc = locations.find((loc) => loc.id == country);
                 if (selectedLoc && selectedLoc.states) {
@@ -165,10 +153,15 @@ const UserSettingsComp = ({ userData, locations, updateProfileDatas }) => {
         <div className='container__row'>
           <div className='row__column'>
             <label htmlFor='gender'>Jins</label>
-            <select defaultValue={userData.gender} {...register("gender")}>
-              <option disabled>Jinsni tanlang</option>
-              <option value={"male"}>Erkak</option>
-              <option value={"female"}>Ayol</option>
+            <select
+              id='gender'
+              defaultValue={userData.gender}
+              {...register("gender")}>
+              <option value='' disabled>
+                Jinsni tanlang
+              </option>
+              <option value='male'>Erkak</option>
+              <option value='female'>Ayol</option>
             </select>
           </div>
           <div className='row__column'>
