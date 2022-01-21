@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
-import Select from "react-dropdown-select";
 import "../../assets/scss/_settings.scss";
 import avatarLoc from "../../assets/images/user-g6f6f69a6e_1280.png";
 import { useDispatch } from "react-redux";
-import { updateProfileImage } from "../../redux/actions/userActions";
+import {
+  updateProfileData,
+  updateProfileImage,
+} from "../../redux/actions/userActions";
 import { BsCameraFill } from "react-icons/bs";
 
 const UserSettingsComp = ({ userData, locations }) => {
   const [country, setCountry] = useState(userData.region_id);
   const dispatch = useDispatch();
-  console.log("loc", locations);
+  console.log("loc");
 
   const handleUploadAvatar = (file, element) => {
     const fileReader = new FileReader();
@@ -86,7 +88,7 @@ const UserSettingsComp = ({ userData, locations }) => {
               onChange={(e) => {
                 setCountry(e.target.value);
               }}
-              defaultValue={userData.region_name}>
+              defaultValue={userData.region_id}>
               <option disabled>Viloyatni tanlang</option>
               {locations.map((i) => (
                 <option key={i.id} value={i.id}>
@@ -133,7 +135,24 @@ const UserSettingsComp = ({ userData, locations }) => {
             </select>
           </div>
           <div className='row__column'>
-            <button className='save__btn'>O'zgarishlarni saqlash</button>
+            <button
+              className='save__btn'
+              onClick={() =>
+                dispatch(
+                  updateProfileData({
+                    avatar_url: userData.avatar_url,
+                    name: userData.name,
+                    surname: userData.surname,
+                    username: userData.username,
+                    region_id: userData.region_id,
+                    district_id: userData.district_id,
+                    address: userData.address,
+                    gender: userData.gender,
+                  })
+                )
+              }>
+              O'zgarishlarni saqlash
+            </button>
           </div>
         </div>
       </div>
