@@ -2,10 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../../assets/scss/_settings.scss";
 import avatarLoc from "../../assets/images/user-g6f6f69a6e_1280.png";
 import { useDispatch } from "react-redux";
-import {
-  updateProfileData,
-  updateProfileImage,
-} from "../../redux/actions/userActions";
+import { updateProfileImage } from "../../redux/actions/userActions";
 import { BsCameraFill } from "react-icons/bs";
 import { useForm } from "react-hook-form";
 
