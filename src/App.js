@@ -9,6 +9,9 @@ import Login from "./pages/login/Login";
 import CreateDeliveryPage from "./pages/delivery/CreateDeliveryPage";
 import SettingsPage from "./pages/user/SettingsPage";
 import ProfilePage from "./pages/user/ProfilePage";
+import EditDeliveryComp from "./component/delivery/EditDeliveryComp";
+import EditDeliveryPage from "./pages/delivery/EditDeliveryPage";
+import PackagesListPage from "./pages/packages-list-page/PackagesListPage";
 const token = window.localStorage.getItem("@token");
 
 const App = () => {
@@ -29,6 +32,8 @@ const App = () => {
                 />
                 <Route path='/profile' element={<ProfilePage />} />
                 <Route path='/settings' element={<SettingsPage />} />
+                <Route path='/edit-delivery' element={<EditDeliveryPage />} />
+                <Route path='/packages-list' element={<PackagesListPage />} />
               </Routes>
             </div>
           </div>

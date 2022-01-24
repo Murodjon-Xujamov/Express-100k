@@ -17,7 +17,7 @@ const Sedibar = () => {
             <BiTaxi size={30} />
           </div>
         </Link>
-        <Link to={"/delivery"}>
+        <Link to={"packages-list"}>
           <div className='sidebar__box__icon'>
             <BsArrowLeftRight size={30} />
           </div>

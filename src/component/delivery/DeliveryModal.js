@@ -3,8 +3,10 @@ import "../../assets/scss/_delivery.scss";
 import { IoMdClose } from "react-icons/io";
 import { FcPrint } from "react-icons/fc";
 import "react-dropdown/style.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deleteDelivery } from "../../redux/actions/deliveryActions";
+import { Link } from "react-router-dom";
+import EditDeliveryComp from "./EditDeliveryComp";
 
 const DeliveryModal = ({ show, onClose, deliveryList, removeDelivery }) => {
   const {
@@ -103,7 +105,9 @@ const DeliveryModal = ({ show, onClose, deliveryList, removeDelivery }) => {
             <div className='delivery__modal__text__row'>
               <div></div>
               <div>
-                <button className='bg-warning'>Edit</button>
+                <Link to='/edit-delivery'>
+                  <button className='bg-warning'>Edit</button>
+                </Link>
                 <button
                   className='bg-danger'
                   onClick={() => deleteDeliveryData()}>
