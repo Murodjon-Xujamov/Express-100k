@@ -38,7 +38,7 @@ const Delivery = () => {
         </div>
       </div>
       <div className='card__delivery__table'>
-        <DeliveryListComp />
+        <DeliveryListComp deliveryList={deliveryList} />
       </div>
     </>
   );

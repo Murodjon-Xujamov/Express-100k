@@ -1,70 +1,59 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { deleteDelivery } from "../../redux/actions/deliveryActions";
 import DeliveryModal from "./DeliveryModal";
 
-const DeliveryListComp = () => {
+const DeliveryListComp = ({ deliveryList }) => {
   const [showModalDelivery, setShowModalDelivery] = useState(false);
+  const [modalList, setModalList] = useState([]);
+
+  const openDeliveryModal = (item) => {
+    setModalList(item);
+    setShowModalDelivery(true);
+  };
+
+  const dispatch = useDispatch();
+
   return (
     <div>
       <table>
-        <tr>
-          <th>Id</th>
-          <th>Qayerdan</th>
-          <th>Qayerga</th>
-          <th>Dostovka summa</th>
-          <th>Vaqt</th>
-          <th>Buyurtma</th>
-          <th>Umumiy summa</th>
-        </tr>
-        {[1, 2, 3].map((item) => (
-          <tr
-            key={item}
-            className='delivery__table__hover__tr success'
-            onClick={() => {
-              setShowModalDelivery(true);
-            }}>
-            <td>10</td>
-            <td>Toshkent sas sasaasasasas sasaa</td>
-            <td>Qashqadaryo sasasasaasasasa</td>
-            <td>40000 sum</td>
-            <td className='delivery__table__date__td'>18:12 12.12.2023</td>
-            <td>
-              Buyurtma: Sovg'a, <br /> Izoh: Ertaga oladi 9:00 ga, <br />
-              Transport_turi: Yingil <br />
-            </td>
-            <td>150000 sum</td>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Qayerdan</th>
+            <th>Qayerga</th>
+            <th>Dostovka summa</th>
+            <th>Vaqt</th>
+            <th>Buyurtma</th>
+            <th>Umumiy summa</th>
           </tr>
-        ))}
-        <tr className='delivery__table__hover__tr rejection'>
-          <td>10</td>
-          <td>Toshkent sas sasaasasasas sasaa</td>
-          <td>Qashqadaryo sasasasaasasasa</td>
-          <td>40000 sum</td>
-          <td className='delivery__table__date__td'>18:12 12.12.2023</td>
-          <td>
-            Buyurtma: Sovg'a, <br /> Izoh: Ertaga oladi 9:00 ga, <br />
-            Transport_turi: Yingil <br />
-          </td>
-          <td>150000 sum</td>
-        </tr>
-        {[1, 2, 4, 5].map((item) => (
-          <tr
-            key={item}
-            className='delivery__table__hover__tr still_on_the_road'>
-            <td>10</td>
-            <td>Toshkent sas sasaasasasas sasaa</td>
-            <td>Qashqadaryo sasasasaasasasa</td>
-            <td>40000 sum</td>
-            <td className='delivery__table__date__td'>18:12 12.12.2023</td>
-            <td>
-              Buyurtma: Sovg'a, <br /> Izoh: Ertaga oladi 9:00 ga, <br />
-              Transport_turi: Yingil <br />
-            </td>
-            <td>150000 sum</td>
-          </tr>
-        ))}
+        </thead>
+        <tbody>
+          {deliveryList.map((item) => (
+            <tr
+              key={item.id}
+              className='delivery__table__hover__tr success'
+              onClick={() => {
+                openDeliveryModal(item);
+              }}>
+              <td>{item.id}</td>
+              <td>{item.from_full_address}</td>
+              <td>{item.to_full_address}</td>
+              <td>{item.delivery_fee_amount}</td>
+              <td className='delivery__table__date__td'>{item.created_at}</td>
+              <td>
+                {item.matter}, <br />
+                {item.note}
+              </td>
+              <td>{item.cash_amount}</td>
+            </tr>
+          ))}
+        </tbody>
       </table>
       <DeliveryModal
+        deliveryList={modalList}
         show={showModalDelivery}
+        removeDelivery={(delId) => dispatch(deleteDelivery(delId))}
         onClose={() => {
           setShowModalDelivery(false);
         }}

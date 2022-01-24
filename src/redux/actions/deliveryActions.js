@@ -38,7 +38,7 @@ export const deleteDelivery = (packageId) => (dispatch) => {
 
   requests
     .deleteDelivery(packageId)
-    .then((data) => {
+    .then(({ data }) => {
       dispatch({ type: "delete_delivery_success", payload: { packageId } });
     })
     .catch(({ response }) => {
