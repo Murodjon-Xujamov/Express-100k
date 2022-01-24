@@ -20,13 +20,13 @@ const DeliveryModal = ({ show, onClose, deliveryList, removeDelivery }) => {
   } = deliveryList;
   const dispatch = useDispatch();
 
-  // const removeDelivery = () => {
-  //   if (window.confirm("Haqiqattan ham o'chirmoqchimisiz") == true) {
-  //     return dispatch(deleteDelivery());
-  //   } else {
-  //     return "";
-  //   }
-  // };
+  const deleteDeliveryData = () => {
+    if (window.confirm("Haqiqattan ham o'chirmoqchimisiz") == true) {
+      return removeDelivery(id);
+    } else {
+      return "";
+    }
+  };
 
   return (
     <>
@@ -106,7 +106,7 @@ const DeliveryModal = ({ show, onClose, deliveryList, removeDelivery }) => {
                 <button className='bg-warning'>Edit</button>
                 <button
                   className='bg-danger'
-                  onClick={() => removeDelivery(id)}>
+                  onClick={() => deleteDeliveryData()}>
                   Delete
                 </button>
               </div>
