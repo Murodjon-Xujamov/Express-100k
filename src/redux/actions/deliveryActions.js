@@ -156,6 +156,25 @@ export const fetchPackageList = (packageListId) => (dispatch) => {
       dispatch({ type: "fetch_packages_error", payload: message });
     });
 };
+// Fetch all packages list
+export const fetchAllPackagesList = (packageListId) => (dispatch) => {
+  dispatch({
+    type: "fetch_packages_start",
+    payload: packageListId,
+  });
+
+  requests
+    .fetchAllPackagesList()
+    .then(({ data }) => {
+      dispatch({ type: "fetch_packages_success", payload: data });
+    })
+    .catch(({ response }) => {
+      let message =
+        (response && response.data.message) || "Pochtalarni yuklab ololmadik";
+
+      dispatch({ type: "fetch_packages_error", payload: message });
+    });
+};
 /*
 =============
 Fetch Store Drivers

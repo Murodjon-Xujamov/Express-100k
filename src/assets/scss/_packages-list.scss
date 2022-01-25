@@ -1,0 +1,42 @@
+.filter {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  .filter__column {
+    width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+
+    .select__filter {
+      width: 200px;
+      height: 20px;
+    }
+
+    & > input {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+.packages__table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid black;
+
+  td {
+    border-bottom: 1px solid black;
+    text-align: left;
+    padding: 8px;
+    text-align: center;
+  }
+
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+}
