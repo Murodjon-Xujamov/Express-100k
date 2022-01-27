@@ -14,7 +14,9 @@ const Delivery = () => {
   }, []);
 
   const deliveryList = useSelector((state) => state.delivery.list);
-  console.log(deliveryList);
+  const loading = useSelector((state) => state.delivery.loading);
+
+  console.log(loading, "loading");
 
   return (
     <>
@@ -38,7 +40,7 @@ const Delivery = () => {
         </div>
       </div>
       <div className='card__delivery__table'>
-        <DeliveryListComp deliveryList={deliveryList} />
+        <DeliveryListComp deliveryList={deliveryList} loading={loading} />
       </div>
     </>
   );

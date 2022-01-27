@@ -5,8 +5,14 @@ import { useDispatch } from "react-redux";
 import { updateProfileImage } from "../../redux/actions/userActions";
 import { BsCameraFill } from "react-icons/bs";
 import { useForm } from "react-hook-form";
+import ButtonLoading from "../loading/ButtonLoading";
 
-const UserSettingsComp = ({ userData, locations, updateProfileDatas }) => {
+const UserSettingsComp = ({
+  userData,
+  locations,
+  updateProfileDatas,
+  loading,
+}) => {
   const [country, setCountry] = useState(userData.region_id);
   const dispatch = useDispatch();
 
@@ -162,7 +168,9 @@ const UserSettingsComp = ({ userData, locations, updateProfileDatas }) => {
             </select>
           </div>
           <div className='row__column'>
-            <button className='save__btn'>O'zgarishlarni saqlash</button>
+            <button className='save__btn'>
+              O'zgarishlarni saqlash {loading ? <ButtonLoading /> : ""}
+            </button>
           </div>
         </div>
       </form>

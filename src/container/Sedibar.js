@@ -12,12 +12,12 @@ const Sedibar = () => {
         <Link to={"/profile"}>
           <h2>Express</h2>
         </Link>
-        <Link to={"/"}>
+        <Link to={"/package"}>
           <div className='sidebar__box__icon'>
             <BiTaxi size={30} />
           </div>
         </Link>
-        <Link to={"packages-list"}>
+        <Link to={"/packages-list"}>
           <div className='sidebar__box__icon'>
             <BsArrowLeftRight size={30} />
           </div>
@@ -27,7 +27,7 @@ const Sedibar = () => {
             <FaUsers size={30} />
           </div>
         </Link>
-        <Link to={"/create-delivery"}>
+        <Link to={"/package/create-package"}>
           <div className='sidebar__box__icon'>
             <BiAddToQueue size={30} />
           </div>

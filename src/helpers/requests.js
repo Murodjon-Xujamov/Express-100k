@@ -53,6 +53,8 @@ const requests = {
   fetchPackagesListStatistics: () =>
     axios.get(`${url}/store/package-list`, config),
   fetchStoreDrivers: () => axios.get(`${url}/store/drivers`, config),
+  updatePackage: (id, params) =>
+    axios.put(`${url}/user/package/${id}`, params, config),
   updatePackageList: (id, params) =>
     axios.patch(`${url}/store/package-list/${id}`, params, config),
   fetchActivePackageListSelected: (params) =>

@@ -9,6 +9,7 @@ const CreateDeliveryPage = () => {
   const dispatch = useDispatch();
   const locations = useSelector((state) => state.common.locations);
   const userInfo = useSelector((state) => state.user.data);
+  const loading = useSelector((state) => state.delivery.loading);
 
   useEffect(() => {
     dispatch(fetchLocations());
@@ -48,6 +49,7 @@ const CreateDeliveryPage = () => {
         regions={regions}
         userInfo={userInfo}
         locations={locations}
+        loading={loading}
         onClickCreateDelivery={(deliveryInfo) => createDelivery(deliveryInfo)}
       />
     </div>

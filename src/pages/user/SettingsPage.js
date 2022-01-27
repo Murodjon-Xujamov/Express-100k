@@ -10,7 +10,7 @@ import { fetchLocations } from "../../redux/actions/commonActions";
 
 const SettingsPage = () => {
   const dispatch = useDispatch();
-  const userData = useSelector((state) => state.user.data);
+  const userData = useSelector((state) => state.user);
   const locations = useSelector((state) => state.common.locations);
 
   useEffect(() => {
@@ -20,9 +20,10 @@ const SettingsPage = () => {
   return (
     <div>
       <UserSettingsComp
-        userData={userData}
+        userData={userData.data}
         locations={locations}
         updateProfileDatas={(edit) => dispatch(updateProfileData(edit))}
+        loading={userData.loading}
       />
     </div>
   );

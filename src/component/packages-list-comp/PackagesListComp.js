@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import Select from "react-dropdown-select";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import ContentLoading from "../loading/ContentLoading";
 
-const PackagesListComp = ({ packagesListData }) => {
+const PackagesListComp = ({ packagesListData, loading }) => {
   const [startDate, setStartDate] = useState(new Date());
   return (
     <div>
@@ -34,37 +35,41 @@ const PackagesListComp = ({ packagesListData }) => {
         </div>
       </div>
 
-      <table className='packages__table'>
-        <tr>
-          <td>Id</td>
-          <td>Vaqt</td>
-          <td>Kuryer</td>
-          <td>Magazin</td>
-          <td>Aktivlashtirilgan</td>
-          <td>Yopilgan</td>
-          <td>Pochta soni</td>
-          <td>Sklad</td>
-          {/* <td>
+      {loading ? (
+        <ContentLoading />
+      ) : (
+        <table className='packages__table'>
+          <tr>
+            <td>Id</td>
+            <td>Vaqt</td>
+            <td>Kuryer</td>
+            <td>Magazin</td>
+            <td>Aktivlashtirilgan</td>
+            <td>Yopilgan</td>
+            <td>Pochta soni</td>
+            <td>Sklad</td>
+            {/* <td>
               <input type={"checkbox"} />
             </td> */}
-        </tr>
+          </tr>
 
-        {packagesListData.map((item) => (
-          <tr>
-            <td>{item.id}</td>
-            <td>{item.created_at}</td>
-            <td>Kuryer</td>
-            <td>{item.store_name}</td>
-            <td>{item.is_active}</td>
-            <td>{item.is_closed}</td>
-            <td>{item.packages_count}</td>
-            <td>Foziltepa 14a</td>
-            {/* <td>
+          {packagesListData.map((item) => (
+            <tr>
+              <td>{item.id}</td>
+              <td>{item.created_at}</td>
+              <td>Kuryer</td>
+              <td>{item.store_name}</td>
+              <td>{item.is_active}</td>
+              <td>{item.is_closed}</td>
+              <td>{item.packages_count}</td>
+              <td>Foziltepa 14a</td>
+              {/* <td>
                 <input type={"checkbox"} />
               </td> */}
-          </tr>
-        ))}
-      </table>
+            </tr>
+          ))}
+        </table>
+      )}
     </div>
   );
 };

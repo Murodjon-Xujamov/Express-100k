@@ -10,14 +10,14 @@ const PackagesListPage = () => {
     (state) => state.delivery.createPackegeList
   );
 
-  console.log("pack", packagesListData);
+  const loading = useSelector((state) => state.delivery.loading);
 
   useEffect(() => {
     dispatch(fetchAllPackagesList());
   }, []);
   return (
     <div>
-      <PackagesListComp packagesListData={packagesListData} />
+      <PackagesListComp packagesListData={packagesListData} loading={loading} />
     </div>
   );
 };

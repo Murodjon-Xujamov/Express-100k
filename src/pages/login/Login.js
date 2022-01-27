@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { authLogin, authPassword } from "../../redux/actions/userActions";
 import { Route } from "react-router-dom";
 import Delivery from "../delivery/Delivery";
+import ButtonLoading from "../../component/loading/ButtonLoading";
 
 const Login = () => {
   const [{ username, password }, setUser] = useState({
@@ -13,13 +14,16 @@ const Login = () => {
     password: "",
   });
 
-  const { loginStep, loading, token } = useSelector((state) => state.user);
+  const { loginStep, loading, token, message } = useSelector(
+    (state) => state.user
+  );
+  console.log("m", message);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (token !== null) {
-      <Route path="/profile" element={<Delivery />} />;
+      <Route path='/profile' element={<Delivery />} />;
       window.location.reload();
     }
   }, [token]);
@@ -48,50 +52,50 @@ const Login = () => {
 
   return (
     <>
-      <div className="login__page">
-        <div className="login__box__form">
+      <div className='login__page'>
+        <div className='login__box__form'>
           <h1>Express</h1>
           <h3>Kirish</h3>
-          <div className="login__form">
+          <div className='login__form'>
             {!loginStep ? (
               <div>
                 Telifon raqam
                 <input
-                  className="login__input"
+                  className='login__input'
                   onChange={handleUsername}
                   value={username}
                   onKeyPress={handleKeyUserName}
                 />
                 <button
-                  className="login__button"
+                  className='login__button'
                   disabled={loading}
-                  onClick={() => dispatch(authPassword(username))}
-                >
-                  <SiGnuprivacyguard /> Tizimga kirish
+                  onClick={() => dispatch(authPassword(username))}>
+                  {loading ? <ButtonLoading /> : <SiGnuprivacyguard />} Tizimga
+                  kirish
                 </button>
               </div>
             ) : (
               <div>
                 Telifon raqam
                 <input
-                  className="login__input"
+                  className='login__input'
                   defaultValue={username}
                   disabled={true}
                 />
                 Sms-kod
                 <input
-                  className="login__input"
-                  type="tel"
+                  className='login__input'
+                  type='tel'
                   onChange={handlePassword}
                   value={password}
                   onKeyPress={handleKeyLogin}
                 />
                 <button
-                  className="login__button"
+                  className='login__button'
                   disabled={loading}
-                  onClick={handleLogin}
-                >
-                  <SiGnuprivacyguard /> Tizimga kirish
+                  onClick={handleLogin}>
+                  {loading ? <ButtonLoading /> : <SiGnuprivacyguard />} Tizimga
+                  kirish
                 </button>
               </div>
             )}

@@ -2,8 +2,11 @@ import "../../assets/scss/_create-delivery.scss";
 import React, { useState } from "react";
 import Select from "react-dropdown-select";
 import { RiSendPlane2Line } from "react-icons/ri";
+import { MutatingDots, Oval } from "react-loader-spinner";
+import ButtonLoading from "../loading/ButtonLoading";
 
 const CreateDeliveryComp = ({
+  loading,
   userInfo,
   locations,
   regions,
@@ -37,10 +40,8 @@ const CreateDeliveryComp = ({
       };
     });
 
-  console.log("fromDistrictList", fromDistrictList);
-
   const toDistrict = locations.filter((loc) => loc.id == to_region_id);
-  console.log("log", toDistrict);
+
   const toDistrictList =
     toDistrict &&
     toDistrict[0]?.states.map((item) => {
@@ -195,7 +196,11 @@ const CreateDeliveryComp = ({
               })
             }>
             Yuborish {""}
-            <RiSendPlane2Line className='send__icon' />
+            {loading ? (
+              <ButtonLoading />
+            ) : (
+              <RiSendPlane2Line className='send__icon' />
+            )}
           </button>
         </div>
       </div>

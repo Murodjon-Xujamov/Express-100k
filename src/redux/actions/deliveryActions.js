@@ -254,6 +254,25 @@ export const updatePackageList = (id, params) => (dispatch) => {
       dispatch({ type: "uptede_delivery_list_error", payload: message });
     });
 };
+export const updatePackage = (id, params) => (dispatch) => {
+  dispatch({
+    type: "uptede_delivery_list_start",
+    payload: { id, params },
+  });
+
+  requests
+    .updatePackage(id, params)
+    .then(({ data }) => {
+      dispatch({ type: "uptede_delivery_list_success", payload: data });
+    })
+    .catch(({ response }) => {
+      let message =
+        (response && response.data.message) ||
+        "Malumotlarni saqlashga xatolik bor";
+
+      dispatch({ type: "uptede_delivery_list_error", payload: message });
+    });
+};
 
 /*
 =============

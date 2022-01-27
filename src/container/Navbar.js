@@ -23,7 +23,7 @@ const Navbar = () => {
           </div>
         </div>
         <div className='navbar__link__items'>
-          <Link to='/profile'>
+          <Link to='/'>
             <div className='navbar__link__item'>
               <FaUserTie size={21} style={{ cursor: "pointer" }} />
             </div>
