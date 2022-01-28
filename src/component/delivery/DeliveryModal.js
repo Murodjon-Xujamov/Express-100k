@@ -9,7 +9,7 @@ import { Link, useParams } from "react-router-dom";
 
 const DeliveryModal = ({ show, onClose, deliveryList, removeDelivery }) => {
   const {
-    // id,
+    id,
     from_full_address,
     to_full_address,
     matter,
@@ -20,7 +20,6 @@ const DeliveryModal = ({ show, onClose, deliveryList, removeDelivery }) => {
     created_at,
   } = deliveryList;
   const dispatch = useDispatch();
-  const { id } = useParams();
   console.log("rr", id);
 
   const deleteDeliveryData = () => {
@@ -106,7 +105,7 @@ const DeliveryModal = ({ show, onClose, deliveryList, removeDelivery }) => {
             <div className='delivery__modal__text__row'>
               <div></div>
               <div>
-                <Link to='/package/edit-package/:id' state={{ deliveryList }}>
+                <Link to={`/package/edit-package/${id}`}>
                   <button className='bg-warning'>Edit</button>
                 </Link>
                 <button

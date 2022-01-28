@@ -1,32 +1,26 @@
 import React, { useState, useEffect } from "react";
 import Select from "react-dropdown-select";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { updatePackage } from "../../redux/actions/deliveryActions";
+import {
+  updatePackage,
+  fetchDeliveryOne,
+} from "../../redux/actions/deliveryActions";
 import { fetchLocations } from "../../redux/actions/commonActions";
 import "../../assets/scss/_edit-delivery.scss";
 import ButtonLoading from "../../component/loading/ButtonLoading";
 
 const EditDeliveryPage = () => {
-  const {
-    state: { deliveryList },
-  } = useLocation();
   const { id } = useParams();
-  console.log("urlId", id);
-  const [from_region_id, setFrom_region_id] = useState(
-    deliveryList.from_region_id
-  );
-  const [to_region_id, setTo_region_id] = useState(deliveryList.to_region_id);
-  // location logic here
-  // const location = useLocation();
-  //console.log("sd", location.state);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchLocations());
-  }, []);
+    dispatch(fetchDeliveryOne(id));
+  }, [id]);
 
+  const editDatas = useSelector((state) => state.delivery.delivery);
   const loading = useSelector((state) => state.delivery.loading);
   const locations = useSelector((state) => state.common.locations);
   const region = locations.map((item) => {
@@ -35,29 +29,31 @@ const EditDeliveryPage = () => {
       value: item.id,
     };
   });
+  const [from_region_id, setFrom_region_id] = useState(
+    editDatas.from_region_id
+  );
+  const [to_region_id, setTo_region_id] = useState(editDatas.to_region_id);
 
   const { register, handleSubmit } = useForm({
     defaultValues: {
-      vehicle_type: deliveryList.vehicle_type,
-      delivery_fee_amount: deliveryList.delivery_fee_amount,
-      from_region_id: deliveryList.from_region_id,
-      from_district: deliveryList.from_district,
-      from_region: deliveryList.from_region,
-      from_address: deliveryList.from_address,
-      updated_at: deliveryList.updated_at,
-      insurance_amount: deliveryList.insurance_amount,
-      recipient_name: deliveryList.recipient_name,
-      recipient_phone: deliveryList.recipient_phone,
-      to_address: deliveryList.to_address,
-      to_region_id: deliveryList.to_region_id,
-      matter: deliveryList.matter,
+      vehicle_type: editDatas.vehicle_type,
+      delivery_fee_amount: editDatas.delivery_fee_amount,
+      from_region_id: editDatas.from_region_id,
+      from_district: editDatas.from_district,
+      from_region: editDatas.from_region,
+      from_address: editDatas.from_address,
+      updated_at: editDatas.updated_at,
+      insurance_amount: editDatas.insurance_amount,
+      recipient_name: editDatas.recipient_name,
+      recipient_phone: editDatas.recipient_phone,
+      to_address: editDatas.to_address,
+      to_region_id: editDatas.to_region_id,
+      matter: editDatas.matter,
     },
   });
 
-  const deliveryId = deliveryList.id;
-
   const onSubmit = (edit) => {
-    dispatch(updatePackage(deliveryId, edit));
+    dispatch(updatePackage(id, edit));
   };
 
   const fromDistrict = locations.filter((loc) => loc.id == from_region_id);
@@ -80,8 +76,6 @@ const EditDeliveryPage = () => {
       };
     });
 
-  const { recipient_phone, matter } = deliveryList;
-
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)} className='edit__grid_container'>
@@ -89,8 +83,8 @@ const EditDeliveryPage = () => {
           <label>Qaysi viloyatdan ?</label>
           <Select
             defaultValue={{
-              label: `${deliveryList.region_name}`,
-              value: deliveryList.region_id,
+              label: `${editDatas.region_name}`,
+              value: editDatas.region_id,
             }}
             {...register("from_region_id")}
             options={region}
@@ -105,7 +99,7 @@ const EditDeliveryPage = () => {
           <label>Mahalla</label>
           <input
             type={"text"}
-            defaultValue={deliveryList.from_address}
+            defaultValue={editDatas.from_address}
             {...register("from_address")}
           />
         </div>
@@ -124,7 +118,7 @@ const EditDeliveryPage = () => {
           <label>Mahalla</label>
           <input
             type={"text"}
-            defaultValue={deliveryList.to_address}
+            defaultValue={editDatas.to_address}
             {...register("to_address")}
           />
         </div>
@@ -132,7 +126,7 @@ const EditDeliveryPage = () => {
           <label>Mijozning ismi</label>
           <input
             type={"text"}
-            defaultValue={deliveryList.recipient_name}
+            defaultValue={editDatas.recipient_name}
             {...register("recipient_name")}
           />
         </div>
@@ -140,19 +134,23 @@ const EditDeliveryPage = () => {
           <label>Mijozning telefon raqami:</label>
           <input
             type={"text"}
-            defaultValue={recipient_phone}
+            defaultValue={editDatas.recipient_phone}
             {...register("recipient_phone")}
           />
         </div>
         <div className='row__column'>
           <label>Mahsulot nomi</label>
-          <input type={"text"} defaultValue={matter} {...register("matter")} />
+          <input
+            type={"text"}
+            defaultValue={editDatas.matter}
+            {...register("matter")}
+          />
         </div>
         <div className='row__column'>
           <label>Izoh</label>
           <input
             type={"text"}
-            defaultValue={deliveryList.note}
+            defaultValue={editDatas.note}
             {...register("note")}
           />
         </div>
@@ -166,7 +164,7 @@ const EditDeliveryPage = () => {
           <label>Sug'urta summasi</label>
           <input
             type={"text"}
-            defaultValue={deliveryList.insurance_amount}
+            defaultValue={editDatas.insurance_amount}
             {...register("insurance_amount")}
           />
         </div>
@@ -174,7 +172,7 @@ const EditDeliveryPage = () => {
           <label>Dastavka summasi</label>
           <input
             type={"text"}
-            defaultValue={deliveryList.delivery_fee_amount}
+            defaultValue={editDatas.delivery_fee_amount}
             {...register("delivery_fee_amount")}
           />
         </div>
@@ -182,7 +180,7 @@ const EditDeliveryPage = () => {
           <label>Jami summa</label>
           <input
             type={"text"}
-            defaultValue={deliveryList.cash_amount}
+            defaultValue={editDatas.cash_amount}
             {...register("cash_amount")}
           />
         </div>
