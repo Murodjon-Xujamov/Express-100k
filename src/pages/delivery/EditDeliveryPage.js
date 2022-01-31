@@ -21,6 +21,7 @@ const EditDeliveryPage = () => {
   }, [id]);
 
   const editDatas = useSelector((state) => state.delivery.delivery);
+  console.log("edit", editDatas);
   const loading = useSelector((state) => state.delivery.loading);
   const locations = useSelector((state) => state.common.locations);
   const region = locations.map((item) => {

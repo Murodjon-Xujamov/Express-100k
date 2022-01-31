@@ -4,7 +4,7 @@ import "../assets/scss/_sidebar.scss";
 import { BiTaxi, BiAddToQueue } from "react-icons/bi";
 import { BsArrowLeftRight, BsQuestionCircle } from "react-icons/bs";
 import { FaUsers } from "react-icons/fa";
-
+import paths from "./../routes/paths";
 const Sedibar = () => {
   return (
     <div className='sedibar__main'>
@@ -12,7 +12,7 @@ const Sedibar = () => {
         <Link to={"/profile"}>
           <h2>Express</h2>
         </Link>
-        <Link to={"/package"}>
+        <Link to={paths.packagePath}>
           <div className='sidebar__box__icon'>
             <BiTaxi size={30} />
           </div>

@@ -17,7 +17,6 @@ const Login = () => {
   const { loginStep, loading, token, message } = useSelector(
     (state) => state.user
   );
-  console.log("m", message);
 
   const dispatch = useDispatch();
 

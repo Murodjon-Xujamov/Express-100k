@@ -16,7 +16,6 @@ const ProfilePage = () => {
     district_name,
     gender,
   } = useSelector((state) => state.user.data);
-  console.log("nn", name);
 
   useEffect(() => {
     dispatch(profileInfo());

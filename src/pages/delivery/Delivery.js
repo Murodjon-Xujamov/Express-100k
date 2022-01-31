@@ -16,8 +16,6 @@ const Delivery = () => {
   const deliveryList = useSelector((state) => state.delivery.list);
   const loading = useSelector((state) => state.delivery.loading);
 
-  console.log(loading, "loading");
-
   return (
     <>
       <div className='delivery__top'>

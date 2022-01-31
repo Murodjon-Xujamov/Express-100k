@@ -20,7 +20,6 @@ const DeliveryModal = ({ show, onClose, deliveryList, removeDelivery }) => {
     created_at,
   } = deliveryList;
   const dispatch = useDispatch();
-  console.log("rr", id);
 
   const deleteDeliveryData = () => {
     if (window.confirm("Haqiqattan ham o'chirmoqchimisiz") == true) {

@@ -1,22 +1,14 @@
-// login
+import { useRoutes } from "react-router-dom";
+
 const Login = import("./pages/login/Login.js");
-// user
 const Profile = import("./pages/user/ProfilePage");
 const Settings = import("./pages/user/SettingsPage.js");
-// package
 const Package = import("./pages/delivery/DeliveryList");
 const CreatePackage = import("./pages/delivery/CreateDeliveryPage");
 const EditPackage = import("./pages/delivery/EditDeliveryPage");
-// package list
 const PackageList = import("./pages/packages-list-page/PackagesListPage.js");
 
-export const routes = [
-  {
-    path: "/login",
-    exact: true,
-    name: "Mening Kabinetim",
-    component: Login,
-  },
+export const AppRoutes = () => [
   {
     path: "/",
     exact: true,
