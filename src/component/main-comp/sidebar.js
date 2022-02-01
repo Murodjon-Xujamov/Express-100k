@@ -1,10 +1,10 @@
 import React from "react";
+import "../../assets/scss/sidebar.scss";
 import { Link } from "react-router-dom";
-import "../assets/scss/sidebar.scss";
 import { BiTaxi, BiAddToQueue } from "react-icons/bi";
 import { BsArrowLeftRight, BsQuestionCircle } from "react-icons/bs";
 import { FaUsers } from "react-icons/fa";
-import paths from "../routes/paths";
+import paths from "../../routes/paths";
 
 const Sidebar = () => {
   return (

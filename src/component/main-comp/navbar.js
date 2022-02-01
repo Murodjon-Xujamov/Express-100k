@@ -1,5 +1,5 @@
 import React from "react";
-import "../assets/scss/navbar.scss";
+import "../../assets/scss/navbar.scss";
 import { FaUserTie } from "react-icons/fa";
 import { FiSettings } from "react-icons/fi";
 import { BsBell, BsHeadset } from "react-icons/bs";
