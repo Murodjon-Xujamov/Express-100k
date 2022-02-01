@@ -3,7 +3,7 @@ import Select from "react-dropdown-select";
 import { useDispatch } from "react-redux";
 import { deleteDelivery } from "../../redux/actions/delivery-actions";
 import ContentLoading from "../loading/content-loading";
-import DeliveryModal from "./package-modal-comp";
+import PackageModalComp from "./package-modal-comp";
 
 const PackagesComp = ({ deliveryList, loading, locations, regions }) => {
   const [showModalDelivery, setShowModalDelivery] = useState(false);
@@ -86,7 +86,7 @@ const PackagesComp = ({ deliveryList, loading, locations, regions }) => {
           </table>
         </>
       )}
-      <DeliveryModal
+      <PackageModalComp
         deliveryList={modalList}
         show={showModalDelivery}
         removeDelivery={(delId) => dispatch(deleteDelivery(delId))}
