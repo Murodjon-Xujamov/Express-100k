@@ -1,5 +1,5 @@
 import React from "react";
-import "../../assets/scss/delivery.scss";
+import "../../assets/scss/package.scss";
 import { Link } from "react-router-dom";
 import { IoMdClose } from "react-icons/io";
 import { FcPrint } from "react-icons/fc";
