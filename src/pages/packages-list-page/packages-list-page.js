@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import PackagesListComp from "../../component/packages-list-comp/PackagesListComp";
+import React, { useEffect } from "react";
+import PackagesListComp from "../../component/packages-list-comp/packages-list-comp";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchAllPackagesList } from "../../redux/actions/deliveryActions";
-import "../../assets/scss/_packages-list.scss";
+import { fetchAllPackagesList } from "../../redux/actions/delivery-actions";
+import "../../assets/scss/packages-list.scss";
 
 const PackagesListPage = () => {
   const dispatch = useDispatch();

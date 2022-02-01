@@ -1,21 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "../../assets/scss/_delivery.scss";
-import DeliveryListComp from "../../component/delivery/DeliveryListComp";
-import { fetchDelivery } from "../../redux/actions/deliveryActions";
+import "../../assets/scss/delivery.scss";
+import { fetchDelivery } from "../../redux/actions/delivery-actions";
+import { fetchLocations } from "../../redux/actions/common-actions";
+import PackagesComp from "../../component/package-comp/packages-comp";
 
-const Delivery = () => {
-  const [showModalDelivery, setShowModalDelivery] = useState(false);
-
+const PackagesPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchDelivery());
+    dispatch(fetchLocations());
   }, []);
 
   const deliveryList = useSelector((state) => state.delivery.list);
   const loading = useSelector((state) => state.delivery.loading);
+  const locations = useSelector((state) => state.common.locations);
 
+  const regions =
+    locations &&
+    locations.map((regions) => {
+      return {
+        label: regions.name,
+        value: regions.id,
+      };
+    });
   return (
     <>
       <div className='delivery__top'>
@@ -38,10 +47,15 @@ const Delivery = () => {
         </div>
       </div>
       <div className='card__delivery__table'>
-        <DeliveryListComp deliveryList={deliveryList} loading={loading} />
+        <PackagesComp
+          deliveryList={deliveryList}
+          loading={loading}
+          locations={locations}
+          regions={regions}
+        />
       </div>
     </>
   );
 };
 
-export default Delivery;
+export default PackagesPage;

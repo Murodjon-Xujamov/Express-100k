@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const MModalDelivery = styled.div`
+export const ModalDelivery = styled.div`
   position: fixed;
   top: 0;
   right: 0;

@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from "react";
-import "../../assets/scss/_settings.scss";
+import "../../assets/scss/settings.scss";
 import avatarLoc from "../../assets/images/user-g6f6f69a6e_1280.png";
 import { useDispatch } from "react-redux";
-import { updateProfileImage } from "../../redux/actions/userActions";
+import { updateProfileImage } from "../../redux/actions/user-actions";
 import { BsCameraFill } from "react-icons/bs";
 import { useForm } from "react-hook-form";
-import ButtonLoading from "../loading/ButtonLoading";
+import ButtonLoading from "../loading/button-loading";
 
-const UserSettingsComp = ({
-  userData,
-  locations,
-  updateProfileDatas,
-  loading,
-}) => {
+const SettingsComp = ({ userData, locations, updateProfileDatas, loading }) => {
   const [country, setCountry] = useState(userData.region_id);
   const dispatch = useDispatch();
 
@@ -178,4 +173,4 @@ const UserSettingsComp = ({
   );
 };
 
-export default UserSettingsComp;
+export default SettingsComp;

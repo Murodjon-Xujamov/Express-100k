@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import "../../assets/scss/_login.scss";
+import "../../assets/scss/login.scss";
 import { SiGnuprivacyguard } from "react-icons/si";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { authLogin, authPassword } from "../../redux/actions/userActions";
+import { authLogin, authPassword } from "../../redux/actions/user-actions";
 import { Route } from "react-router-dom";
-import Delivery from "../delivery/Delivery";
-import ButtonLoading from "../../component/loading/ButtonLoading";
+import PackagesPage from "../package-page/packages-page";
+import ButtonLoading from "../../component/loading/button-loading";
 
 const Login = () => {
   const [{ username, password }, setUser] = useState({
@@ -22,7 +22,7 @@ const Login = () => {
 
   useEffect(() => {
     if (token !== null) {
-      <Route path='/profile' element={<Delivery />} />;
+      <Route path='/profile' element={<PackagesPage />} />;
       window.location.reload();
     }
   }, [token]);

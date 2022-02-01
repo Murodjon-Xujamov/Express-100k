@@ -6,12 +6,12 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   updatePackage,
   fetchDeliveryOne,
-} from "../../redux/actions/deliveryActions";
-import { fetchLocations } from "../../redux/actions/commonActions";
-import "../../assets/scss/_edit-delivery.scss";
-import ButtonLoading from "../../component/loading/ButtonLoading";
+} from "../../redux/actions/delivery-actions";
+import { fetchLocations } from "../../redux/actions/common-actions";
+import "../../assets/scss/edit-delivery.scss";
+import ButtonLoading from "../../component/loading/button-loading";
 
-const EditDeliveryPage = () => {
+const EditPackagePage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
 
@@ -21,7 +21,6 @@ const EditDeliveryPage = () => {
   }, [id]);
 
   const editDatas = useSelector((state) => state.delivery.delivery);
-  console.log("edit", editDatas);
   const loading = useSelector((state) => state.delivery.loading);
   const locations = useSelector((state) => state.common.locations);
   const region = locations.map((item) => {
@@ -195,4 +194,4 @@ const EditDeliveryPage = () => {
   );
 };
 
-export default EditDeliveryPage;
+export default EditPackagePage;

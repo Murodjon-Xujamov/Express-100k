@@ -1,11 +1,10 @@
-import "../../assets/scss/_create-delivery.scss";
+import "../../assets/scss/create-delivery.scss";
 import React, { useState } from "react";
 import Select from "react-dropdown-select";
 import { RiSendPlane2Line } from "react-icons/ri";
-import { MutatingDots, Oval } from "react-loader-spinner";
-import ButtonLoading from "../loading/ButtonLoading";
+import ButtonLoading from "../loading/button-loading";
 
-const CreateDeliveryComp = ({
+const CreatePackageComp = ({
   loading,
   userInfo,
   locations,
@@ -208,4 +207,4 @@ const CreateDeliveryComp = ({
   );
 };
 
-export default CreateDeliveryComp;
+export default CreatePackageComp;

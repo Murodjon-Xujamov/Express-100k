@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import requests from "../../helpers/requests";
 import { useDispatch, useSelector } from "react-redux";
-import CreateDeliveryComp from "../../component/delivery/CreateDeliveryComp";
-import { fetchLocations } from "../../redux/actions/commonActions";
-import { profileInfo } from "../../redux/actions/userActions";
+import CreatePackageComp from "../../component/package-comp/create-package-comp";
+import { fetchLocations } from "../../redux/actions/common-actions";
+import { profileInfo } from "../../redux/actions/user-actions";
 
-const CreateDeliveryPage = () => {
+const CreatePackagePage = () => {
   const dispatch = useDispatch();
   const locations = useSelector((state) => state.common.locations);
   const userInfo = useSelector((state) => state.user.data);
@@ -45,7 +45,7 @@ const CreateDeliveryPage = () => {
   });
   return (
     <div>
-      <CreateDeliveryComp
+      <CreatePackageComp
         regions={regions}
         userInfo={userInfo}
         locations={locations}
@@ -56,4 +56,4 @@ const CreateDeliveryPage = () => {
   );
 };
 
-export default CreateDeliveryPage;
+export default CreatePackagePage;

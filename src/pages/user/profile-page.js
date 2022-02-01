@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import "../../assets/_profile.scss";
+import "../../assets/scss/profile.scss";
 import { useSelector, useDispatch } from "react-redux";
-import ProfileComp from "../../component/user/ProfileComp";
-import { profileInfo } from "../../redux/actions/userActions";
+import ProfileComp from "../../component/user-comp/profile-comp";
+import { profileInfo } from "../../redux/actions/user-actions";
 
 const ProfilePage = () => {
   const dispatch = useDispatch();

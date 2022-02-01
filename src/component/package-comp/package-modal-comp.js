@@ -1,13 +1,13 @@
 import React from "react";
-import "../../assets/scss/_delivery.scss";
+import "../../assets/scss/delivery.scss";
 import { IoMdClose } from "react-icons/io";
 import { FcPrint } from "react-icons/fc";
 import "react-dropdown/style.css";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteDelivery } from "../../redux/actions/deliveryActions";
+import { deleteDelivery } from "../../redux/actions/delivery-actions";
 import { Link, useParams } from "react-router-dom";
 
-const DeliveryModal = ({ show, onClose, deliveryList, removeDelivery }) => {
+const PackageModalComp = ({ show, onClose, deliveryList, removeDelivery }) => {
   const {
     id,
     from_full_address,
@@ -122,4 +122,4 @@ const DeliveryModal = ({ show, onClose, deliveryList, removeDelivery }) => {
   );
 };
 
-export default DeliveryModal;
+export default PackageModalComp;

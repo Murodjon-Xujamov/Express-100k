@@ -1,3 +1,10 @@
+.filter__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
 .delivery__top {
   display: flex;
   justify-content: space-between;

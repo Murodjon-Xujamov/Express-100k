@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
-import "../../assets/scss/_settings.scss";
+import "../../assets/scss/settings.scss";
 import { useSelector, useDispatch } from "react-redux";
-import UserSettingsComp from "../../component/user/UserSettingsComp";
+import SettingsComp from "../../component/user-comp/settings-comp";
 import {
   profileInfo,
   updateProfileData,
-} from "../../redux/actions/userActions";
-import { fetchLocations } from "../../redux/actions/commonActions";
+} from "../../redux/actions/user-actions";
+import { fetchLocations } from "../../redux/actions/common-actions";
 
 const SettingsPage = () => {
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const SettingsPage = () => {
   }, []);
   return (
     <div>
-      <UserSettingsComp
+      <SettingsComp
         userData={userData.data}
         locations={locations}
         updateProfileDatas={(edit) => dispatch(updateProfileData(edit))}

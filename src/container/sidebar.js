@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../assets/scss/_sidebar.scss";
+import "../assets/scss/sidebar.scss";
 import { BiTaxi, BiAddToQueue } from "react-icons/bi";
 import { BsArrowLeftRight, BsQuestionCircle } from "react-icons/bs";
 import { FaUsers } from "react-icons/fa";
-import paths from "./../routes/paths";
-const Sedibar = () => {
+import paths from "../routes/paths";
+
+const Sidebar = () => {
   return (
     <div className='sedibar__main'>
       <div className='sedibar__main'>
@@ -42,4 +43,4 @@ const Sedibar = () => {
   );
 };
 
-export default Sedibar;
+export default Sidebar;

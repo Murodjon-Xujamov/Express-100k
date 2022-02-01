@@ -1,6 +1,6 @@
 import React from "react";
 import { BallTriangle } from "react-loader-spinner";
-import "../../assets/scss/_loading.scss";
+import "../../assets/scss/loading.scss";
 
 const ContentLoading = () => {
   return (

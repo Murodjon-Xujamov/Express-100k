@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Select from "react-dropdown-select";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import ContentLoading from "../loading/ContentLoading";
+import ContentLoading from "../loading/content-loading";
 
 const PackagesListComp = ({ packagesListData, loading }) => {
   const [startDate, setStartDate] = useState(new Date());

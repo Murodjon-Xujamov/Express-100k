@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
-import userReducer from "./userReducer";
-import deliveryReducer from "./deliveryReducers";
-import commonReducers from "./commonReducers";
+import userReducer from "./user-reducer";
+import deliveryReducer from "./delivery-reducers";
+import commonReducers from "./common-reducers";
 import { reducer as formReducer } from "redux-form";
 const reducer = combineReducers({
   common: commonReducers,
