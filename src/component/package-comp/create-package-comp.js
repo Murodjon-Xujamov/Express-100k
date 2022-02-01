@@ -1,4 +1,4 @@
-import "../../assets/scss/create-delivery.scss";
+import "../../assets/scss/create-package.scss";
 import React, { useState } from "react";
 import Select from "react-dropdown-select";
 import { RiSendPlane2Line } from "react-icons/ri";

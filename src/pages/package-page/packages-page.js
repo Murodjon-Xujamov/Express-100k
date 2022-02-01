@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "../../assets/scss/delivery.scss";
+import "../../assets/scss/packages.scss";
 import { fetchDelivery } from "../../redux/actions/delivery-actions";
 import { fetchLocations } from "../../redux/actions/common-actions";
 import PackagesComp from "../../component/package-comp/packages-comp";
