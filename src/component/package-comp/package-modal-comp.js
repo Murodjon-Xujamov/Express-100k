@@ -1,11 +1,9 @@
 import React from "react";
 import "../../assets/scss/delivery.scss";
+import { Link } from "react-router-dom";
 import { IoMdClose } from "react-icons/io";
 import { FcPrint } from "react-icons/fc";
 import "react-dropdown/style.css";
-import { useDispatch, useSelector } from "react-redux";
-import { deleteDelivery } from "../../redux/actions/delivery-actions";
-import { Link, useParams } from "react-router-dom";
 
 const PackageModalComp = ({ show, onClose, deliveryList, removeDelivery }) => {
   const {
@@ -19,7 +17,6 @@ const PackageModalComp = ({ show, onClose, deliveryList, removeDelivery }) => {
     delivery_fee_amount,
     created_at,
   } = deliveryList;
-  const dispatch = useDispatch();
 
   const deleteDeliveryData = () => {
     if (window.confirm("Haqiqattan ham o'chirmoqchimisiz") == true) {
