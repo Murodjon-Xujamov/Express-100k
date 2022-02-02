@@ -16,6 +16,7 @@ const ProfilePage = () => {
     district_name,
     gender,
   } = useSelector((state) => state.user.data);
+  const loading = useSelector((state) => state.user.loading);
 
   useEffect(() => {
     dispatch(profileInfo());
@@ -31,6 +32,7 @@ const ProfilePage = () => {
         gender={gender}
         region={region_name}
         district={district_name}
+        loading={loading}
       />
     </>
   );

@@ -3,6 +3,7 @@ import avatarLoc from "../../assets/images/user-g6f6f69a6e_1280.png";
 import { AiOutlineSend, AiOutlineInfoCircle } from "react-icons/ai";
 import { moneyLoss } from "../../redux/actions/user-actions";
 import { useDispatch } from "react-redux";
+import ButtonLoading from "../loading/button-loading";
 
 const ProfileComp = ({
   avatar,
@@ -13,6 +14,7 @@ const ProfileComp = ({
   district,
   address,
   username,
+  loading,
 }) => {
   const [amount, setAmount] = useState(0);
   const dispatch = useDispatch();
@@ -58,7 +60,7 @@ const ProfileComp = ({
             onClick={() => dispatch(moneyLoss(amount))}
             className='btn border-success bg-success text-white'>
             Jo'natish {""}
-            <AiOutlineSend />
+            {loading ? <ButtonLoading /> : <AiOutlineSend />}
           </button>
           <button className='btn border-info bg-info text-white'>
             To'lovlar tarixi{""} <AiOutlineInfoCircle />
