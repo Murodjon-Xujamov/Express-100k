@@ -8,13 +8,13 @@ const PackagesListComp = ({ packagesListData, loading }) => {
   const [startDate, setStartDate] = useState(new Date());
   return (
     <div>
-      <div className='filter'>
+      <div className='filter mt-2'>
         <div className='filter__column'>
           <Select placeholder='Skladni tanlang' className='select__filter' />
         </div>
         <div className='filter__column'>
-          <input type={"checkbox"} />
-          <p>Faqat aktiv listlar</p>
+          <input className='' type={"checkbox"} />
+          <p className=''>Faqat aktiv listlar</p>
         </div>
         <div className='filter__column'>
           <input type={"checkbox"} />
@@ -30,7 +30,7 @@ const PackagesListComp = ({ packagesListData, loading }) => {
           <DatePicker
             selected={startDate}
             onChange={(date) => setStartDate(date)}
-            className='select__filter'
+            className=' p-1 '
           />
         </div>
       </div>
@@ -38,7 +38,7 @@ const PackagesListComp = ({ packagesListData, loading }) => {
       {loading ? (
         <ContentLoading />
       ) : (
-        <table className='packages__table'>
+        <table className='packages__table mt-4'>
           <tr>
             <td>Id</td>
             <td>Vaqt</td>

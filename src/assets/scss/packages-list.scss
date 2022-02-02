@@ -6,11 +6,16 @@
   flex-direction: row;
   flex-wrap: wrap;
   .filter__column {
-    width: 15%;
+    width: 16%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: row;
+
+    & > p {
+      margin: 0;
+      margin-left: 10;
+    }
 
     .select__filter {
       width: 200px;

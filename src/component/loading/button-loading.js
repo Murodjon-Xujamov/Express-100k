@@ -4,7 +4,7 @@ import "../../assets/scss/loading.scss";
 
 const ButtonLoading = () => {
   return (
-    <div>
+    <div className='btn__loading'>
       <Oval color='#FFF' height={15} width={15} />
     </div>
   );

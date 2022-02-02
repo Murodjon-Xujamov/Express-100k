@@ -1,5 +1,6 @@
 import React from "react";
 import avatarLoc from "../../assets/images/user-g6f6f69a6e_1280.png";
+import { AiOutlineSend, AiOutlineInfoCircle } from "react-icons/ai";
 
 const ProfileComp = ({
   avatar,
@@ -49,8 +50,13 @@ const ProfileComp = ({
           yoki telefon raqamingizni kiritasiz va sizni hisobingiz to'ldiriladi.
         </p>
         <div>
-          <button>Jo'natish</button>
-          <button>To'lovlar tarixi</button>
+          <button className='btn border-success bg-success text-white'>
+            Jo'natish {""}
+            <AiOutlineSend />
+          </button>
+          <button className='btn border-info bg-info text-white'>
+            To'lovlar tarixi{""} <AiOutlineInfoCircle />
+          </button>
         </div>
         <img
           src='https://cdn.paycom.uz/documentation_assets/payme_01.svg'

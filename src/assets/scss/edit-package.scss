@@ -7,5 +7,16 @@
   .row__column {
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
+
+    & > button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .save__icon {
+      margin-left: 8px;
+    }
   }
 }

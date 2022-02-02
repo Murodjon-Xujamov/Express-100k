@@ -68,12 +68,19 @@ export default (state = INITIAL_STATE, { type, payload, ...rest }) => {
         ...state,
         loadingUpdateProfile: true,
         success: false,
+        loading: true,
       };
     case "update_profile_data_error":
-      return { ...state, message: payload, loadingUpdateProfile: false };
+      return {
+        ...state,
+        loading: false,
+        message: payload,
+        loadingUpdateProfile: false,
+      };
     case "update_profile_data_success":
       return {
         ...state,
+        loading: false,
         loadingUpdateProfile: false,
         data: payload.data,
         success: true,

@@ -102,10 +102,10 @@ const PackageModalComp = ({ show, onClose, deliveryList, removeDelivery }) => {
               <div></div>
               <div>
                 <Link to={`/package/edit-package/${id}`}>
-                  <button className='bg-warning'>Edit</button>
+                  <button className='btn bg-warning'>Edit</button>
                 </Link>
                 <button
-                  className='bg-danger'
+                  className='btn bg-danger text-white'
                   onClick={() => deleteDeliveryData()}>
                   Delete
                 </button>

@@ -4,6 +4,7 @@ import avatarLoc from "../../assets/images/user-g6f6f69a6e_1280.png";
 import { useDispatch } from "react-redux";
 import { updateProfileImage } from "../../redux/actions/user-actions";
 import { BsCameraFill } from "react-icons/bs";
+import { AiFillSave } from "react-icons/ai";
 import { useForm } from "react-hook-form";
 import ButtonLoading from "../loading/button-loading";
 
@@ -50,9 +51,9 @@ const SettingsComp = ({ userData, locations, updateProfileDatas, loading }) => {
           className='upload__avatar'
         />
         <div className='container__row'>
-          <label htmlFor='file' className='camera__icon'>
+          {/* <label htmlFor='file' className='camera__icon'>
             <BsCameraFill />
-          </label>
+          </label> */}
           <input
             type={"file"}
             onChange={(e) =>
@@ -69,6 +70,7 @@ const SettingsComp = ({ userData, locations, updateProfileDatas, loading }) => {
           <div className='row__column'>
             <label htmlFor='name'>Ism</label>
             <input
+              className='border-info form-control'
               type={"text"}
               id='name'
               placeholder='Ism'
@@ -79,6 +81,7 @@ const SettingsComp = ({ userData, locations, updateProfileDatas, loading }) => {
           <div className='row__column'>
             <label htmlFor='surname'>Familiya</label>
             <input
+              className='border-info form-control'
               type={"text"}
               id='surname'
               placeholder='Familiya'
@@ -91,6 +94,7 @@ const SettingsComp = ({ userData, locations, updateProfileDatas, loading }) => {
           <div className='row__column'>
             <label htmlFor='phone__number'>Telefon raqam</label>
             <input
+              className='border-info form-control'
               type={"tel"}
               id='phone__number'
               placeholder='Telefon raqam'
@@ -102,7 +106,7 @@ const SettingsComp = ({ userData, locations, updateProfileDatas, loading }) => {
           <div className='row__column'>
             <label htmlFor='region'>Viloyat</label>
             <select
-              className='border-warning form-control'
+              className='border-info form-control'
               id='region'
               defaultValue={userData.country_id}
               {...register("region_id")}
@@ -121,10 +125,11 @@ const SettingsComp = ({ userData, locations, updateProfileDatas, loading }) => {
           <div className='row__column'>
             <label htmlFor='district'>Tuman</label>
             <select
-              className='border-warning form-control'
+              className='border-info form-control mw-100'
               defaultValue={userData.state_id}
               id='state_id'
               {...register("district_id")}>
+              <option disabled>Tumanni tanlang</option>
               {(() => {
                 const selectedLoc = locations.find((loc) => loc.id == country);
                 if (selectedLoc && selectedLoc.states) {
@@ -140,6 +145,7 @@ const SettingsComp = ({ userData, locations, updateProfileDatas, loading }) => {
           <div className='row__column'>
             <label htmlFor='address'>Mahalla</label>
             <input
+              className='border-info form-control'
               type='text'
               id='address'
               placeholder='Mahalla'
@@ -152,6 +158,7 @@ const SettingsComp = ({ userData, locations, updateProfileDatas, loading }) => {
           <div className='row__column'>
             <label htmlFor='gender'>Jins</label>
             <select
+              className='border-info form-control'
               id='gender'
               defaultValue={userData.gender}
               {...register("gender")}>
@@ -163,8 +170,13 @@ const SettingsComp = ({ userData, locations, updateProfileDatas, loading }) => {
             </select>
           </div>
           <div className='row__column'>
-            <button className='save__btn'>
-              O'zgarishlarni saqlash {loading ? <ButtonLoading /> : ""}
+            <button className='btn btn-primary save__btn'>
+              O'zgarishlarni saqlash{" "}
+              {loading ? (
+                <ButtonLoading />
+              ) : (
+                <AiFillSave className='save__icon' />
+              )}
             </button>
           </div>
         </div>

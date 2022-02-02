@@ -1,10 +1,20 @@
-.user__settings__container {
+.settings__page__container {
   width: 100%;
-  padding: 10px;
+  height: 88vh;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+.user__settings__container {
+  width: 50%;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.2);
 
   & > h1 {
     padding: 0;
@@ -26,13 +36,6 @@
       object-fit: fill;
     }
 
-    .camera__icon {
-      // position: absolute;
-      // text-align: center;
-      // left: 200;
-      // bottom: 100;
-    }
-
     .upload__img {
       display: none;
     }
@@ -51,17 +54,14 @@
         flex-direction: column;
 
         & > button {
-          background-color: rgb(89, 168, 89);
-          margin: 0px 10px;
-          border-radius: 10px;
-          border: 1px solid black;
-          transition: ease-in-out 1s;
-          color: white;
+          width: 350px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
-        & > button:hover {
-          background-color: green;
-          transition: ease-in-out 1s;
+        .save__icon {
+          margin-left: 8px;
         }
       }
     }

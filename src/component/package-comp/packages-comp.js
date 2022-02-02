@@ -37,11 +37,19 @@ const PackagesComp = ({ deliveryList, loading, locations, regions }) => {
         <>
           <div className='filter__container'>
             <Select
+              className='filter_select border-info'
               options={regions}
               onChange={(option) => setRegionId(option[0].value)}
             />
-            <Select options={districtList} />
-            <input type={"number"} placeholder="Id bo'yicha qidirish" />
+            <Select
+              options={districtList}
+              className='filter_select border-info'
+            />
+            <input
+              className='p-1  border-info'
+              type={"number"}
+              placeholder="Id bo'yicha qidirish"
+            />
           </div>
           <table>
             <thead>
@@ -64,7 +72,7 @@ const PackagesComp = ({ deliveryList, loading, locations, regions }) => {
               {deliveryList.map((item) => (
                 <tr
                   key={item.id}
-                  className='delivery__table__hover__tr success'
+                  className='delivery__table__hover__tr '
                   onClick={() => {
                     openDeliveryModal(item);
                   }}>

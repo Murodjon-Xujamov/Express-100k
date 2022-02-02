@@ -10,6 +10,7 @@ import {
 import { fetchLocations } from "../../redux/actions/common-actions";
 import "../../assets/scss/edit-package.scss";
 import ButtonLoading from "../../component/loading/button-loading";
+import { AiFillSave } from "react-icons/ai";
 
 const EditPackagePage = () => {
   const { id } = useParams();
@@ -33,6 +34,8 @@ const EditPackagePage = () => {
     editDatas.from_region_id
   );
   const [to_region_id, setTo_region_id] = useState(editDatas.to_region_id);
+
+  useEffect(() => {}, []);
 
   const { register, handleSubmit } = useForm({
     defaultValues: {
@@ -82,7 +85,8 @@ const EditPackagePage = () => {
         <div className='row__column'>
           <label>Qaysi viloyatdan ?</label>
           <Select
-            defaultValue={{
+            className='border-info form-control'
+            selectedValue={{
               label: `${editDatas.region_name}`,
               value: editDatas.region_id,
             }}
@@ -93,11 +97,16 @@ const EditPackagePage = () => {
         </div>
         <div className='row__column'>
           <label>Qaysi tumandan ?</label>
-          <Select options={fromDistrictList} />
+          <Select
+            options={fromDistrictList}
+            selectedValue
+            className='border-info form-control'
+          />
         </div>
         <div className='row__column'>
           <label>Mahalla</label>
           <input
+            className='border-info form-control'
             type={"text"}
             defaultValue={editDatas.from_address}
             {...register("from_address")}
@@ -106,17 +115,22 @@ const EditPackagePage = () => {
         <div className='row__column'>
           <label>Qaysi viloyatga ?</label>
           <Select
+            className='border-info form-control'
             options={region}
             onChange={(option) => setTo_region_id(option[0].value)}
           />
         </div>
         <div className='row__column'>
           <label>Qaysi tumandanga ?</label>
-          <Select options={toDistrictList} />
+          <Select
+            options={toDistrictList}
+            className='border-info form-control'
+          />
         </div>
         <div className='row__column'>
           <label>Mahalla</label>
           <input
+            className='border-info form-control'
             type={"text"}
             defaultValue={editDatas.to_address}
             {...register("to_address")}
@@ -125,6 +139,7 @@ const EditPackagePage = () => {
         <div className='row__column'>
           <label>Mijozning ismi</label>
           <input
+            className='border-info form-control'
             type={"text"}
             defaultValue={editDatas.recipient_name}
             {...register("recipient_name")}
@@ -133,6 +148,7 @@ const EditPackagePage = () => {
         <div className='row__column'>
           <label>Mijozning telefon raqami:</label>
           <input
+            className='border-info form-control'
             type={"text"}
             defaultValue={editDatas.recipient_phone}
             {...register("recipient_phone")}
@@ -141,6 +157,7 @@ const EditPackagePage = () => {
         <div className='row__column'>
           <label>Mahsulot nomi</label>
           <input
+            className='border-info form-control'
             type={"text"}
             defaultValue={editDatas.matter}
             {...register("matter")}
@@ -149,6 +166,7 @@ const EditPackagePage = () => {
         <div className='row__column'>
           <label>Izoh</label>
           <input
+            className='border-info form-control'
             type={"text"}
             defaultValue={editDatas.note}
             {...register("note")}
@@ -156,13 +174,14 @@ const EditPackagePage = () => {
         </div>
         <div className='row__column'>
           <label>Transport turi</label>
-          <select>
+          <select className='border-info form-control'>
             <option value={"on_car"}>Yengil mashina</option>
           </select>
         </div>
         <div className='row__column'>
           <label>Sug'urta summasi</label>
           <input
+            className='border-info form-control'
             type={"text"}
             defaultValue={editDatas.insurance_amount}
             {...register("insurance_amount")}
@@ -171,6 +190,7 @@ const EditPackagePage = () => {
         <div className='row__column'>
           <label>Dastavka summasi</label>
           <input
+            className='border-info form-control'
             type={"text"}
             defaultValue={editDatas.delivery_fee_amount}
             {...register("delivery_fee_amount")}
@@ -179,14 +199,20 @@ const EditPackagePage = () => {
         <div className='row__column'>
           <label>Jami summa</label>
           <input
+            className='border-info form-control'
             type={"text"}
             defaultValue={editDatas.cash_amount}
             {...register("cash_amount")}
           />
         </div>
         <div className='row__column'>
-          <button type='submit'>
-            O'zgarishlarni saqlash {loading ? <ButtonLoading /> : ""}
+          <button type='submit' className='btn border-info bg-info text-white'>
+            O'zgarishlarni saqlash{" "}
+            {loading ? (
+              <ButtonLoading />
+            ) : (
+              <AiFillSave className='save__icon' />
+            )}
           </button>
         </div>
       </form>

@@ -18,7 +18,7 @@ const SettingsPage = () => {
     dispatch(fetchLocations());
   }, []);
   return (
-    <div>
+    <div className='settings__page__container'>
       <SettingsComp
         userData={userData.data}
         locations={locations}

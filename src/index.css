@@ -8,15 +8,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-input {
+/* input {
   width: 350px;
   padding: 10px;
   border: 1px solid black;
   border-radius: 10px;
   outline-style: none;
-}
+} */
 
-button {
+/* button {
   width: 200px;
   padding: 10px;
   border-radius: 10px;
@@ -26,18 +26,18 @@ button {
   background-color: white;
   cursor: pointer;
   font-weight: bold;
-}
+} */
 
-button:hover {
+/* button:hover {
   transition: ease-in-out 1px;
   background-color: green;
   color: white;
-}
+} */
 
-select {
+/* select {
   width: 370px;
   padding: 10px;
   border: 1px solid black;
   border-radius: 10px;
   outline-style: none;
-}
+} */

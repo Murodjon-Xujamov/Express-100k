@@ -57,8 +57,8 @@ const CreatePackageComp = ({
         <div className='grid__columns'>
           <label htmlFor='fromRegion'>Qaysi viloyatdan ?</label>
           <Select
+            className='select__location border-info form-control'
             id='fromRegion'
-            className='select__location'
             options={regions}
             onChange={(value) => set_from_region_id(value[0].value)}
             defaultValue={{
@@ -70,8 +70,8 @@ const CreatePackageComp = ({
         <div className='grid__columns'>
           <label htmlFor='fromDistrict'>Qaysi tumandan ?</label>
           <Select
+            className='select__location border-info form-control'
             id='fromDistrict'
-            className='select__location'
             options={fromDistrictList}
             onChange={(option) => set_from_district_id(option[0].value)}
           />
@@ -79,6 +79,7 @@ const CreatePackageComp = ({
         <div className='grid__columns'>
           <label htmlFor='fromAddress'>Qaysi mahalladan ?</label>
           <input
+            className='select__location border-info form-control'
             id='fromAddress'
             type={"text"}
             onChange={(e) => set_from_address(e.target.value)}
@@ -88,8 +89,8 @@ const CreatePackageComp = ({
         <div className='grid__columns'>
           <label htmlFor='toRegion'>Qaysi viloyatga ?</label>
           <Select
+            className='select__location border-info form-control'
             id='toRegion'
-            className='select__location'
             options={regions}
             onChange={(value) => set_to_region_id(value[0].value)}
           />
@@ -97,8 +98,8 @@ const CreatePackageComp = ({
         <div className='grid__columns'>
           <label htmlFor='fromDistrict'>Qaysi tumanga ?</label>
           <Select
+            className='select__location border-info form-control'
             id='fromDistrict'
-            className='select__location'
             options={toDistrictList}
             onChange={(option) => set_to_district_id(option[0].value)}
           />
@@ -106,6 +107,7 @@ const CreatePackageComp = ({
         <div className='grid__columns'>
           <label htmlFor='fromAddress'>Qaysi mahallaga ?</label>
           <input
+            className='border-info form-control'
             id='fromAddress'
             type={"text"}
             value={to_address}
@@ -115,6 +117,7 @@ const CreatePackageComp = ({
         <div className='grid__columns'>
           <label htmlFor='clientName'>Mijozning ismi :</label>
           <input
+            className='border-info form-control'
             id='clientName'
             type={"text"}
             value={recipient_name}
@@ -124,6 +127,7 @@ const CreatePackageComp = ({
         <div className='grid__columns'>
           <label htmlFor='fromAddress'>Mijozning telefon raqami:</label>
           <input
+            className='border-info form-control'
             id='fromAddress'
             type={"text"}
             value={recipient_phone}
@@ -133,6 +137,7 @@ const CreatePackageComp = ({
         <div className='grid__columns'>
           <label htmlFor='fromAddress'>Mahsulot nomi:</label>
           <input
+            className='border-info form-control'
             id='fromAddress'
             type={"text"}
             value={matter}
@@ -142,6 +147,7 @@ const CreatePackageComp = ({
         <div className='grid__columns'>
           <label htmlFor='fromAddress'>Izoh:</label>
           <input
+            className='border-info form-control'
             id='fromAddress'
             type={"text"}
             value={note}
@@ -151,6 +157,7 @@ const CreatePackageComp = ({
         <div className='grid__columns'>
           <label htmlFor='fromAddress'>Yetkazib berish summasi:</label>
           <input
+            className='border-info form-control'
             id='fromAddress'
             type='number'
             value={delivery_fee_amount}
@@ -160,6 +167,7 @@ const CreatePackageComp = ({
         <div className='grid__columns'>
           <label htmlFor='fromAddress'>Jami summa:</label>
           <input
+            className='border-info form-control'
             id='fromAddress'
             type='number'
             value={cash_amount}
@@ -169,13 +177,15 @@ const CreatePackageComp = ({
         <div className='grid__columns'>
           <label htmlFor='vehicleType'>Avtomobil turi</label>
           <select
-            className='select__location'
+            className='select__location border-info form-control'
             onChange={(e) => set_vehicle_type(e.target.value)}>
             <option value={vehicle_type}>yengil</option>
           </select>
         </div>
         <div className='grid__columns'>
           <button
+            type='button'
+            className='btn border-success bg-success text-white'
             onClick={() =>
               onClickCreateDelivery({
                 from_region_id,
