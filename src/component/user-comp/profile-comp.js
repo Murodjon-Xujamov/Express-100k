@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import avatarLoc from "../../assets/images/user-g6f6f69a6e_1280.png";
 import { AiOutlineSend, AiOutlineInfoCircle } from "react-icons/ai";
+import { moneyLoss } from "../../redux/actions/user-actions";
+import { useDispatch } from "react-redux";
 
 const ProfileComp = ({
   avatar,
@@ -12,6 +14,8 @@ const ProfileComp = ({
   address,
   username,
 }) => {
+  const [amount, setAmount] = useState(0);
+  const dispatch = useDispatch();
   return (
     <div className='profile__comp__container'>
       <div className='user__card'>
@@ -44,13 +48,15 @@ const ProfileComp = ({
       <div className='user__card'>
         <h2>Hisobni To'ldirish</h2>
         <p>Kiritmoqchi boʻlgan pulingizni (UZS) buyicha kiriting</p>
-        <input type='number' />
+        <input type='number' onChange={(e) => setAmount(e.target.value)} />
         <p>
           Pulni kiritgan vaqtiz darhol payme.uz bo'lmiga o'tadi va karta raqami
           yoki telefon raqamingizni kiritasiz va sizni hisobingiz to'ldiriladi.
         </p>
         <div>
-          <button className='btn border-success bg-success text-white'>
+          <button
+            onClick={() => dispatch(moneyLoss(amount))}
+            className='btn border-success bg-success text-white'>
             Jo'natish {""}
             <AiOutlineSend />
           </button>

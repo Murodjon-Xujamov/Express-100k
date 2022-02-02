@@ -171,7 +171,7 @@ const SettingsComp = ({ userData, locations, updateProfileDatas, loading }) => {
           </div>
           <div className='row__column'>
             <button className='btn btn-primary save__btn'>
-              O'zgarishlarni saqlash{" "}
+              O'zgarishlarni saqlash
               {loading ? (
                 <ButtonLoading />
               ) : (
