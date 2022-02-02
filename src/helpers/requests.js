@@ -48,7 +48,7 @@ const requests = {
   createDeliverysList: (params) =>
     axios.post(`${url}/store/package-list`, { checked: params }, config),
   fetchPackageList: (packageListId) =>
-    axios.get(`${url}/store/package-list/${packageListId}`, config),
+    axios.get(`${url}/user/package-list/${packageListId}`, config),
   fetchAllPackagesList: () => axios.get(`${url}/user/package-list`, config),
   fetchPackagesListStatistics: () =>
     axios.get(`${url}/store/package-list`, config),

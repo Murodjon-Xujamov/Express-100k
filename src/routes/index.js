@@ -5,6 +5,7 @@ import ProfilePage from "../pages/user/profile-page";
 import EditPackagePage from "../pages/package-page/edit-package-page";
 import PackagesListPage from "../pages/packages-list-page/packages-list-page";
 import PackagesPage from "../pages/package-page/packages-page";
+import PackagesListDetailPage from "../pages/packages-list-page/packages-list-detail-page";
 import paths from "./paths";
 export const AppRoutes = () => {
   return (
@@ -15,6 +16,10 @@ export const AppRoutes = () => {
       <Route path='/package/edit-package/:id' element={<EditPackagePage />} />
       <Route path={paths.settingsPath} element={<SettingsPage />} />
       <Route path={paths.packagesListpath} element={<PackagesListPage />} />
+      <Route
+        path='/packages-list-detail/:id'
+        element={<PackagesListDetailPage />}
+      />
     </Routes>
   );
 };
