@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 const PackagesListComp = ({ packagesListData, loading }) => {
   const [startDate, setStartDate] = useState(new Date());
 
+  console.log("dd0", packagesListData);
+
   return (
     <div>
       <div className='filter mt-2'>
@@ -41,33 +43,37 @@ const PackagesListComp = ({ packagesListData, loading }) => {
         <ContentLoading />
       ) : (
         <table className='packages__table mt-4'>
-          <tr>
-            <td>Id</td>
-            <td>Vaqt</td>
-            <td>Kuryer</td>
-            <td>Magazin</td>
-            <td>Aktivlashtirilgan</td>
-            <td>Yopilgan</td>
-            <td>Pochta soni</td>
-            <td>Sklad</td>
-            <td>
-              <input type={"checkbox"} />
-            </td>
-          </tr>
-
-          {packagesListData.map((item) => (
+          <thead>
             <tr>
-              <td>{item.id}</td>
-              <td>{item.created_at}</td>
+              <td>Id</td>
+              <td>Vaqt</td>
               <td>Kuryer</td>
-              <td>{item.store_name}</td>
-              <td>{item.is_active}</td>
-              <td>{item.is_closed}</td>
-              <td>{item.packages_count}</td>
-              <td>Foziltepa 14a</td>
-              <Link to={`/packages-list-detail/${item.id}`}>Batafsil</Link>
+              <td>Magazin</td>
+              <td>Aktivlashtirilgan</td>
+              <td>Yopilgan</td>
+              <td>Pochta soni</td>
+              <td>Sklad</td>
+              <td>
+                <input type={"checkbox"} />
+              </td>
             </tr>
-          ))}
+          </thead>
+          <tbody>
+            {packagesListData &&
+              packagesListData?.map((item) => (
+                <tr key={item.id}>
+                  <td>{item.id}</td>
+                  <td>{item.created_at}</td>
+                  <td>Kuryer</td>
+                  <td>{item.store_name}</td>
+                  <td>{item.is_active}</td>
+                  <td>{item.is_closed}</td>
+                  <td>{item.packages_count}</td>
+                  <td>Foziltepa 14a</td>
+                  <Link to={`/packages-list-detail/${item.id}`}>Batafsil</Link>
+                </tr>
+              ))}
+          </tbody>
         </table>
       )}
     </div>
