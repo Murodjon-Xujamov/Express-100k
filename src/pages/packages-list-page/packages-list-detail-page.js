@@ -8,11 +8,11 @@ import "../../assets/scss/packages-list.scss";
 const PackagesListDetailPage = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const packageListData = useSelector(
-    (state) => state.delivery.createPackegeList.store_packages
+  const packageListDetailData = useSelector(
+    (state) => state.delivery.list.store_packages
   );
 
-  console.log("param", packageListData);
+  console.log("param", packageListDetailData);
   useEffect(() => {
     dispatch(fetchPackageList(id));
   }, [id]);

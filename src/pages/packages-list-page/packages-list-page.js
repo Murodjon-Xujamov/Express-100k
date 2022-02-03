@@ -6,9 +6,7 @@ import "../../assets/scss/packages-list.scss";
 
 const PackagesListPage = () => {
   const dispatch = useDispatch();
-  const packagesListData = useSelector(
-    (state) => state.delivery.createPackegeList
-  );
+  const packagesListData = useSelector((state) => state.delivery.list);
 
   const loading = useSelector((state) => state.delivery.loading);
 

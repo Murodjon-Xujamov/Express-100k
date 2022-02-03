@@ -141,8 +141,8 @@ export default (state = INITIAL_STATE, { type, payload }) => {
       return {
         ...state,
         loading: false,
-        // message: payload.message,
-        createPackegeList: payload.data,
+        message: payload.message,
+        list: payload.data,
       };
 
     // Fetch store dreverys
