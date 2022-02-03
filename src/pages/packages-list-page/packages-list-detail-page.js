@@ -3,6 +3,7 @@ import PackagesListDetailComp from "../../component/packages-list-comp/packages-
 import { fetchPackageList } from "../../redux/actions/delivery-actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import "../../assets/scss/packages-list.scss";
 
 const PackagesListDetailPage = () => {
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const PackagesListDetailPage = () => {
     dispatch(fetchPackageList(id));
   }, [id]);
   return (
-    <div>
+    <div className='root'>
       <PackagesListDetailComp />
     </div>
   );
