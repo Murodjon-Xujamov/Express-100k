@@ -8,7 +8,7 @@ import { GiTakeMyMoney } from "react-icons/gi";
 import { BiArrowBack } from "react-icons/bi";
 import { HiOutlineLockClosed } from "react-icons/hi";
 
-const PackagesListDetailComp = () => {
+const PackagesListDetailComp = ({ packageListDetailData }) => {
   return (
     <div>
       <header className='header__info__row'>
@@ -140,20 +140,26 @@ const PackagesListDetailComp = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th>4770</th>
-                  <td>
-                    dev.100k.uz, +998555005511 Toshkent shahri, Mirzo Ulugʻbek{" "}
-                  </td>
-                  <td>Eshpulat, +998974848290 Jizzax</td>
-                  <td>Qorbobo kiyim 1 ta 149000 som #izoh: ichki id: 597754</td>
-                  <td>Kuryerga topshirilmagan 30000 som</td>
-                  <td>
-                    <BsFillCheckSquareFill />
-                  </td>
-                  <td>пт, 28 янв. 2022 г., 20:46</td>
-                  <td></td>
-                </tr>
+                {packageListDetailData &&
+                  packageListDetailData.map((i) => (
+                    <tr>
+                      <th>{i.id}</th>
+                      <td>{i.from_full_address}</td>
+                      <td>
+                        {i.recipient_name},<br /> {i.recipient_phone} <br />
+                        {i.to_full_address}
+                      </td>
+                      <td>
+                        {i.matter} 1 ta 149000 som <br /> #izoh: {i.note}
+                      </td>
+                      <td>Kuryerga topshirilmagan 30000 som</td>
+                      <td>
+                        <BsFillCheckSquareFill />
+                      </td>
+                      <td>{i.created_at}</td>
+                      <td></td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           </TabPanel>

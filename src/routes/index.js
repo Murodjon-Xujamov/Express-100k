@@ -13,11 +13,11 @@ export const AppRoutes = () => {
       <Route path={paths.homePath} element={<ProfilePage />} />
       <Route path={paths.packagePath} element={<PackagesPage />} />
       <Route path={paths.createPackagePath} element={<CreatePackagePage />} />
-      <Route path='/package/edit-package/:id' element={<EditPackagePage />} />
+      <Route path={paths.editPackagePath} element={<EditPackagePage />} />
       <Route path={paths.settingsPath} element={<SettingsPage />} />
       <Route path={paths.packagesListpath} element={<PackagesListPage />} />
       <Route
-        path='/packages-list-detail/:id'
+        path={paths.packagesListDetailPath}
         element={<PackagesListDetailPage />}
       />
     </Routes>

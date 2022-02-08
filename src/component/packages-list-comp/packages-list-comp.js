@@ -3,7 +3,7 @@ import Select from "react-dropdown-select";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ContentLoading from "../loading/content-loading";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 const PackagesListComp = ({ packagesListData, loading }) => {
   const [startDate, setStartDate] = useState(new Date());
@@ -70,7 +70,7 @@ const PackagesListComp = ({ packagesListData, loading }) => {
                   <td>{item.is_closed}</td>
                   <td>{item.packages_count}</td>
                   <td>Foziltepa 14a</td>
-                  <Link to={`/packages-list-detail/${item.id}`}>Batafsil</Link>
+                  <Link to={`/packages-list/detail/${item.id}`}>Batafsil</Link>
                 </tr>
               ))}
           </tbody>

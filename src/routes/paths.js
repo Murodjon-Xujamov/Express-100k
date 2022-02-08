@@ -5,6 +5,7 @@ const paths = {
   editPackagePath: "/package/edit-package/:id",
   settingsPath: "/settings",
   packagesListpath: "/packages-list",
+  packagesListDetailPath: "/packages-list/detail/:id",
 };
 
 export default paths;
