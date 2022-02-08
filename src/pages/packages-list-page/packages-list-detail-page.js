@@ -1,24 +1,28 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import PackagesListDetailComp from "../../component/packages-list-comp/packages-list-detail-comp";
-import { fetchPackageList } from "../../redux/actions/delivery-actions";
-import { useDispatch, useSelector } from "react-redux";
-import { Outlet, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "../../assets/scss/packages-list.scss";
+import requests from "../../helpers/requests";
 
 const PackagesListDetailPage = () => {
-  const dispatch = useDispatch();
-  const { id } = useParams();
-  const packageListDetailData = useSelector(
-    (state) => state.delivery.list.store_packages
-  );
+  const [packageDetailList, setPackageDetailList] = useState([]);
 
-  console.log("param", packageListDetailData);
+  const { id } = useParams();
+
   useEffect(() => {
-    dispatch(fetchPackageList(id));
+    requests
+      .fetchPackageList(id)
+      .then(({ data }) => {
+        setPackageDetailList(data);
+      })
+      .catch(({ response }) => {
+        console.log("err", response);
+      });
   }, [id]);
+
   return (
     <div className='root'>
-      <PackagesListDetailComp packageListDetailData={packageListDetailData} />
+      <PackagesListDetailComp packageListDetailData={packageDetailList.data} />
     </div>
   );
 };

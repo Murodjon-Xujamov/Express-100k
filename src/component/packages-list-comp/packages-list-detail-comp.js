@@ -9,6 +9,7 @@ import { BiArrowBack } from "react-icons/bi";
 import { HiOutlineLockClosed } from "react-icons/hi";
 
 const PackagesListDetailComp = ({ packageListDetailData }) => {
+  console.log("aa", packageListDetailData);
   return (
     <div>
       <header className='header__info__row'>
@@ -141,7 +142,7 @@ const PackagesListDetailComp = ({ packageListDetailData }) => {
               </thead>
               <tbody>
                 {packageListDetailData &&
-                  packageListDetailData.map((i) => (
+                  packageListDetailData.store_packages.map((i) => (
                     <tr>
                       <th>{i.id}</th>
                       <td>{i.from_full_address}</td>
