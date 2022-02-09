@@ -59,47 +59,49 @@ const PackagesComp = ({ deliveryList, loading, locations, regions }) => {
               </div>
             </div>
           </div>
-          <table className='table  mt-3'>
-            <thead>
-              <tr>
-                <th scope='col'>Id</th>
-                <th scope='col'>Qayerdan</th>
-                <th scope='col'>Qayerga</th>
-                <th scope='col'>Dostovka summa</th>
-                <th scope='col'>Vaqt</th>
-                <th scope='col'>Buyurtma</th>
-                <th scope='col'>Umumiy summa</th>
-              </tr>
-            </thead>
-            {/* 
+          <div className='overflow-auto'>
+            <table className='table mt-3'>
+              <thead>
+                <tr>
+                  <th scope='col'>Id</th>
+                  <th scope='col'>Qayerdan</th>
+                  <th scope='col'>Qayerga</th>
+                  <th scope='col'>Dostovka summa</th>
+                  <th scope='col'>Vaqt</th>
+                  <th scope='col'>Buyurtma</th>
+                  <th scope='col'>Umumiy summa</th>
+                </tr>
+              </thead>
+              {/* 
 ?.filter((d: any) => {
               return d?.number?.toLowerCase().includes(filter.toLowerCase());
             })
  */}
-            <tbody>
-              {deliveryList.map((item) => (
-                <tr
-                  key={item.id}
-                  className='delivery__table__hover__tr '
-                  onClick={() => {
-                    openDeliveryModal(item);
-                  }}>
-                  <td>{item.id}</td>
-                  <td>{item.from_full_address}</td>
-                  <td>{item.to_full_address}</td>
-                  <td>{item.delivery_fee_amount}</td>
-                  <td className='delivery__table__date__td'>
-                    {item.created_at}
-                  </td>
-                  <td>
-                    {item.matter}, <br />
-                    {item.note}
-                  </td>
-                  <td>{item.cash_amount}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+              <tbody>
+                {deliveryList.map((item) => (
+                  <tr
+                    key={item.id}
+                    className='delivery__table__hover__tr '
+                    onClick={() => {
+                      openDeliveryModal(item);
+                    }}>
+                    <td>{item.id}</td>
+                    <td>{item.from_full_address}</td>
+                    <td>{item.to_full_address}</td>
+                    <td>{item.delivery_fee_amount}</td>
+                    <td className='delivery__table__date__td'>
+                      {item.created_at}
+                    </td>
+                    <td>
+                      {item.matter}, <br />
+                      {item.note}
+                    </td>
+                    <td>{item.cash_amount}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </>
       )}
       <PackageModalComp

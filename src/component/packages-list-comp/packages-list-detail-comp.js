@@ -9,116 +9,124 @@ import { BiArrowBack } from "react-icons/bi";
 import { HiOutlineLockClosed } from "react-icons/hi";
 
 const PackagesListDetailComp = ({ packageListDetailData }) => {
-  console.log("aa", packageListDetailData);
   return (
     <div>
-      <header className='header__info__row'>
-        <section className='header__column'>
+      <header className='d-flex flex-row justify-content-between align-items-start flex-wrap'>
+        <section className='border border-secondary p-2  my-1'>
           <p>ZIN</p>
-          <div className='column__row'>
-            <BsFillCheckSquareFill className='package__detail__icons' />
+          <div className='d-flex flex-row justify-content-evenly align-items-center'>
+            <BsFillCheckSquareFill size={20} color='green' className='mb-2' />
             <h5>Yuborish</h5>
           </div>
         </section>
-        <section className='header__column'>
+        <section className='border border-secondary p-2  my-1'>
           <p>Pochtalar</p>
-          <div className='column__row'>
-            <AiOutlineDeliveredProcedure className='package__detail__icons' />
-            <h3>1</h3>
-            <h3>ta</h3>
+          <div className='d-flex flex-row justify-content-evenly align-items-center'>
+            <AiOutlineDeliveredProcedure size={20} className='mb-2' />
+            <h5>1</h5>
+            <h5>ta</h5>
           </div>
         </section>
-        <section className='header__column'>
+        <section className='border border-secondary p-2  my-1'>
           <p>Yo'lda</p>
-          <div className='column__row'>
-            <h3>0</h3>
-            <h3>ta</h3>
+          <div className='d-flex flex-row justify-content-evenly align-items-center'>
+            <h5>0</h5>
+            <h5>ta</h5>
           </div>
         </section>
-        <section className='header__column'>
+        <section className='border border-secondary p-2  my-1'>
           <p>Sotildi</p>
-          <div className='column__row'>
-            <h3>0</h3>
-            <h3>ta</h3>
+          <div className='d-flex flex-row justify-content-evenly align-items-center'>
+            <h5>0</h5>
+            <h5>ta</h5>
           </div>
         </section>
-        <section className='header__column'>
+        <section className='border border-secondary p-2  my-1'>
           <p>Atkaz</p>
-          <div className='column__row'>
-            <h3>0</h3>
-            <h3>ta</h3>
+          <div className='d-flex flex-row justify-content-evenly align-items-center'>
+            <h5>0</h5>
+            <h5>ta</h5>
           </div>
         </section>
         {/* caculating */}
-        <section className='header__column'>
+        <section className='border border-secondary p-2  my-1'>
           <p>Magazinga beriladi</p>
-          <div className='column__row'>
-            <FaRegMoneyBillAlt className='package__detail__icons' />
-            <h3>0</h3>
-            <h3>ta</h3>
+          <div className='d-flex flex-row justify-content-evenly align-items-center'>
+            <FaRegMoneyBillAlt size={20} className='mb-2' />
+            <h5>0</h5>
+            <h5>ta</h5>
           </div>
         </section>
-        <section className='header__column'>
+        <section className='border border-secondary p-2  my-1'>
           <p>Plus</p>
-          <div className='column__row'>
-            <FaPlus className='package__detail__icons' />
-            <h3>0</h3>
-            <h3>So'm</h3>
+          <div className='d-flex flex-row justify-content-evenly align-items-center'>
+            <FaPlus size={20} color='green' className='mb-2' />
+            <h5>0</h5>
+            <h5>So'm</h5>
           </div>
         </section>
-        <section className='header__column'>
+        <section className='border border-secondary p-2  my-1'>
           <p>Minus</p>
-          <div className='column__row'>
-            <FaMinus className='package__detail__icons' />
+          <div className='d-flex flex-row justify-content-evenly align-items-center'>
+            <FaMinus size={20} color='red' className='mb-2' />
 
-            <h3>0</h3>
-            <h3>So'm</h3>
+            <h5>0</h5>
+            <h5>So'm</h5>
           </div>
         </section>
-        <section className='header__column'>
+        <section className='border border-secondary p-2  my-1'>
           <p>Dostavka summasi</p>
-          <div className='column__row'>
-            <GiTakeMyMoney className='package__detail__icons' />
-            <h3>0</h3>
-            <h3>So'm</h3>
+          <div className='d-flex flex-row justify-content-evenly align-items-center'>
+            <GiTakeMyMoney size={20} color='gray' className='mb-2' />
+            <h5>0</h5>
+            <h5>So'm</h5>
           </div>
         </section>
       </header>
-      <div className='buttons__container'>
-        <button className='btn bg-warning'>
-          <BiArrowBack /> Listlar ro'yxatiga qaytish
+      {/* Buttons */}
+      <div className='d-flex flex-row flex-wrap'>
+        <button className='btn bg-warning border-warning m-2'>
+          <BiArrowBack size={20} /> Listlar ro'yxatiga qaytish
         </button>
-        <button className='btn bg-info text-white'>
+        <button className='btn bg-info text-white border-info m-2'>
           {" "}
-          <AiOutlineEdit /> Tahrirlash
+          <AiOutlineEdit size={20} /> Tahrirlash
         </button>
-        <button className='btn bg-primary text-white'>
-          <HiOutlineLockClosed /> Royxatni yopish
+        <button className='btn bg-primary text-white border-primary m-2'>
+          <HiOutlineLockClosed size={20} /> Royxatni yopish
         </button>
       </div>
-      <section className='main__info'>
-        <div className='main__info__row'>
-          <div>
-            <label htmlFor='store'>Magazin</label>
-            <p>asdfggh</p>
+      <div className='container'>
+        <div className='row'>
+          <div className='col-12 col-lg-6 col-md-12 col-sm-12'>
+            <label htmlFor='store' className='fw-bold'>
+              Magazin
+            </label>
+            <p className='p-3 bg-light'>Ma'lumot yo'q</p>
           </div>
-          <div>
-            <label htmlFor='store'>Bazaga kiritdi</label>
-            <p>asdfggh</p>
-          </div>
-        </div>
-        <div className='main__info__row'>
-          <div>
-            <label htmlFor='store'>Ro'yxat turi</label>
-            <p>asdfggh</p>
-          </div>
-          <div>
-            <label htmlFor='store'>Kuryer</label>
-            <p>asdfggh</p>
+          <div className='col-12 col-lg-6 col-md-12 col-sm-12'>
+            <label htmlFor='store' className='fw-bold'>
+              Bazaga kiritdi
+            </label>
+            <p className='p-3 bg-light'>Ma'lumot yo'q</p>
           </div>
         </div>
-      </section>
-      <article className='package__tabs'>
+        <div className='row'>
+          <div className='col-12 col-lg-6 col-md-12 col-sm-12'>
+            <label htmlFor='store' className='fw-bold'>
+              Ro'yxat turi
+            </label>
+            <p className='p-3 bg-light'>Ma'lumot yo'q</p>
+          </div>
+          <div className='col-12 col-lg-6 col-md-12 col-sm-12'>
+            <label htmlFor='store' className='fw-bold'>
+              Kuryer
+            </label>
+            <p className='p-3 bg-light'>Ma'lumot yo'q</p>
+          </div>
+        </div>
+      </div>
+      <article className='overflow-auto'>
         <Tabs>
           <TabList>
             <Tab>Buyurtmalar</Tab>
@@ -127,7 +135,7 @@ const PackagesListDetailComp = ({ packageListDetailData }) => {
             <Tab>O'zgarishlar tarixi</Tab>
           </TabList>
           <TabPanel>
-            <table class='table'>
+            <table class='table table-hover'>
               <thead>
                 <tr>
                   <th scope='col'>Id</th>
@@ -143,7 +151,7 @@ const PackagesListDetailComp = ({ packageListDetailData }) => {
               <tbody>
                 {packageListDetailData &&
                   packageListDetailData.store_packages.map((i) => (
-                    <tr>
+                    <tr key={i.id}>
                       <th>{i.id}</th>
                       <td>{i.from_full_address}</td>
                       <td>
@@ -168,7 +176,7 @@ const PackagesListDetailComp = ({ packageListDetailData }) => {
             <h2>Any content 2</h2>
           </TabPanel>
           <TabPanel>
-            <table class='table'>
+            <table class='table table-hover'>
               <thead>
                 <tr>
                   <th scope='col'>Id</th>
@@ -196,7 +204,7 @@ const PackagesListDetailComp = ({ packageListDetailData }) => {
             </table>
           </TabPanel>
           <TabPanel>
-            <table className='w-100 table table-info'>
+            <table className='w-100 table table-info table-hover'>
               <thead className='border-dark'>
                 <tr>
                   <th>Vaqt</th>

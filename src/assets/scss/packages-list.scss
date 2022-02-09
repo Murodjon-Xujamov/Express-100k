@@ -43,36 +43,6 @@
   width: 100%;
 }
 
-.header__info__row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  text-align: center;
-  flex-direction: row;
-  overflow: auto;
-
-  .header__column {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-
-    .column__row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: row;
-
-      .package__detail__icons {
-        width: 30px;
-        height: 20px;
-        margin-bottom: 5px;
-        color: green;
-      }
-    }
-  }
-}
-
 .main__info {
   display: flex;
   align-items: center;

@@ -30,7 +30,7 @@ const PackageModalComp = ({ show, onClose, deliveryList, removeDelivery }) => {
   return (
     <>
       {show ? (
-        <div className='container delivery__modal'>
+        <div className='container delivery__modal overflow-auto'>
           <div className='col-12'>
             <div className='row mt-5 p-5'>
               <div className='col-12 col-lg-12 col-md-12 col-sm-12 text-end'>
