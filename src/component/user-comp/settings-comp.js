@@ -42,18 +42,29 @@ const SettingsComp = ({ userData, locations, updateProfileDatas, loading }) => {
   }, []);
 
   return (
-    <div className='user__settings__container'>
+    <div className='col-12 col-lg-12 col-md-12 col-sm-12 user__settings__container'>
       <h1>Sozlamalar</h1>
       <form onSubmit={handleSubmit(onSubmit)} className='form'>
-        <img
-          src={userData.avatar_url ? userData.avatar_url : avatarLoc}
-          alt='avatar'
-          className='upload__avatar'
-        />
-        <div className='container__row'>
-          {/* <label htmlFor='file' className='camera__icon'>
-            <BsCameraFill />
-          </label> */}
+        <div className='container'>
+          <div className='row'>
+            <div
+              className='col-12 col-lg-12 col-md-12 col-sm-12 
+              position-relative d-flex justify-content-center'>
+              <img
+                src={userData.avatar_url ? userData.avatar_url : avatarLoc}
+                alt='avatar'
+                className='align-center upload__avatar'
+              />
+              <label
+                htmlFor='file'
+                style={{ marginLeft: "60px" }}
+                className='position-absolute top-50 start-50 d-flex justify-content-center
+                translate-middle mt-5 p-2 bg-warning rounded-circle'>
+                <BsCameraFill />
+              </label>
+            </div>
+          </div>
+
           <input
             type={"file"}
             onChange={(e) =>
@@ -65,119 +76,122 @@ const SettingsComp = ({ userData, locations, updateProfileDatas, loading }) => {
             id='file'
             className='upload__img'
           />
-        </div>
-        <div className='container__row'>
-          <div className='row__column'>
-            <label htmlFor='name'>Ism</label>
-            <input
-              className='border-info form-control'
-              type={"text"}
-              id='name'
-              placeholder='Ism'
-              defaultValue={userData.name}
-              {...register("name")}
-            />
+
+          <div className='row mt-2'>
+            <div className='col-12 col-lg-6 col-md-12 col-sm-12'>
+              <label htmlFor='name'>Ism</label>
+              <input
+                className='border-info form-control'
+                type={"text"}
+                id='name'
+                placeholder='Ism'
+                defaultValue={userData.name}
+                {...register("name")}
+              />
+            </div>
+            <div className='col-12 col-lg-6 col-md-12 col-sm-12'>
+              <label htmlFor='surname'>Familiya</label>
+              <input
+                className='border-info form-control'
+                type={"text"}
+                id='surname'
+                placeholder='Familiya'
+                defaultValue={userData.surname}
+                {...register("surname")}
+              />
+            </div>
           </div>
-          <div className='row__column'>
-            <label htmlFor='surname'>Familiya</label>
-            <input
-              className='border-info form-control'
-              type={"text"}
-              id='surname'
-              placeholder='Familiya'
-              defaultValue={userData.surname}
-              {...register("surname")}
-            />
+          <div className='row mt-2'>
+            <div className='col-12 col-lg-6 col-md-12 col-sm-12'>
+              <label htmlFor='phone__number'>Telefon raqam</label>
+              <input
+                className='border-info form-control'
+                type={"tel"}
+                id='phone__number'
+                placeholder='Telefon raqam'
+                disabled
+                defaultValue={userData.username}
+                {...register("username")}
+              />
+            </div>
+            <div className='col-12 col-lg-6 col-md-12 col-sm-12'>
+              <label htmlFor='region'>Viloyat</label>
+              <select
+                className='border-info form-control'
+                id='region'
+                defaultValue={userData.country_id}
+                {...register("region_id")}
+                onChange={(e) => {
+                  setCountry(e.target.value);
+                }}>
+                {locations.map((region) => (
+                  <option key={region.id} value={region.id}>
+                    {region.name}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
-        </div>
-        <div className='container__row'>
-          <div className='row__column'>
-            <label htmlFor='phone__number'>Telefon raqam</label>
-            <input
-              className='border-info form-control'
-              type={"tel"}
-              id='phone__number'
-              placeholder='Telefon raqam'
-              disabled
-              defaultValue={userData.username}
-              {...register("username")}
-            />
+          <div className='row mt-2'>
+            <div className='col-12 col-lg-6 col-md-12 col-sm-12'>
+              <label htmlFor='district'>Tuman</label>
+              <select
+                className='border-info form-control mw-100'
+                defaultValue={userData.state_id}
+                id='state_id'
+                {...register("district_id")}>
+                <option disabled>Tumanni tanlang</option>
+                {(() => {
+                  const selectedLoc = locations.find(
+                    (loc) => loc.id == country
+                  );
+                  if (selectedLoc && selectedLoc.states) {
+                    return selectedLoc.states.map((state) => (
+                      <option value={state.id} key={state.id}>
+                        {state.name}
+                      </option>
+                    ));
+                  }
+                })()}
+              </select>
+            </div>
+            <div className='col-12 col-lg-6 col-md-12 col-sm-12'>
+              <label htmlFor='address'>Mahalla</label>
+              <input
+                className='border-info form-control'
+                type='text'
+                id='address'
+                placeholder='Mahalla'
+                defaultValue={userData.address}
+                {...register("address")}
+              />
+            </div>
           </div>
-          <div className='row__column'>
-            <label htmlFor='region'>Viloyat</label>
-            <select
-              className='border-info form-control'
-              id='region'
-              defaultValue={userData.country_id}
-              {...register("region_id")}
-              onChange={(e) => {
-                setCountry(e.target.value);
-              }}>
-              {locations.map((region) => (
-                <option key={region.id} value={region.id}>
-                  {region.name}
+          <div className='row mt-2'>
+            <div className='col-12 col-lg-6 col-md-12 col-sm-12'>
+              <label htmlFor='gender'>Jins</label>
+              <select
+                className='border-info form-control'
+                id='gender'
+                defaultValue={userData.gender}
+                {...register("gender")}>
+                <option value='' disabled>
+                  Jinsni tanlang
                 </option>
-              ))}
-            </select>
-          </div>
-        </div>
-        <div className='container__row'>
-          <div className='row__column'>
-            <label htmlFor='district'>Tuman</label>
-            <select
-              className='border-info form-control mw-100'
-              defaultValue={userData.state_id}
-              id='state_id'
-              {...register("district_id")}>
-              <option disabled>Tumanni tanlang</option>
-              {(() => {
-                const selectedLoc = locations.find((loc) => loc.id == country);
-                if (selectedLoc && selectedLoc.states) {
-                  return selectedLoc.states.map((state) => (
-                    <option value={state.id} key={state.id}>
-                      {state.name}
-                    </option>
-                  ));
-                }
-              })()}
-            </select>
-          </div>
-          <div className='row__column'>
-            <label htmlFor='address'>Mahalla</label>
-            <input
-              className='border-info form-control'
-              type='text'
-              id='address'
-              placeholder='Mahalla'
-              defaultValue={userData.address}
-              {...register("address")}
-            />
-          </div>
-        </div>
-        <div className='container__row'>
-          <div className='row__column'>
-            <label htmlFor='gender'>Jins</label>
-            <select
-              className='border-info form-control'
-              id='gender'
-              defaultValue={userData.gender}
-              {...register("gender")}>
-              <option value='' disabled>
-                Jinsni tanlang
-              </option>
-              <option value='male'>Erkak</option>
-              <option value='female'>Ayol</option>
-            </select>
-          </div>
-          <div className='row__column'>
-            <button className='btn btn-primary save__btn'>
-              O'zgarishlarni saqlash
-              {loading ? (
-                <ButtonLoading />
-              ) : (
-                <AiFillSave className='save__icon' />
-              )}
-            </button>
+                <option value='male'>Erkak</option>
+                <option value='female'>Ayol</option>
+              </select>
+            </div>
+            <div className='col-12 col-lg-6 col-md-12 col-sm-12 '>
+              <button className='btn btn-primary mt-4'>
+                O'zgarishlarni saqlash
+                {loading ? (
+                  <ButtonLoading />
+                ) : (
+                  <AiFillSave className='save__icon' />
+                )}
+              </button>
+            </div>
           </div>
         </div>
       </form>
