@@ -35,32 +35,40 @@ const PackagesComp = ({ deliveryList, loading, locations, regions }) => {
         </div>
       ) : (
         <>
-          <div className='filter__container'>
-            <Select
-              className='filter_select border-info'
-              options={regions}
-              onChange={(option) => setRegionId(option[0].value)}
-            />
-            <Select
-              options={districtList}
-              className='filter_select border-info'
-            />
-            <input
-              className='p-1  border-info'
-              type={"number"}
-              placeholder="Id bo'yicha qidirish"
-            />
+          <div className='container'>
+            <div className='row'>
+              <div className='col-12 col-lg-4 col-md-6 col-sm-12'>
+                <Select
+                  className='border-info w-100 mt-2'
+                  options={regions}
+                  onChange={(option) => setRegionId(option[0].value)}
+                />
+              </div>
+              <div className='col-12 col-lg-4 col-md-6 col-sm-12'>
+                <Select
+                  options={districtList}
+                  className='w-100 mt-2 border-info'
+                />
+              </div>
+              <div className='col-12 col-lg-4 col-md-6 col-sm-12'>
+                <input
+                  className='p-1 w-100 mt-2  border-info'
+                  type={"number"}
+                  placeholder="Id bo'yicha qidirish"
+                />
+              </div>
+            </div>
           </div>
-          <table>
+          <table className='table mt-3'>
             <thead>
               <tr>
-                <th>Id</th>
-                <th>Qayerdan</th>
-                <th>Qayerga</th>
-                <th>Dostovka summa</th>
-                <th>Vaqt</th>
-                <th>Buyurtma</th>
-                <th>Umumiy summa</th>
+                <th scope='col'>Id</th>
+                <th scope='col'>Qayerdan</th>
+                <th scope='col'>Qayerga</th>
+                <th scope='col'>Dostovka summa</th>
+                <th scope='col'>Vaqt</th>
+                <th scope='col'>Buyurtma</th>
+                <th scope='col'>Umumiy summa</th>
               </tr>
             </thead>
             {/* 

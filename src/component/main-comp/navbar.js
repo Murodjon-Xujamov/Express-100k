@@ -14,14 +14,14 @@ const Navbar = () => {
         <h2>
           <span className='express__logo'>Expr</span>ess
         </h2>
-        <div className='navbar__link__items'>
+        {/* <div className='navbar__link__items'>
           <div className='balans__price__increase'>
             + 20000.00 sum <TiArrowSortedUp />
           </div>
           <div className='balans__price__drop'>
             - 10000.00 sum <TiArrowSortedDown />
           </div>
-        </div>
+        </div> */}
         <div className='navbar__link__items'>
           <Link to='/'>
             <div className='navbar__link__item'>

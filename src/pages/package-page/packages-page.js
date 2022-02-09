@@ -27,23 +27,25 @@ const PackagesPage = () => {
     });
   return (
     <>
-      <div className='delivery__top'>
-        <h1>Pochtalar</h1>
-        <div className='delivery__status'>
-          <div className='delivery__box__white'></div>
-          Yangi
-        </div>
-        <div className='delivery__status'>
-          <div className='delivery__box__success'></div>
-          Yetqazib berilganlar
-        </div>
-        <div className='delivery__status'>
-          <div className='delivery__box__red'></div>
-          Atkazlar
-        </div>
-        <div className='delivery__status delivery__status__right'>
-          <div className='delivery__box__yellow'></div>
-          Yo'lda
+      <h1>Pochtalar</h1>
+      <div className='container'>
+        <div className='row'>
+          <div className='col-6 col-lg-3 col-md-6 col-sm-6 delivery__status'>
+            <div className='delivery__box__white'></div>
+            Yangi
+          </div>
+          <div className='col-6 col-lg-3 col-md-6 col-sm-6 delivery__status'>
+            <div className='delivery__box__success'></div>
+            Yetqazib berilganlar
+          </div>
+          <div className='col-6 col-lg-3 col-md-6 col-sm-6 delivery__status'>
+            <div className='delivery__box__red'></div>
+            Atkazlar
+          </div>
+          <div className='col-6 col-lg-3 col-md-6 col-sm-6 delivery__status'>
+            <div className='delivery__box__yellow'></div>
+            Yo'lda
+          </div>
         </div>
       </div>
       <div className='card__delivery__table'>

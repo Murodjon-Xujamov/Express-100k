@@ -3,55 +3,53 @@
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 10px;
 
   .filter_select {
     width: 350px;
+    margin: 10px 0;
   }
 }
 
-.delivery__top {
+.delivery__status {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  font-size: 14px;
+  margin: 10px 0;
 
-  .delivery__status {
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-
-    .delivery__box__white {
-      width: 20px;
-      height: 20px;
-      margin-right: 5px;
-      border: 1px solid;
-      border-radius: 2px;
-    }
-
-    .delivery__box__success {
-      width: 20px;
-      height: 20px;
-      background-color: rgb(46, 196, 46);
-      margin-right: 5px;
-    }
-
-    .delivery__box__red {
-      width: 20px;
-      height: 20px;
-      background-color: red;
-      margin-right: 5px;
-    }
-
-    .delivery__box__yellow {
-      width: 20px;
-      height: 20px;
-      background-color: yellow;
-      margin-right: 5px;
-    }
+  .delivery__box__white {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    border: 1px solid;
+    border-radius: 2px;
   }
 
-  .delivery__status__right {
-    margin-right: 100px;
+  .delivery__box__success {
+    width: 20px;
+    height: 20px;
+    background-color: rgb(46, 196, 46);
+    margin-right: 5px;
   }
+
+  .delivery__box__red {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    margin-right: 5px;
+  }
+
+  .delivery__box__yellow {
+    width: 20px;
+    height: 20px;
+    background-color: yellow;
+    margin-right: 5px;
+  }
+}
+
+.delivery__status__right {
+  margin-right: 100px;
 }
 
 .card__delivery__table {
@@ -160,5 +158,35 @@
     border-radius: 10px;
     margin: 10px 0;
     background-color: rgb(189, 184, 184);
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .filter__container,
+  .delivery__top,
+  .delivery__modal {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .filter__container,
+  .delivery__top,
+  .delivery__modal {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .filter__container,
+  .delivery__top,
+  .delivery__modal {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 320px) {
+  .filter__container,
+  .delivery__top,
+  .delivery__modal {
+    width: 100%;
   }
 }
