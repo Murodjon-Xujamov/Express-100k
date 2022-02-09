@@ -3,7 +3,7 @@ import Select from "react-dropdown-select";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ContentLoading from "../loading/content-loading";
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const PackagesListComp = ({ packagesListData, loading }) => {
   const [startDate, setStartDate] = useState(new Date());
@@ -12,50 +12,53 @@ const PackagesListComp = ({ packagesListData, loading }) => {
 
   return (
     <div>
-      <div className='filter mt-2'>
-        <div className='filter__column'>
-          <Select placeholder='Skladni tanlang' className='select__filter' />
-        </div>
-        <div className='filter__column'>
-          <input className='' type={"checkbox"} />
-          <p className=''>Faqat aktiv listlar</p>
-        </div>
-        <div className='filter__column'>
-          <input type={"checkbox"} />
-          <p>Faqat ochiq listlar</p>
-        </div>
-        <div className='filter__column'>
-          <Select placeholder="Ro'yhat turi: all" className='select__filter' />
-        </div>
-        <div className='filter__column'>
-          <Select placeholder='Haydovchi: all' />
-        </div>
-        <div className='filter__column'>
-          <DatePicker
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
-            className=' p-1 '
-          />
+      <div className='container mw-100'>
+        <div className='row'>
+          <div className='col-12 col-lg-2 col-md-4 col-sm-6 mt-2'>
+            <Select placeholder='Skladni tanlang' className='select__filter' />
+          </div>
+          <div className='col-12 col-lg-2 col-md-4 col-sm-6 mt-2 filter__column'>
+            <input className='' type={"checkbox"} />
+            <p className=''>Faqat aktiv listlar</p>
+          </div>
+          <div className='col-12 col-lg-2 col-md-4 col-sm-6 mt-2 filter__column'>
+            <input type={"checkbox"} />
+            <p>Faqat ochiq listlar</p>
+          </div>
+          <div className='col-12 col-lg-2 col-md-4 col-sm-6 mt-2'>
+            <Select
+              placeholder="Ro'yhat turi: all"
+              className='select__filter'
+            />
+          </div>
+          <div className='col-12 col-lg-2 col-md-4 col-sm-6 mt-2'>
+            <Select placeholder='Haydovchi: all' />
+          </div>
+          <div className='col-12 col-lg-2 col-md-4 col-sm-6 mt-2'>
+            <DatePicker
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+              className=' p-1 w-100'
+            />
+          </div>
         </div>
       </div>
 
       {loading ? (
         <ContentLoading />
       ) : (
-        <table className='packages__table mt-4'>
+        <table className='table table-hover  mt-4'>
           <thead>
             <tr>
-              <td>Id</td>
-              <td>Vaqt</td>
-              <td>Kuryer</td>
-              <td>Magazin</td>
-              <td>Aktivlashtirilgan</td>
-              <td>Yopilgan</td>
-              <td>Pochta soni</td>
-              <td>Sklad</td>
-              <td>
-                <input type={"checkbox"} />
-              </td>
+              <th scope='col'>Id</th>
+              <th scope='col'>Vaqt</th>
+              <th scope='col'>Kuryer</th>
+              <th scope='col'>Magazin</th>
+              <th scope='col'>Aktivlashtirilgan</th>
+              <th scope='col'>Yopilgan</th>
+              <th scope='col'>Pochta soni</th>
+              <th scope='col'>Sklad</th>
+              <th scope='col'></th>
             </tr>
           </thead>
           <tbody>
@@ -70,7 +73,13 @@ const PackagesListComp = ({ packagesListData, loading }) => {
                   <td>{item.is_closed}</td>
                   <td>{item.packages_count}</td>
                   <td>Foziltepa 14a</td>
-                  <Link to={`/packages-list/detail/${item.id}`}>Batafsil</Link>
+                  <td>
+                    <Link
+                      to={`/packages-list/detail/${item.id}`}
+                      className='text-info text-decoration-none'>
+                      Batafsil
+                    </Link>
+                  </td>
                 </tr>
               ))}
           </tbody>

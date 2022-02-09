@@ -59,7 +59,7 @@ const PackagesComp = ({ deliveryList, loading, locations, regions }) => {
               </div>
             </div>
           </div>
-          <table className='table mt-3'>
+          <table className='table  mt-3'>
             <thead>
               <tr>
                 <th scope='col'>Id</th>
