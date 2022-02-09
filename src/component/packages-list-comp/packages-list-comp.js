@@ -8,8 +8,6 @@ import { Link } from "react-router-dom";
 const PackagesListComp = ({ packagesListData, loading }) => {
   const [startDate, setStartDate] = useState(new Date());
 
-  console.log("dd0", packagesListData);
-
   return (
     <div>
       <div className='container mw-100'>
