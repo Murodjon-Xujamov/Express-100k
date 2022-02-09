@@ -105,28 +105,13 @@
   background-color: white;
   height: 100vh;
   box-shadow: 0px 1px 10px rgb(185, 183, 183);
-  transition: ease-in-out 5s;
-  .delivery__modal__header {
-    margin-top: 60px;
-    padding: 30px;
 
-    .delivery__modal__body__title {
-      display: flex;
-      justify-content: space-between;
+  .delivery__modal__body__close_modal {
+    cursor: pointer;
 
-      .delivery__modal__body__print {
-        cursor: pointer;
-      }
-
-      .delivery__modal__body__close_modal {
-        cursor: pointer;
-        transition: all 0.5s;
-
-        &:hover {
-          transform: rotate(90deg);
-          color: #33cccc;
-        }
-      }
+    &:hover {
+      transform: rotate(90deg);
+      color: red;
     }
   }
 }
