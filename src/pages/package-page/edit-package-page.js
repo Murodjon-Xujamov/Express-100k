@@ -81,139 +81,152 @@ const EditPackagePage = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)} className='edit__grid_container'>
-        <div className='row__column'>
-          <label>Qaysi viloyatdan ?</label>
-          <Select
-            className='border-info form-control'
-            selectedValue={{
-              label: `${editDatas.region_name}`,
-              value: editDatas.region_id,
-            }}
-            {...register("from_region_id")}
-            options={region}
-            onChange={(option) => setFrom_region_id(option[0].value)}
-          />
-        </div>
-        <div className='row__column'>
-          <label>Qaysi tumandan ?</label>
-          <Select
-            options={fromDistrictList}
-            selectedValue
-            className='border-info form-control'
-          />
-        </div>
-        <div className='row__column'>
-          <label>Mahalla</label>
-          <input
-            className='border-info form-control'
-            type={"text"}
-            defaultValue={editDatas.from_address}
-            {...register("from_address")}
-          />
-        </div>
-        <div className='row__column'>
-          <label>Qaysi viloyatga ?</label>
-          <Select
-            className='border-info form-control'
-            options={region}
-            onChange={(option) => setTo_region_id(option[0].value)}
-          />
-        </div>
-        <div className='row__column'>
-          <label>Qaysi tumandanga ?</label>
-          <Select
-            options={toDistrictList}
-            className='border-info form-control'
-          />
-        </div>
-        <div className='row__column'>
-          <label>Mahalla</label>
-          <input
-            className='border-info form-control'
-            type={"text"}
-            defaultValue={editDatas.to_address}
-            {...register("to_address")}
-          />
-        </div>
-        <div className='row__column'>
-          <label>Mijozning ismi</label>
-          <input
-            className='border-info form-control'
-            type={"text"}
-            defaultValue={editDatas.recipient_name}
-            {...register("recipient_name")}
-          />
-        </div>
-        <div className='row__column'>
-          <label>Mijozning telefon raqami:</label>
-          <input
-            className='border-info form-control'
-            type={"text"}
-            defaultValue={editDatas.recipient_phone}
-            {...register("recipient_phone")}
-          />
-        </div>
-        <div className='row__column'>
-          <label>Mahsulot nomi</label>
-          <input
-            className='border-info form-control'
-            type={"text"}
-            defaultValue={editDatas.matter}
-            {...register("matter")}
-          />
-        </div>
-        <div className='row__column'>
-          <label>Izoh</label>
-          <input
-            className='border-info form-control'
-            type={"text"}
-            defaultValue={editDatas.note}
-            {...register("note")}
-          />
-        </div>
-        <div className='row__column'>
-          <label>Transport turi</label>
-          <select className='border-info form-control'>
-            <option value={"on_car"}>Yengil mashina</option>
-          </select>
-        </div>
-        <div className='row__column'>
-          <label>Sug'urta summasi</label>
-          <input
-            className='border-info form-control'
-            type={"text"}
-            defaultValue={editDatas.insurance_amount}
-            {...register("insurance_amount")}
-          />
-        </div>
-        <div className='row__column'>
-          <label>Dastavka summasi</label>
-          <input
-            className='border-info form-control'
-            type={"text"}
-            defaultValue={editDatas.delivery_fee_amount}
-            {...register("delivery_fee_amount")}
-          />
-        </div>
-        <div className='row__column'>
-          <label>Jami summa</label>
-          <input
-            className='border-info form-control'
-            type={"text"}
-            defaultValue={editDatas.cash_amount}
-            {...register("cash_amount")}
-          />
-        </div>
-        <div className='row__column'>
-          <button type='submit' className='btn border-info bg-info text-white'>
-            O'zgarishlarni saqlash{" "}
-            {loading ? (
-              <ButtonLoading />
-            ) : (
-              <AiFillSave className='save__icon' />
-            )}
-          </button>
+      <form onSubmit={handleSubmit(onSubmit)} className=''>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-12 col-lg-3 col-md-6 col-sm-12 mt-2'>
+              <label>Qaysi viloyatdan ?</label>
+              <Select
+                className='border-info form-control'
+                selectedValue={{
+                  label: `${editDatas.region_name}`,
+                  value: editDatas.region_id,
+                }}
+                {...register("from_region_id")}
+                options={region}
+                onChange={(option) => setFrom_region_id(option[0].value)}
+              />
+            </div>
+            <div className='col-12 col-lg-3 col-md-6 col-sm-12 mt-2'>
+              <label>Qaysi tumandan ?</label>
+              <Select
+                options={fromDistrictList}
+                selectedValue
+                className='border-info form-control'
+              />
+            </div>
+            <div className='col-12 col-lg-3 col-md-6 col-sm-12 mt-2'>
+              <label>Mahalla</label>
+              <input
+                className='border-info form-control'
+                type={"text"}
+                defaultValue={editDatas.from_address}
+                {...register("from_address")}
+              />
+            </div>
+            <div className='col-12 col-lg-3 col-md-6 col-sm-12 mt-2'>
+              <label>Qaysi viloyatga ?</label>
+              <Select
+                className='border-info form-control'
+                options={region}
+                onChange={(option) => setTo_region_id(option[0].value)}
+              />
+            </div>
+          </div>
+          <div className='row'>
+            <div className='col-12 col-lg-3 col-md-6 col-sm-12 mt-2'>
+              <label>Qaysi tumandanga ?</label>
+              <Select
+                options={toDistrictList}
+                className='border-info form-control'
+              />
+            </div>
+            <div className='col-12 col-lg-3 col-md-6 col-sm-12 mt-2'>
+              <label>Mahalla</label>
+              <input
+                className='border-info form-control'
+                type={"text"}
+                defaultValue={editDatas.to_address}
+                {...register("to_address")}
+              />
+            </div>
+            <div className='col-12 col-lg-3 col-md-6 col-sm-12 mt-2'>
+              <label>Mijozning ismi</label>
+              <input
+                className='border-info form-control'
+                type={"text"}
+                defaultValue={editDatas.recipient_name}
+                {...register("recipient_name")}
+              />
+            </div>
+            <div className='col-12 col-lg-3 col-md-6 col-sm-12 mt-2'>
+              <label>Mijozning telefon raqami:</label>
+              <input
+                className='border-info form-control'
+                type={"text"}
+                defaultValue={editDatas.recipient_phone}
+                {...register("recipient_phone")}
+              />
+            </div>
+          </div>
+          <div className='row'>
+            <div className='col-12 col-lg-3 col-md-6 col-sm-12 mt-2'>
+              <label>Mahsulot nomi</label>
+              <input
+                className='border-info form-control'
+                type={"text"}
+                defaultValue={editDatas.matter}
+                {...register("matter")}
+              />
+            </div>
+            <div className='col-12 col-lg-3 col-md-6 col-sm-12 mt-2'>
+              <label>Izoh</label>
+              <input
+                className='border-info form-control'
+                type={"text"}
+                defaultValue={editDatas.note}
+                {...register("note")}
+              />
+            </div>
+            <div className='col-12 col-lg-3 col-md-6 col-sm-12 mt-2'>
+              <label>Transport turi</label>
+              <select className='border-info form-control'>
+                <option value={"on_car"}>Yengil mashina</option>
+              </select>
+            </div>
+            <div className='col-12 col-lg-3 col-md-6 col-sm-12 mt-2'>
+              <label>Sug'urta summasi</label>
+              <input
+                className='border-info form-control'
+                type={"text"}
+                defaultValue={editDatas.insurance_amount}
+                {...register("insurance_amount")}
+              />
+            </div>
+          </div>
+          <div className='row'>
+            <div className='col-12 col-lg-3 col-md-6 col-sm-12 mt-2'>
+              <label>Dastavka summasi</label>
+              <input
+                className='border-info form-control'
+                type={"text"}
+                defaultValue={editDatas.delivery_fee_amount}
+                {...register("delivery_fee_amount")}
+              />
+            </div>
+            <div className='col-12 col-lg-3 col-md-6 col-sm-12 mt-2'>
+              <label>Jami summa</label>
+              <input
+                className='border-info form-control'
+                type={"text"}
+                defaultValue={editDatas.cash_amount}
+                {...register("cash_amount")}
+              />
+            </div>
+            <div className='col-12 col-lg-3 col-md-6 col-sm-12 mt-2'>
+              <button
+                type='submit'
+                className='btn border-info bg-info text-white mt-4'>
+                O'zgarishlarni saqlash{" "}
+                {loading ? (
+                  <ButtonLoading />
+                ) : (
+                  <AiFillSave className='save__icon' />
+                )}
+              </button>
+            </div>
+            <div className='col-12 col-lg-3 col-md-6 col-sm-12 mt-2'></div>
+          </div>
         </div>
       </form>
     </div>
