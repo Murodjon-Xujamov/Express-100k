@@ -1,10 +1,8 @@
 import React from "react";
-import "../../assets/scss/navbar.scss";
+import "../../assets/scss/main.scss";
 import { FaUserTie } from "react-icons/fa";
 import { FiSettings } from "react-icons/fi";
-import { BsBell, BsHeadset } from "react-icons/bs";
 import { IoMdExit } from "react-icons/io";
-import { TiArrowSortedUp, TiArrowSortedDown } from "react-icons/ti";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {

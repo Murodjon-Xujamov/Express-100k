@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "../../assets/scss/settings.scss";
 import avatarLoc from "../../assets/images/user-g6f6f69a6e_1280.png";
 import { useDispatch } from "react-redux";
 import { updateProfileImage } from "../../redux/actions/user-actions";

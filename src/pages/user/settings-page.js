@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "../../assets/scss/settings.scss";
+import "../../assets/scss/main.scss";
 import { useSelector, useDispatch } from "react-redux";
 import SettingsComp from "../../component/user-comp/settings-comp";
 import {

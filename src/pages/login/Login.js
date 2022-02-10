@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import "../../assets/scss/login.scss";
+import "../../assets/scss/user.scss";
 import { SiGnuprivacyguard } from "react-icons/si";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { authLogin, authPassword } from "../../redux/actions/user-actions";
 import { Route } from "react-router-dom";
 import PackagesPage from "../package-page/packages-page";
-import ButtonLoading from "../../component/loading/button-loading";
 import logo from "../../assets/icons/Logo(1).svg";
 
 const Login = () => {
