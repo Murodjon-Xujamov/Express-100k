@@ -35,7 +35,7 @@
 }
 
 .delivery__table__hover__tr {
-  color: rgb(46, 196, 46);
+  // color: rgb(46, 196, 46);
   margin: 10px;
   &:hover {
     background-color: antiquewhite;
@@ -58,7 +58,7 @@ th {
   position: fixed;
   top: 0;
   right: 0;
-  width: 40%;
+  width: 45%;
   background-color: white;
   height: 100vh;
   box-shadow: 0px 1px 10px rgb(185, 183, 183);
@@ -75,14 +75,14 @@ th {
 
 @media only screen and (max-width: 1000px) {
   .delivery__modal {
-    width: 50%;
-    padding-left: 30px;
+    width: 55%;
+    padding: 0;
   }
 }
 @media only screen and (max-width: 800px) {
   .delivery__modal {
-    width: 60%;
-    padding-left: 30px;
+    width: 70%;
+    padding: 0;
   }
 }
 @media only screen and (max-width: 600px) {

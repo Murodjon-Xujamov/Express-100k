@@ -72,11 +72,7 @@ const PackagesComp = ({ deliveryList, loading, locations, regions }) => {
                   <th scope='col'>Umumiy summa</th>
                 </tr>
               </thead>
-              {/* 
-?.filter((d: any) => {
-              return d?.number?.toLowerCase().includes(filter.toLowerCase());
-            })
- */}
+
               <tbody>
                 {deliveryList.map((item) => (
                   <tr
