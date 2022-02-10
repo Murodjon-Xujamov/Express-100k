@@ -55,15 +55,16 @@
 }
 
 .user__settings__container {
-  width: 70%;
+  width: 100%;
   padding: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.2);
 
   .form {
+    box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.2);
+    padding: 30px;
     .upload__avatar {
       border: 3px solid lightgray;
       border-radius: 50%;

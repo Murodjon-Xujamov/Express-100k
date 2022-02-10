@@ -41,7 +41,7 @@ const SettingsComp = ({ userData, locations, updateProfileDatas, loading }) => {
   }, []);
 
   return (
-    <div className='col-12 col-lg-12 col-md-12 col-sm-12 user__settings__container'>
+    <div className='col-12 col-lg-12 col-md-12 col-sm-12  user__settings__container'>
       <h1>Sozlamalar</h1>
       <form onSubmit={handleSubmit(onSubmit)} className='form'>
         <div className='container'>
