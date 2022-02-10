@@ -72,3 +72,22 @@ th {
     }
   }
 }
+
+@media only screen and (max-width: 1000px) {
+  .delivery__modal {
+    width: 50%;
+    padding-left: 30px;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .delivery__modal {
+    width: 60%;
+    padding-left: 30px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .delivery__modal {
+    width: 90%;
+    padding-left: 30px;
+  }
+}

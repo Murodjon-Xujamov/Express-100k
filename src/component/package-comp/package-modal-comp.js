@@ -32,7 +32,7 @@ const PackageModalComp = ({ show, onClose, deliveryList, removeDelivery }) => {
       {show ? (
         <div className='container delivery__modal overflow-auto'>
           <div className='row'>
-            <div className='col-12'>
+            <div className='col-12 col-sm-12'>
               <div className='row mt-5 p-5'>
                 <div className='col-12 col-lg-12 col-md-12 col-sm-12 text-end'>
                   <IoMdClose
@@ -48,7 +48,7 @@ const PackageModalComp = ({ show, onClose, deliveryList, removeDelivery }) => {
               <div className='container fw-bold'>
                 <div className='row'>
                   <div className='col-4 col-lg-4 col-md-4 col-sm-3'>
-                    <span className='text-bold'>ID</span>
+                    <span className='text-secondary'>ID</span>
                   </div>
                   <div className='col-8 col-lg-8 col-md-8 col-sm-9 text-end '>
                     <span className='text-end'>{id}</span>
@@ -56,83 +56,63 @@ const PackageModalComp = ({ show, onClose, deliveryList, removeDelivery }) => {
                 </div>
                 <div className='row'>
                   <div className='col-4 col-lg-4 col-md-4 col-sm-3'>
-                    <span className=''>Qayerdan</span>
+                    <span className='text-secondary'>Qayerdan</span>
                   </div>
                   <div className='col-8 col-lg-8 col-md-8 col-sm-9 text-end'>
-                    <span className=''>{from_full_address}</span>
+                    <span>{from_full_address}</span>
                   </div>
                 </div>
                 <div className='row'>
                   <div className='col-4 col-lg-4 col-md-4 col-sm-3 '>
-                    <span className='delivery__modal__text__left'>Qayerga</span>
+                    <span className='text-secondary'>Qayerga</span>
                   </div>
                   <div className='col-8 col-lg-8 col-md-8 col-sm-9 text-end'>
-                    <span className='delivery__modal__text__right'>
-                      {to_full_address}
-                    </span>
+                    <span>{to_full_address}</span>
                   </div>
                 </div>
                 <div className='row'>
                   <div className='col-4 col-lg-4 col-md-4 col-sm-3'>
-                    <span className='delivery__modal__text__left'>
-                      Mahsulot
-                    </span>
+                    <span className='text-secondary'>Mahsulot</span>
                   </div>
                   <div className='col-8 col-lg-8 col-md-8 col-sm-9 text-end'>
-                    <span className='delivery__modal__text__right'>
-                      {matter}
-                    </span>
+                    <span>{matter}</span>
                   </div>
                 </div>
                 <div className='row'>
                   <div className='col-4 col-lg-4 col-md-4 col-sm-3'>
-                    <span className='delivery__modal__text__left'>Xaridor</span>
+                    <span className='text-secondary'>Xaridor</span>
                   </div>
                   <div className='col-8 col-lg-8 col-md-8 col-sm-9 text-end'>
-                    <span className='delivery__modal__text__right'>
-                      {recipient_name}
-                    </span>
+                    <span>{recipient_name}</span>
                   </div>
                 </div>
                 <div className='row'>
                   <div className='col-4 col-lg-4 col-md-4 col-sm-3'>
-                    <span className='delivery__modal__text__left'>
-                      Xaridor raqami
-                    </span>
+                    <span className='text-secondary'>Xaridor raqami</span>
                   </div>
                   <div className='col-8 col-lg-8 col-md-8 col-sm-9 text-end'>
-                    <span className='delivery__modal__text__right'>
-                      {recipient_phone}
-                    </span>
+                    <span>{recipient_phone}</span>
                   </div>
                 </div>
                 <div className='row'>
                   <div className='col-4 col-lg-4 col-md-4 col-sm-3'>
-                    <span className='delivery__modal__text__left'>
-                      Umumiy summasi
-                    </span>
+                    <span className='text-secondary'>Umumiy summasi</span>
                   </div>
                   <div className='col-8 col-lg-8 col-md-8 col-sm-9 text-end'>
-                    <span className='delivery__modal__text__right'>
-                      {cash_amount}
-                    </span>
+                    <span>{cash_amount}</span>
                   </div>
                 </div>
                 <div className='row'>
                   <div className='col-4 col-lg-4 col-md-4 col-sm-3'>
-                    <span className='delivery__modal__text__left'>
-                      Dostavka summasi
-                    </span>
+                    <span className='text-secondary'>Dostavka summasi</span>
                   </div>
                   <div className='col-8 col-lg-8 col-md-8 col-sm-9 text-end'>
-                    <span className='delivery__modal__text__right'>
-                      {delivery_fee_amount}
-                    </span>
+                    <span>{delivery_fee_amount}</span>
                   </div>
                 </div>
                 <div className='row'>
                   <div className='col-4 col-lg-4 col-md-4 col-sm-3'>
-                    <span className='delivery__modal__text__left'>Vaqt</span>
+                    <span className='text-secondary'>Vaqt</span>
                   </div>
                   <div className='col-8 col-lg-8 col-md-8 col-sm-9 text-end'>
                     <span className='delivery__modal__text__right'>
@@ -155,7 +135,8 @@ const PackageModalComp = ({ show, onClose, deliveryList, removeDelivery }) => {
                   </div>
                   <div className='col-12 col-lg-4 col-md-6 col-sm-12 mt-2'>
                     <button
-                      className='btn bg-danger text-white px-5 w-100'
+                      className='btn bg-danger text-white px-5 w-100 d-flex flex-row 
+                      justify-content-center align-items-center'
                       onClick={() => deleteDeliveryData()}>
                       <AiOutlineDelete size={20} /> Delete
                     </button>
