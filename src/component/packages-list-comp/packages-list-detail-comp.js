@@ -7,8 +7,12 @@ import { FaRegMoneyBillAlt, FaPlus, FaMinus } from "react-icons/fa";
 import { GiTakeMyMoney } from "react-icons/gi";
 import { BiArrowBack } from "react-icons/bi";
 import { HiOutlineLockClosed } from "react-icons/hi";
+import PrintPackagesListComp from "./print-packages-list-comp";
 
 const PackagesListDetailComp = ({ packageListDetailData }) => {
+  const printTable = () => {
+    window.print();
+  };
   return (
     <div>
       <header className='d-flex flex-row justify-content-between align-items-start flex-wrap'>
@@ -127,7 +131,7 @@ const PackagesListDetailComp = ({ packageListDetailData }) => {
         </div>
       </div>
       <article className='overflow-auto'>
-        <Tabs>
+        <Tabs className='overflow-auto p-3'>
           <TabList>
             <Tab>Buyurtmalar</Tab>
             <Tab>Printerdan chiqarish</Tab>
@@ -173,7 +177,9 @@ const PackagesListDetailComp = ({ packageListDetailData }) => {
             </table>
           </TabPanel>
           <TabPanel>
-            <h2>Any content 2</h2>
+            <PrintPackagesListComp
+              packageListDetailData={packageListDetailData}
+            />
           </TabPanel>
           <TabPanel>
             <table class='table table-hover'>
