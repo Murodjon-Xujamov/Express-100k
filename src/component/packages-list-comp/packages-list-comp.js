@@ -15,13 +15,15 @@ const PackagesListComp = ({ packagesListData, loading }) => {
           <div className='col-12 col-lg-2 col-md-4 col-sm-6 mt-2'>
             <Select placeholder='Skladni tanlang' className='select__filter' />
           </div>
-          <div className='col-12 col-lg-2 col-md-4 col-sm-6 mt-2 filter__column'>
+          <div
+            className='col-12 col-lg-2 col-md-4 col-sm-6 mt-2
+           d-flex flex-row justify-content-evenly align-items-center'>
             <input className='' type={"checkbox"} />
-            <p className=''>Faqat aktiv listlar</p>
+            <p className='m-0'>Faqat aktiv listlar</p>
           </div>
-          <div className='col-12 col-lg-2 col-md-4 col-sm-6 mt-2 filter__column'>
+          <div className='col-12 col-lg-2 col-md-4 col-sm-6 mt-2 d-flex flex-row justify-content-evenly align-items-center'>
             <input type={"checkbox"} />
-            <p>Faqat ochiq listlar</p>
+            <p className='m-0'>Faqat ochiq listlar</p>
           </div>
           <div className='col-12 col-lg-2 col-md-4 col-sm-6 mt-2'>
             <Select

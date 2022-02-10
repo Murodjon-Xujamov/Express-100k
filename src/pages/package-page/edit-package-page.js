@@ -8,7 +8,6 @@ import {
   fetchDeliveryOne,
 } from "../../redux/actions/delivery-actions";
 import { fetchLocations } from "../../redux/actions/common-actions";
-import "../../assets/scss/edit-package.scss";
 import ButtonLoading from "../../component/loading/button-loading";
 import { AiFillSave } from "react-icons/ai";
 

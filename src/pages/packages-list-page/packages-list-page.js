@@ -1,9 +1,7 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useEffect } from "react";
 import PackagesListComp from "../../component/packages-list-comp/packages-list-comp";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchAllPackagesList } from "../../redux/actions/delivery-actions";
-import "../../assets/scss/packages-list.scss";
-import { Outlet } from "react-router-dom";
 
 const PackagesListPage = () => {
   const dispatch = useDispatch();

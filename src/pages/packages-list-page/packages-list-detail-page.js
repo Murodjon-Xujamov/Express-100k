@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PackagesListDetailComp from "../../component/packages-list-comp/packages-list-detail-comp";
 import { useParams } from "react-router-dom";
-import "../../assets/scss/packages-list.scss";
 import requests from "../../helpers/requests";
 
 const PackagesListDetailPage = () => {

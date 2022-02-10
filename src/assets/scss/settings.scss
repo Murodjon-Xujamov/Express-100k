@@ -16,16 +16,7 @@
   flex-direction: column;
   box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.2);
 
-  & > h1 {
-    padding: 0;
-    margin: 0;
-  }
-
   .form {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-
     .upload__avatar {
       border: 3px solid lightgray;
       border-radius: 50%;
@@ -38,32 +29,6 @@
 
     .upload__img {
       display: none;
-    }
-
-    .container__row {
-      display: grid;
-      grid-template-columns: auto auto;
-      grid-template-rows: auto;
-      margin-top: 10px;
-      grid-gap: 10px;
-
-      .row__column {
-        display: flex;
-        align-items: flex-start;
-        justify-content: flex-end;
-        flex-direction: column;
-
-        & > button {
-          width: 350px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .save__icon {
-          margin-left: 8px;
-        }
-      }
     }
   }
 }

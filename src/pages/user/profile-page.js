@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import "../../assets/scss/profile.scss";
 import { useSelector, useDispatch } from "react-redux";
 import ProfileComp from "../../component/user-comp/profile-comp";
 import { profileInfo } from "../../redux/actions/user-actions";

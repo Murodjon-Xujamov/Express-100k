@@ -2,12 +2,23 @@ import React from "react";
 
 const PrintPackagesListComp = ({ packageListDetailData }) => {
   console.log("dddd", packageListDetailData.store_packages);
-  const printTable = () => {
-    window.print();
+  const printTable = (ref) => {
+    const iframe = document.createElement("iframe");
+    iframe.style.display = "none";
+    document.body.appendChild(iframe);
+    const pri = iframe.contentWindow;
+    pri.document.open();
+    pri.document.write(ref.textContent);
+    pri.document.close();
+    pri.focus();
+    pri.print();
+    pri.onafterprint = () => {
+      document.body.removeChild(iframe);
+    };
   };
   return (
     <div className='container text-start overflow-auto'>
-      <div className='container border border-dark overflow-auto'>
+      <div className='container p-0 border border-dark overflow-auto'>
         <table class='table table-hover'>
           <thead>
             <tr>
@@ -47,7 +58,7 @@ const PrintPackagesListComp = ({ packageListDetailData }) => {
         </table>
         {packageListDetailData &&
           packageListDetailData.store_packages.map((i) => (
-            <>
+            <div className='container bg-light'>
               <div>Ro'yhat ID: 226 </div>
               <div>Do'kon: dev.100k.uz, +998555005511 </div>
               <div>Umumiy mijozdan olinadigan summa: {i.cash_amount} so'm </div>
@@ -55,7 +66,7 @@ const PrintPackagesListComp = ({ packageListDetailData }) => {
                 Umumiy yetqazib berish summasi: {i.delivery_fee_amount} so'm{" "}
               </div>
               <div>Umumiy jo'natmalar soni: 1 ta </div>
-            </>
+            </div>
           ))}
       </div>
       <button className='btn btn-info mt-3' onClick={printTable}>

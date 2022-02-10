@@ -23,11 +23,7 @@ const Sidebar = () => {
             <BsArrowLeftRight size={30} />
           </div>
         </Link>
-        <Link to={"/delivery"}>
-          <div className='sidebar__box__icon'>
-            <FaUsers size={30} />
-          </div>
-        </Link>
+
         <Link to={"/package/create-package"}>
           <div className='sidebar__box__icon'>
             <BiAddToQueue size={30} />

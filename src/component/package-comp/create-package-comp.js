@@ -1,4 +1,3 @@
-import "../../assets/scss/create-package.scss";
 import React, { useState } from "react";
 import Select from "react-dropdown-select";
 import { RiSendPlane2Line } from "react-icons/ri";
@@ -52,7 +51,7 @@ const CreatePackageComp = ({
 
   return (
     <div className='create__delivery__page'>
-      <h1>Pochta qo'shish</h1>
+      <h1 className='text-center'>Pochta qo'shish</h1>
       <div className='container '>
         <div className='row'>
           <div className='col-12 col-lg-3 col-md-6 colsm-12 '>
