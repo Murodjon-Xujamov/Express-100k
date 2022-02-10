@@ -7,6 +7,7 @@ import { authLogin, authPassword } from "../../redux/actions/user-actions";
 import { Route } from "react-router-dom";
 import PackagesPage from "../package-page/packages-page";
 import ButtonLoading from "../../component/loading/button-loading";
+import logo from "../../assets/icons/Logo(1).svg";
 
 const Login = () => {
   const [{ username, password }, setUser] = useState({
@@ -51,14 +52,17 @@ const Login = () => {
 
   return (
     <>
-      <div className='login__page'>
+      <div className='login__page p-3'>
         <div className='login__box__form'>
-          <h1>Express</h1>
-          <h3>Kirish</h3>
+          <div className='d-flex flex-row'>
+            <img src={logo} alt='logo' style={{ width: "50px" }} />
+            <h1 className='ms-2'>Express 100k</h1>
+          </div>
+
           <div className='login__form'>
             {!loginStep ? (
               <div>
-                Telifon raqam
+                <h6>Telefon raqam</h6>
                 <input
                   className='login__input'
                   onChange={handleUsername}
@@ -66,22 +70,21 @@ const Login = () => {
                   onKeyPress={handleKeyUserName}
                 />
                 <button
-                  className='login__button'
+                  className='btn btn-info w-100'
                   disabled={loading}
                   onClick={() => dispatch(authPassword(username))}>
-                  {loading ? <ButtonLoading /> : <SiGnuprivacyguard />} Tizimga
-                  kirish
+                  <SiGnuprivacyguard /> Tizimga kirish
                 </button>
               </div>
             ) : (
               <div>
-                Telifon raqam
+                <h6>Telefon raqam</h6>
                 <input
                   className='login__input'
                   defaultValue={username}
                   disabled={true}
                 />
-                Sms-kod
+                <h6>Sms-kod</h6>
                 <input
                   className='login__input'
                   type='tel'
@@ -90,11 +93,10 @@ const Login = () => {
                   onKeyPress={handleKeyLogin}
                 />
                 <button
-                  className='login__button'
+                  className='btn btn-info w-100'
                   disabled={loading}
                   onClick={handleLogin}>
-                  {loading ? <ButtonLoading /> : <SiGnuprivacyguard />} Tizimga
-                  kirish
+                  <SiGnuprivacyguard /> Tizimga kirish
                 </button>
               </div>
             )}

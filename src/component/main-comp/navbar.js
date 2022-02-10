@@ -54,6 +54,7 @@ const Navbar = () => {
           <div className='navbar__link__item'>
             <IoMdExit
               size={21}
+              color='red'
               style={{ cursor: "pointer" }}
               onClick={confirmLogout}
             />
