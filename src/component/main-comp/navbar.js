@@ -8,6 +8,18 @@ import { TiArrowSortedUp, TiArrowSortedDown } from "react-icons/ti";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const logout = () => {
+    window.localStorage.removeItem("@token");
+    window.location.reload();
+  };
+
+  const confirmLogout = () => {
+    if (window.confirm("Haqiqatan chiqmoqchimisiz")) {
+      return logout();
+    } else {
+      return console.log("false");
+    }
+  };
   return (
     <div className='navbar__g'>
       <div className='navbar__flex'>
@@ -40,7 +52,11 @@ const Navbar = () => {
             <BsHeadset size={21} style={{ cursor: "pointer" }} />
           </div>
           <div className='navbar__link__item'>
-            <IoMdExit size={21} style={{ cursor: "pointer" }} />
+            <IoMdExit
+              size={21}
+              style={{ cursor: "pointer" }}
+              onClick={confirmLogout}
+            />
           </div>
         </div>
       </div>
