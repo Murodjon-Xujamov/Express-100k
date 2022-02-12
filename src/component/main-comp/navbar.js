@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../../assets/scss/main.scss";
 import { FaUserTie } from "react-icons/fa";
 import { FiSettings } from "react-icons/fi";
 import { IoMdExit } from "react-icons/io";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { fetchLocations } from "../../redux/actions/common-actions";
+import { profileInfo } from "../../redux/actions/user-actions";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
   const logout = () => {
     window.localStorage.removeItem("@token");
     window.location.reload();
@@ -18,6 +22,11 @@ const Navbar = () => {
       return console.log("false");
     }
   };
+
+  useEffect(() => {
+    dispatch(fetchLocations());
+    dispatch(profileInfo());
+  }, []);
   return (
     <div className='navbar__g'>
       <div className='navbar__flex'>

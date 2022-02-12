@@ -1,20 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 import requests from "../../helpers/requests";
 import { useDispatch, useSelector } from "react-redux";
 import CreatePackageComp from "../../component/package-comp/create-package-comp";
-import { fetchLocations } from "../../redux/actions/common-actions";
-import { profileInfo } from "../../redux/actions/user-actions";
 
 const CreatePackagePage = () => {
   const dispatch = useDispatch();
   const locations = useSelector((state) => state.common.locations);
   const userInfo = useSelector((state) => state.user.data);
   const loading = useSelector((state) => state.delivery.loading);
-
-  useEffect(() => {
-    dispatch(fetchLocations());
-    dispatch(profileInfo());
-  }, []);
 
   const createDelivery = (params) => {
     dispatch({
@@ -45,13 +38,15 @@ const CreatePackagePage = () => {
   });
   return (
     <div>
-      <CreatePackageComp
-        regions={regions}
-        userInfo={userInfo}
-        locations={locations}
-        loading={loading}
-        onClickCreateDelivery={(deliveryInfo) => createDelivery(deliveryInfo)}
-      />
+      {userInfo.id && (
+        <CreatePackageComp
+          regions={regions}
+          userInfo={userInfo}
+          locations={locations}
+          loading={loading}
+          onClickCreateDelivery={(deliveryInfo) => createDelivery(deliveryInfo)}
+        />
+      )}
     </div>
   );
 };

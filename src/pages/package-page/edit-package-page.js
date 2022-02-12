@@ -7,7 +7,6 @@ import {
   updatePackage,
   fetchDeliveryOne,
 } from "../../redux/actions/delivery-actions";
-import { fetchLocations } from "../../redux/actions/common-actions";
 import ButtonLoading from "../../component/loading/button-loading";
 import { AiFillSave } from "react-icons/ai";
 
@@ -16,8 +15,8 @@ const EditPackagePage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchLocations());
     dispatch(fetchDeliveryOne(id));
+    return () => dispatch({ type: "clear_delivery_success" });
   }, [id]);
 
   const editDatas = useSelector((state) => state.delivery.delivery);

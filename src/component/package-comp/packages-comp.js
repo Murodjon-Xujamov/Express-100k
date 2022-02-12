@@ -77,7 +77,7 @@ const PackagesComp = ({ deliveryList, loading, locations, regions }) => {
                 {deliveryList.map((item) => (
                   <tr
                     key={item.id}
-                    className='delivery__table__hover__tr '
+                    className={item.status == "new" ? "newStatus" : ""}
                     onClick={() => {
                       openDeliveryModal(item);
                     }}>

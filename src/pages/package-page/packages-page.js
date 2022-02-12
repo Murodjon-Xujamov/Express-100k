@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../../assets/scss/packages.scss";
 import { fetchDelivery } from "../../redux/actions/delivery-actions";
-import { fetchLocations } from "../../redux/actions/common-actions";
 import PackagesComp from "../../component/package-comp/packages-comp";
 
 const PackagesPage = () => {
@@ -10,7 +9,6 @@ const PackagesPage = () => {
 
   useEffect(() => {
     dispatch(fetchDelivery());
-    dispatch(fetchLocations());
   }, []);
 
   const deliveryList = useSelector((state) => state.delivery.list);

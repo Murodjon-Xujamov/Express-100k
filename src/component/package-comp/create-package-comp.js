@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Select from "react-dropdown-select";
+import Select from "react-select";
 import { RiSendPlane2Line } from "react-icons/ri";
 import ButtonLoading from "../loading/button-loading";
 
@@ -10,14 +10,14 @@ const CreatePackageComp = ({
   regions,
   onClickCreateDelivery,
 }) => {
-  const [from_region_id, set_from_region_id] = useState(userInfo?.region_id);
+  const [from_region_id, set_from_region_id] = useState(userInfo.region_id);
   const [from_district_id, set_from_district_id] = useState(
-    userInfo?.district_id
+    userInfo.district_id
   );
   const [from_address, set_from_address] = useState(userInfo?.address);
   const [to_region_id, set_to_region_id] = useState("");
-
   const [to_district_id, set_to_district_id] = useState("");
+
   const [to_address, set_to_address] = useState("");
   const [recipient_phone, set_recipient_phone] = useState("");
   const [recipient_name, set_recipient_name] = useState("");
@@ -28,21 +28,36 @@ const CreatePackageComp = ({
   const [delivery_fee_amount, set_delivery_fee_amount] = useState("");
   const [insurance_amount, set_insurance_amount] = useState("");
 
-  const fromDistrict = locations.filter((loc) => loc.id == from_region_id);
-  const fromDistrictList =
-    fromDistrict &&
-    fromDistrict[0]?.states.map((item) => {
+  const fromRegion = locations.find((loc) => loc.id === from_region_id);
+
+  const fromRegionItem = {
+    label: fromRegion && fromRegion.name,
+    value: fromRegion && fromRegion.id,
+  };
+
+  const fromdDistrictList =
+    fromRegion &&
+    fromRegion.states.map((item) => {
       return {
         label: item.name,
         value: item.id,
       };
     });
 
-  const toDistrict = locations.filter((loc) => loc.id == to_region_id);
+  const fromDistrict =
+    fromRegion && fromRegion.states.find((i) => i.id == from_district_id);
+
+  const districtItem = {
+    label: fromDistrict && fromDistrict.name,
+    value: fromDistrict && fromDistrict.id,
+  };
+
+  const toDistrict = locations.find((loc) => loc.id == to_region_id);
+  console.log("toDistrict", toDistrict);
 
   const toDistrictList =
     toDistrict &&
-    toDistrict[0]?.states.map((item) => {
+    toDistrict.states.map((item) => {
       return {
         label: item.name,
         value: item.id,
@@ -56,24 +71,23 @@ const CreatePackageComp = ({
         <div className='row'>
           <div className='col-12 col-lg-3 col-md-6 colsm-12 '>
             <label htmlFor='fromRegion'>Qaysi viloyatdan ?</label>
+
             <Select
-              className=' border-info form-control'
+              className='border-info form-control p-0'
               id='fromRegion'
               options={regions}
-              onChange={(value) => set_from_region_id(value[0].value)}
-              defaultValue={{
-                label: `${userInfo.region_name}`,
-                value: userInfo.region_id,
-              }}
+              onChange={(option) => set_from_region_id(option.value)}
+              defaultValue={fromRegionItem || {}}
             />
           </div>
           <div className='col-12 col-lg-3 col-md-6 colsm-12'>
             <label htmlFor='fromDistrict'>Qaysi tumandan ?</label>
             <Select
-              className=' border-info form-control'
+              className='border-info form-control p-0'
               id='fromDistrict'
-              options={fromDistrictList}
-              onChange={(option) => set_from_district_id(option[0].value)}
+              options={fromdDistrictList}
+              onChange={(option) => set_from_district_id(option.value)}
+              defaultValue={districtItem || {}}
             />
           </div>
           <div className='col-12 col-lg-3 col-md-6 colsm-12'>
@@ -89,10 +103,10 @@ const CreatePackageComp = ({
           <div className='col-12 col-lg-3 col-md-6 colsm-12'>
             <label htmlFor='toRegion'>Qaysi viloyatga ?</label>
             <Select
-              className=' border-info form-control'
+              className=' border-info form-control p-0'
               id='toRegion'
               options={regions}
-              onChange={(value) => set_to_region_id(value[0].value)}
+              onChange={(value) => set_to_region_id(value.value)}
             />
           </div>
         </div>
@@ -100,10 +114,10 @@ const CreatePackageComp = ({
           <div className='col-12 col-lg-3 col-md-6 colsm-12'>
             <label htmlFor='fromDistrict'>Qaysi tumanga ?</label>
             <Select
-              className=' border-info form-control'
+              className=' border-info form-control p-0'
               id='fromDistrict'
               options={toDistrictList}
-              onChange={(option) => set_to_district_id(option[0].value)}
+              onChange={(option) => set_to_district_id(option.value)}
             />
           </div>
           <div className='col-12 col-lg-3 col-md-6 colsm-12'>
@@ -169,6 +183,18 @@ const CreatePackageComp = ({
             />
           </div>
           <div className='col-12 col-lg-3 col-md-6 colsm-12'>
+            <label htmlFor='fromAddress'>Sug'urta summasi</label>
+            <input
+              className='p-1 border-info form-control'
+              id='fromAddress'
+              type='number'
+              value={cash_amount}
+              onChange={(e) => set_insurance_amount(e.target.value)}
+            />
+          </div>
+        </div>
+        <div className='row'>
+          <div className='col-12 col-lg-3 col-md-6 colsm-12'>
             <label htmlFor='fromAddress'>Jami summa:</label>
             <input
               className='p-1 border-info form-control'
@@ -178,8 +204,6 @@ const CreatePackageComp = ({
               onChange={(e) => set_cash_amount(e.target.value)}
             />
           </div>
-        </div>
-        <div className='row'>
           <div className='col-12 col-lg-3 col-md-6 colsm-12'>
             <label htmlFor='vehicleType'>Avtomobil turi</label>
             <select

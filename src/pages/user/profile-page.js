@@ -1,10 +1,8 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import ProfileComp from "../../component/user-comp/profile-comp";
-import { profileInfo } from "../../redux/actions/user-actions";
 
 const ProfilePage = () => {
-  const dispatch = useDispatch();
   const {
     avatar_url,
     username,
@@ -17,9 +15,6 @@ const ProfilePage = () => {
   } = useSelector((state) => state.user.data);
   const loading = useSelector((state) => state.user.loading);
 
-  useEffect(() => {
-    dispatch(profileInfo());
-  }, []);
   return (
     <>
       <ProfileComp
