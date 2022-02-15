@@ -1,7 +1,7 @@
 const INITIAL_STATE = {
   locations: [],
   loading: false,
-  message: null,
+  message: "",
   category: [],
 };
 
@@ -14,7 +14,7 @@ export default (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
     // auth
     case "fetch_locations_start":
-      return { ...state, loading: true, message: "" };
+      return { ...state, loading: true };
     case ACTIONS.FETCH_LOCATIONS_ERROR:
       return { ...state, message: payload, loading: false };
     case "fetch_locations_success":
@@ -27,7 +27,7 @@ export default (state = INITIAL_STATE, { type, payload }) => {
 
     // Category
     case "fetch_categorys_start":
-      return { ...state, loading: true, message: "" };
+      return { ...state, loading: true };
     case "fetch_categorys_error":
       return { ...state, message: payload, loading: false };
     case "fetch_categorys_success":

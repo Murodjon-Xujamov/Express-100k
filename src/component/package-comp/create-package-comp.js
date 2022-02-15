@@ -17,7 +17,6 @@ const CreatePackageComp = ({
   const [from_address, set_from_address] = useState(userInfo?.address);
   const [to_region_id, set_to_region_id] = useState("");
   const [to_district_id, set_to_district_id] = useState("");
-
   const [to_address, set_to_address] = useState("");
   const [recipient_phone, set_recipient_phone] = useState("");
   const [recipient_name, set_recipient_name] = useState("");
@@ -28,7 +27,7 @@ const CreatePackageComp = ({
   const [delivery_fee_amount, set_delivery_fee_amount] = useState("");
   const [insurance_amount, set_insurance_amount] = useState("");
 
-  const fromRegion = locations.find((loc) => loc.id === from_region_id);
+  const fromRegion = locations.find((loc) => loc.id == from_region_id);
 
   const fromRegionItem = {
     label: fromRegion && fromRegion.name,
@@ -53,7 +52,6 @@ const CreatePackageComp = ({
   };
 
   const toDistrict = locations.find((loc) => loc.id == to_region_id);
-  console.log("toDistrict", toDistrict);
 
   const toDistrictList =
     toDistrict &&
@@ -188,7 +186,7 @@ const CreatePackageComp = ({
               className='p-1 border-info form-control'
               id='fromAddress'
               type='number'
-              value={cash_amount}
+              value={insurance_amount}
               onChange={(e) => set_insurance_amount(e.target.value)}
             />
           </div>

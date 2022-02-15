@@ -4,18 +4,25 @@
   height: 60px;
   position: fixed;
   z-index: 999;
+  padding: 0px 20px;
   box-shadow: 0px 1px 10px rgb(212, 209, 209);
   background-color: white;
 
   .navbar__flex {
     display: flex;
-    width: 97%;
-    margin: 0 auto;
     justify-content: space-between;
     align-items: center;
+    height: 100%;
 
     .express__logo {
-      color: #33cccc;
+      & span {
+        color: #33cccc;
+      }
+
+      a {
+        text-decoration: none;
+        color: #000;
+      }
     }
 
     .navbar__link__items {

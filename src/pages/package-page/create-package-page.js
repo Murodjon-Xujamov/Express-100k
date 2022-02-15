@@ -24,7 +24,6 @@ const CreatePackagePage = () => {
         let message =
           (response && response.data.message) ||
           "Junatolmadik hammasini tuldiring";
-
         dispatch({ type: "create_delivery_error", payload: message });
       });
   };

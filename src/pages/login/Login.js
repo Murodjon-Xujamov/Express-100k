@@ -7,6 +7,8 @@ import { authLogin, authPassword } from "../../redux/actions/user-actions";
 import { Route } from "react-router-dom";
 import PackagesPage from "../package-page/packages-page";
 import logo from "../../assets/icons/Logo(1).svg";
+import ProfilePage from "../user/profile-page";
+import Alert from "../../component/alert";
 
 const Login = () => {
   const [{ username, password }, setUser] = useState({
@@ -18,11 +20,13 @@ const Login = () => {
     (state) => state.user
   );
 
+  console.log("message", message);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (token !== null) {
-      <Route path='/profile' element={<PackagesPage />} />;
+      <Route path='/' element={<ProfilePage />} />;
       window.location.reload();
     }
   }, [token]);
@@ -51,6 +55,13 @@ const Login = () => {
 
   return (
     <>
+      {message.length > 1 && (
+        <div
+          className='alert alert-info w-50 position-fixed top-0 start-50 text-center'
+          role='alert'>
+          {message}
+        </div>
+      )}
       <div className='login__page p-3'>
         <div className='login__box__form'>
           <div className='d-flex flex-row'>
@@ -101,6 +112,7 @@ const Login = () => {
             )}
           </div>
         </div>
+        {/* {message && <Alert message={message} />} */}
       </div>
     </>
   );

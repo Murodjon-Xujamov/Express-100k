@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import ProfileComp from "../../component/user-comp/profile-comp";
+import ContentLoading from "../../component/loading/content-loading";
 
 const ProfilePage = () => {
   const {
@@ -17,17 +18,21 @@ const ProfilePage = () => {
 
   return (
     <>
-      <ProfileComp
-        avatar={avatar_url}
-        name={name}
-        surname={surname}
-        address={address}
-        username={username}
-        gender={gender}
-        region={region_name}
-        district={district_name}
-        loading={loading}
-      />
+      {loading ? (
+        <ContentLoading />
+      ) : (
+        <ProfileComp
+          avatar={avatar_url}
+          name={name}
+          surname={surname}
+          address={address}
+          username={username}
+          gender={gender}
+          region={region_name}
+          district={district_name}
+          loading={loading}
+        />
+      )}
     </>
   );
 };

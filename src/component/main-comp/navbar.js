@@ -30,8 +30,10 @@ const Navbar = () => {
   return (
     <div className='navbar__g'>
       <div className='navbar__flex'>
-        <h2>
-          <span className='express__logo'>Expr</span>ess
+        <h2 className='express__logo'>
+          <Link to='/'>
+            <span>Expr</span>ess
+          </Link>
         </h2>
 
         <div className='navbar__link__items'>

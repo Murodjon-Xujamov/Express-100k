@@ -6,9 +6,18 @@ import { BsCameraFill } from "react-icons/bs";
 import { AiFillSave } from "react-icons/ai";
 import { useForm } from "react-hook-form";
 import ButtonLoading from "../loading/button-loading";
+import Select from "react-select";
 
-const SettingsComp = ({ userData, locations, updateProfileDatas, loading }) => {
-  const [country, setCountry] = useState(userData.region_id);
+const SettingsComp = ({
+  userData,
+  locations,
+  updateProfileDatas,
+  loading,
+  regions,
+}) => {
+  const [region_id, set_region_id] = useState(userData.region_id);
+  const [district_id, set_district_id] = useState(userData.district_id);
+
   const dispatch = useDispatch();
 
   const { register, handleSubmit } = useForm({
@@ -24,7 +33,17 @@ const SettingsComp = ({ userData, locations, updateProfileDatas, loading }) => {
   });
 
   const onSubmit = (edit) => {
-    updateProfileDatas(edit);
+    //console.log("edit", edit);
+    const formsData = {
+      name: edit.name,
+      surname: edit.surname,
+      username: edit.username,
+      address: edit.address,
+      gender: edit.gender,
+      region_id: region_id,
+      district_id: district_id,
+    };
+    updateProfileDatas(formsData);
   };
 
   const handleUploadAvatar = (file, element) => {
@@ -36,9 +55,29 @@ const SettingsComp = ({ userData, locations, updateProfileDatas, loading }) => {
     dispatch(updateProfileImage(file));
   };
 
-  useEffect(() => {
-    dispatch({ type: "clear_success_message_avatar" });
-  }, []);
+  const fromRegion = locations.find((loc) => loc.id === region_id);
+
+  const fromRegionItem = {
+    label: fromRegion && fromRegion.name,
+    value: fromRegion && fromRegion.id,
+  };
+
+  const fromdDistrictList =
+    fromRegion &&
+    fromRegion.states.map((item) => {
+      return {
+        label: item.name,
+        value: item.id,
+      };
+    });
+
+  const fromDistrict =
+    fromRegion && fromRegion.states.find((i) => i.id == district_id);
+
+  const districtItem = {
+    label: fromDistrict && fromDistrict.name,
+    value: fromDistrict && fromDistrict.id,
+  };
 
   return (
     <div className='col-12 col-lg-12 col-md-12 col-sm-12  user__settings__container'>
@@ -115,44 +154,25 @@ const SettingsComp = ({ userData, locations, updateProfileDatas, loading }) => {
             </div>
             <div className='col-12 col-lg-6 col-md-12 col-sm-12'>
               <label htmlFor='region'>Viloyat</label>
-              <select
-                className='border-info form-control'
-                id='region'
-                defaultValue={userData.country_id}
-                {...register("region_id")}
-                onChange={(e) => {
-                  setCountry(e.target.value);
-                }}>
-                {locations.map((region) => (
-                  <option key={region.id} value={region.id}>
-                    {region.name}
-                  </option>
-                ))}
-              </select>
+              <Select
+                className='border-info form-control p-0'
+                id='fromRegion'
+                options={regions}
+                onChange={(option) => set_region_id(+option.value)}
+                defaultValue={fromRegionItem || {}}
+              />
             </div>
           </div>
           <div className='row mt-2'>
             <div className='col-12 col-lg-6 col-md-12 col-sm-12'>
               <label htmlFor='district'>Tuman</label>
-              <select
-                className='border-info form-control mw-100'
-                defaultValue={userData.state_id}
-                id='state_id'
-                {...register("district_id")}>
-                <option disabled>Tumanni tanlang</option>
-                {(() => {
-                  const selectedLoc = locations.find(
-                    (loc) => loc.id == country
-                  );
-                  if (selectedLoc && selectedLoc.states) {
-                    return selectedLoc.states.map((state) => (
-                      <option value={state.id} key={state.id}>
-                        {state.name}
-                      </option>
-                    ));
-                  }
-                })()}
-              </select>
+              <Select
+                className='border-info form-control p-0'
+                id='fromDistrict'
+                options={fromdDistrictList}
+                onChange={(option) => set_district_id(+option.value)}
+                defaultValue={districtItem || {}}
+              />
             </div>
             <div className='col-12 col-lg-6 col-md-12 col-sm-12'>
               <label htmlFor='address'>Mahalla</label>

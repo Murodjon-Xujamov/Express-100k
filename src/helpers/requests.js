@@ -30,8 +30,8 @@ const requests = {
   authRefreshToken: (params) => axios.post(`${url}/auth/refresh-token`, params),
   authInvalidateToken: (params) =>
     axios.post(`${url}/auth/invalidate-token`, params),
-  updateProfileData: (params) =>
-    axios.post(`${url}/user/update`, packageData(params), config),
+  updateProfileData: (formData) =>
+    axios.post(`${url}/user/update`, packageData(formData), config),
   updateProfileImage: (avatar) =>
     axios.post(`${url}/user/set-avatar`, packageData({ avatar }), config),
 

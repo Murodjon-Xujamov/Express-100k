@@ -3,17 +3,16 @@ import "../../assets/scss/main.scss";
 import { Link } from "react-router-dom";
 import { BiTaxi, BiAddToQueue } from "react-icons/bi";
 import { BsArrowLeftRight, BsQuestionCircle } from "react-icons/bs";
-
 import paths from "../../routes/paths";
 
 const Sidebar = () => {
   return (
     <div className='sidebar__main'>
       <div className='sidebar__main'>
-        <Link to={"/profile"}>
+        <Link to={"/"}>
           <h2>Express</h2>
         </Link>
-        <Link to={paths.packagePath}>
+        <Link to={paths.package}>
           <div className='sidebar__box__icon'>
             <BiTaxi size={30} />
           </div>

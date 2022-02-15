@@ -52,10 +52,10 @@ export const profileInfo = () => (dispatch) => {
 
 //accountSettings
 
-export const updateProfileData = (params) => (dispatch) => {
-  dispatch({ type: "update_profile_data_start", payload: params });
+export const updateProfileData = (formData) => (dispatch) => {
+  dispatch({ type: "update_profile_data_start", payload: formData });
   requests
-    .updateProfileData(params)
+    .updateProfileData(formData)
     .then(({ data }) => {
       dispatch({ type: "update_profile_data_success", payload: data });
     })

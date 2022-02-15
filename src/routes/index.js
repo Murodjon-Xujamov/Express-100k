@@ -10,14 +10,14 @@ import paths from "./paths";
 export const AppRoutes = () => {
   return (
     <Routes>
-      <Route path={paths.homePath} element={<ProfilePage />} />
-      <Route path={paths.packagePath} element={<PackagesPage />} />
-      <Route path={paths.createPackagePath} element={<CreatePackagePage />} />
-      <Route path={paths.editPackagePath} element={<EditPackagePage />} />
-      <Route path={paths.settingsPath} element={<SettingsPage />} />
-      <Route path={paths.packagesListpath} element={<PackagesListPage />} />
+      <Route path={paths.home} element={<ProfilePage />} />
+      <Route path={paths.package} element={<PackagesPage />} />
+      <Route path={paths.createPackage} element={<CreatePackagePage />} />
+      <Route path={paths.editPackage} element={<EditPackagePage />} />
+      <Route path={paths.settings} element={<SettingsPage />} />
+      <Route path={paths.packagesList} element={<PackagesListPage />} />
       <Route
-        path={paths.packagesListDetailPath}
+        path={paths.packagesListDetail}
         element={<PackagesListDetailPage />}
       />
     </Routes>

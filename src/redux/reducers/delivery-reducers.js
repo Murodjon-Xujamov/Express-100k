@@ -1,7 +1,7 @@
 const INITIAL_STATE = {
   list: [],
   loading: false,
-  message: null,
+  message: "",
   messageSuccess: null,
   success: false,
   hasMore: true,
@@ -20,7 +20,7 @@ export default (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
     // auth
     case "fetch_deliverys_start":
-      return { ...state, loading: true, message: "", hasMore: true };
+      return { ...state, loading: true, hasMore: true };
     case "fetch_deliverys_error":
       return { ...state, message: payload, loading: false };
     case "fetch_deliverys_success":
@@ -29,7 +29,7 @@ export default (state = INITIAL_STATE, { type, payload }) => {
           ...state,
           loading: false,
           list: [],
-          text: "So'rovlar topilmadi",
+          message: "So'rovlar topilmadi",
         };
       }
 
@@ -51,7 +51,7 @@ export default (state = INITIAL_STATE, { type, payload }) => {
 
     // Create delivery
     case "create_delivery_start":
-      return { ...state, loading: true, message: "" };
+      return { ...state, loading: true };
     case "create_delivery_error":
       return { ...state, message: payload, loading: false };
     case "create_delivery_success":
@@ -66,7 +66,7 @@ export default (state = INITIAL_STATE, { type, payload }) => {
 
     // Create deliverys list
     case "create_deliverys_list_start":
-      return { ...state, loading: true, message: "" };
+      return { ...state, loading: true };
     case "create_deliverys_list_error":
       return { ...state, message: payload, loading: false };
     case "create_deliverys_list_success":
@@ -79,7 +79,7 @@ export default (state = INITIAL_STATE, { type, payload }) => {
 
     // Delete delivery
     case "delete_delivery_start":
-      return { ...state, loading: true, message: "" };
+      return { ...state, loading: true };
     case "delete_delivery_error":
       return { ...state, message: payload, loading: false };
     case "delete_delivery_success":
@@ -94,7 +94,7 @@ export default (state = INITIAL_STATE, { type, payload }) => {
 
     // Edit delivery
     case "edit_delivery_start":
-      return { ...state, loading: true, message: "", success: false };
+      return { ...state, loading: true, success: false };
     case "edit_delivery_error":
       return { ...state, message: payload, loading: false };
     case "edit_delivery_success":
@@ -116,7 +116,7 @@ export default (state = INITIAL_STATE, { type, payload }) => {
 
     // Fetch delivery one
     case "fetch_delivery_one_start":
-      return { ...state, loading: true, message: "", hasMore: true };
+      return { ...state, loading: true, hasMore: true };
     case "fetch_delivery_one_error":
       return { ...state, message: payload, loading: false };
     case "fetch_delivery_one_success":
@@ -134,7 +134,7 @@ export default (state = INITIAL_STATE, { type, payload }) => {
 
     // Fetch packeges list
     case "fetch_packages_start":
-      return { ...state, loading: true, message: "", hasMore: true };
+      return { ...state, loading: true, hasMore: true };
     case "fetch_packages_error":
       return { ...state, message: payload, loading: false };
     case "fetch_packages_success":
@@ -166,7 +166,7 @@ export default (state = INITIAL_STATE, { type, payload }) => {
 
     // Fetch store delivery statistics
     case "fetch_store_packages_statistics_start":
-      return { ...state, loading: true, message: "", hasMore: true };
+      return { ...state, loading: true, hasMore: true };
     case "fetch_store_packages_statistics_error":
       return { ...state, message: payload, loading: false };
     case "fetch_store_packages_statistics_success":
@@ -205,7 +205,7 @@ export default (state = INITIAL_STATE, { type, payload }) => {
       return {
         ...state,
         loading: true,
-        message: "",
+
         hasMore: true,
         success: false,
       };

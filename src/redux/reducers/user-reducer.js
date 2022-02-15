@@ -6,7 +6,7 @@ const INITIAL_STATE = {
   loadingUpdateImage: false,
   success: false,
   token: null,
-  message: null,
+  message: "",
   sidebarShow: "responsive",
   transactions: [],
   handLink: true,
@@ -17,7 +17,7 @@ export default (state = INITIAL_STATE, { type, payload, ...rest }) => {
   switch (type) {
     // auth
     case "auth_password_start":
-      return { ...state, loading: true, message: "" };
+      return { ...state, loading: true };
     case "auth_password_error":
       return { ...state, message: payload, loading: false };
     case "auth_password_success":
@@ -29,7 +29,7 @@ export default (state = INITIAL_STATE, { type, payload, ...rest }) => {
       };
 
     case "auth_login_start":
-      return { ...state, loading: true, message: "", success: false };
+      return { ...state, loading: true, success: false };
     case "auth_login_error":
       return { ...state, message: payload, loading: false };
     case "auth_login_success":
@@ -110,7 +110,7 @@ export default (state = INITIAL_STATE, { type, payload, ...rest }) => {
 
     // money loss
     case "amount_user_start":
-      return { ...state, loading: true, message: "" };
+      return { ...state, loading: true };
     case "amount_user_error":
       return { ...state, message: payload, loading: false };
     case "amount_user_success":
@@ -122,7 +122,7 @@ export default (state = INITIAL_STATE, { type, payload, ...rest }) => {
 
     // payment history
     case "payment_history_start":
-      return { ...state, loading: true, message: "" };
+      return { ...state, loading: true };
     case "payment_history_error":
       return { ...state, message: payload, loading: false };
     case "payment_history_success":
