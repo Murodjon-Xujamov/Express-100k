@@ -7,20 +7,19 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { fetchLocations } from "../../redux/actions/common-actions";
 import { profileInfo } from "../../redux/actions/user-actions";
+import { toastr } from "react-redux-toastr";
 
 const Navbar = () => {
   const dispatch = useDispatch();
+
   const logout = () => {
     window.localStorage.removeItem("@token");
     window.location.reload();
   };
 
-  const confirmLogout = () => {
-    if (window.confirm("Haqiqatan chiqmoqchimisiz")) {
-      return logout();
-    } else {
-      return console.log("false");
-    }
+  const logoutConfirm = {
+    onOk: () => logout(),
+    onCancel: () => console.log("CANCEL: clicked"),
   };
 
   useEffect(() => {
@@ -32,7 +31,7 @@ const Navbar = () => {
       <div className='navbar__flex'>
         <h2 className='express__logo'>
           <Link to='/'>
-            <span>Expr</span>ess
+            <span>Exp</span>ress
           </Link>
         </h2>
 
@@ -54,7 +53,9 @@ const Navbar = () => {
               size={21}
               color='red'
               style={{ cursor: "pointer" }}
-              onClick={confirmLogout}
+              onClick={() =>
+                toastr.confirm("Saytdan chiqmoqchimisiz ?", logoutConfirm)
+              }
             />
           </div>
         </div>

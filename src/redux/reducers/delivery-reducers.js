@@ -96,7 +96,7 @@ export default (state = INITIAL_STATE, { type, payload }) => {
     case "edit_delivery_start":
       return { ...state, loading: true, success: false };
     case "edit_delivery_error":
-      return { ...state, message: payload, loading: false };
+      return { ...state, message: payload.message, loading: false };
     case "edit_delivery_success":
       let oldItemIndex;
       state.list.forEach((item, index) => {
@@ -107,8 +107,7 @@ export default (state = INITIAL_STATE, { type, payload }) => {
       state.list[oldItemIndex] = payload.params;
       return {
         ...state,
-        message: payload.message,
-        messageSuccess: "Pochta saqlandi",
+        message: "Pochta saqlandi",
         loading: false,
         success: true,
         list: [...state.list],
@@ -123,7 +122,6 @@ export default (state = INITIAL_STATE, { type, payload }) => {
       return {
         ...state,
         loading: false,
-        message: payload.message,
         delivery: payload.data,
       };
     case "clear_delivery_success":
@@ -177,21 +175,20 @@ export default (state = INITIAL_STATE, { type, payload }) => {
       };
 
     // Uptede delivery list
-    case "uptede_delivery_list_start":
+    case "update_delivery_list_start":
       return {
         ...state,
         loading: true,
-        message: "",
         hasMore: true,
         success: false,
       };
-    case "uptede_delivery_list_error":
-      return { ...state, message: payload, loading: false };
-    case "uptede_delivery_list_success":
+    case "update_delivery_list_error":
+      return { ...state, message: payload.message, loading: false };
+    case "update_delivery_list_success":
       return {
         ...state,
         loading: false,
-        messageSuccess: "Ma'lumot saqlandi",
+        message: "Ma'lumotlar saqlandi",
         success: true,
       };
     case "clear_delivery_list_message_success":

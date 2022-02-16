@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../../assets/scss/packages.scss";
 import { fetchDelivery } from "../../redux/actions/delivery-actions";
@@ -6,9 +6,10 @@ import PackagesComp from "../../component/package-comp/packages-comp";
 
 const PackagesPage = () => {
   const dispatch = useDispatch();
+  const [filterById, setFilterById] = useState("");
 
   useEffect(() => {
-    dispatch(fetchDelivery());
+    dispatch(fetchDelivery(filterById));
   }, []);
 
   const deliveryList = useSelector((state) => state.delivery.list);
@@ -52,6 +53,12 @@ const PackagesPage = () => {
           loading={loading}
           locations={locations}
           regions={regions}
+          search={(search) => {
+            let filter = {
+              ...filterById,
+              search: search,
+            };
+          }}
         />
       </div>
     </>

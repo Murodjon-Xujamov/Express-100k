@@ -1,5 +1,5 @@
 import requests from "./../../helpers/requests";
-
+import { toastr } from "react-redux-toastr";
 // auth
 export const authPassword = (username) => (dispatch) => {
   dispatch({ type: "auth_password_start", payload: username });
@@ -8,11 +8,12 @@ export const authPassword = (username) => (dispatch) => {
     .authPassword(username.replace(/\s/g, ""))
     .then(({ data }) => {
       dispatch({ type: "auth_password_success", payload: data });
+      toastr.success(data.message);
     })
     .catch(({ response }) => {
       let message = (response && response.data.message) || "Login error";
-
       dispatch({ type: "auth_password_error", payload: message });
+      toastr.error(message);
     });
 };
 
@@ -23,11 +24,13 @@ export const authLogin = (params) => (dispatch) => {
     .authLogin(params)
     .then(({ data }) => {
       dispatch({ type: "auth_login_success", payload: data });
+      toastr.success(data.message);
     })
     .catch(({ response }) => {
       let message = (response && response.data.message) || "Login error";
 
       dispatch({ type: "auth_login_error", payload: message });
+      toastr.error(message);
     });
 };
 
@@ -45,7 +48,7 @@ export const profileInfo = () => (dispatch) => {
       let message =
         (response && response.data.message) ||
         "Foydalanuvchi profilini yuklashda xatolik bor";
-
+      toastr.error(message);
       dispatch({ type: "profile_info_error", payload: message });
     });
 };
@@ -58,15 +61,17 @@ export const updateProfileData = (formData) => (dispatch) => {
     .updateProfileData(formData)
     .then(({ data }) => {
       dispatch({ type: "update_profile_data_success", payload: data });
+      toastr.success(data.message);
     })
     .catch(({ response }) => {
       let message =
         (response && response.data.message) || "Sozlamalar o'zgartirilmadi";
       dispatch({ type: "update_profile_data_error", payload: message });
+      toastr.error(message);
     });
 };
 
-//account image avatar uptede
+//account image avatar update
 
 export const updateProfileImage = (avatar) => (dispatch) => {
   dispatch({ type: "update_profile_avatar_start", payload: avatar });
@@ -77,10 +82,12 @@ export const updateProfileImage = (avatar) => (dispatch) => {
         type: "update_profile_avatar_success",
         payload: { params: data.data },
       });
+      toastr.success("Rasm yuklandi");
     })
     .catch(({ response }) => {
-      let message = (response && response.data.message) || "";
+      let message = (response && response.data.message) || "Rasm yuklanmadi";
       dispatch({ type: "update_profile_avatar_error", payload: message });
+      // toastr.error(message);
     });
 };
 
@@ -97,6 +104,7 @@ export const moneyLoss = (amount) => (dispatch) => {
       let message =
         (response && response.data.message) || "Sozlamalar o'zgartirilmadi";
       dispatch({ type: "amount_user_error", payload: message });
+      toastr.error(message);
     });
 };
 
@@ -110,11 +118,4 @@ export const myTransactions = () => (dispatch) => {
     .catch(({ response }) => {
       dispatch({ type: "payment_history_error", payload: response });
     });
-};
-
-// logout
-export const logout = (params) => (dispatch) => {
-  dispatch({ type: "logout", payload: params });
-  window.localStorage.removeItem("@token");
-  window.location.reload();
 };

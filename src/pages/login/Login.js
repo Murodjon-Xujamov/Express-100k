@@ -4,11 +4,9 @@ import { SiGnuprivacyguard } from "react-icons/si";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { authLogin, authPassword } from "../../redux/actions/user-actions";
-import { Route } from "react-router-dom";
-import PackagesPage from "../package-page/packages-page";
+import { Route, Routes } from "react-router-dom";
 import logo from "../../assets/icons/Logo(1).svg";
 import ProfilePage from "../user/profile-page";
-import Alert from "../../component/alert";
 
 const Login = () => {
   const [{ username, password }, setUser] = useState({
@@ -16,17 +14,15 @@ const Login = () => {
     password: "",
   });
 
-  const { loginStep, loading, token, message } = useSelector(
-    (state) => state.user
-  );
-
-  console.log("message", message);
+  const { loginStep, loading, token } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (token !== null) {
-      <Route path='/' element={<ProfilePage />} />;
+      <Routes>
+        <Route path='/' element={<ProfilePage />} />;
+      </Routes>;
       window.location.reload();
     }
   }, [token]);
@@ -55,13 +51,6 @@ const Login = () => {
 
   return (
     <>
-      {message.length > 1 && (
-        <div
-          className='alert alert-info w-50 position-fixed top-0 start-50 text-center'
-          role='alert'>
-          {message}
-        </div>
-      )}
       <div className='login__page p-3'>
         <div className='login__box__form'>
           <div className='d-flex flex-row'>
@@ -112,7 +101,6 @@ const Login = () => {
             )}
           </div>
         </div>
-        {/* {message && <Alert message={message} />} */}
       </div>
     </>
   );

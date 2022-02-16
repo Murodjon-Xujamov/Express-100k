@@ -1,5 +1,5 @@
 import requests from "../../helpers/requests";
-
+import { toastr } from "react-redux-toastr";
 /*
 =============
 FetchDelivery
@@ -19,8 +19,8 @@ export const fetchDelivery = (params) => (dispatch) => {
     })
     .catch(() => {
       let message = "Pochtalarni yuklab bo'lmadi";
-
       dispatch({ type: "fetch_deliverys_error", payload: message });
+      toastr.error(message);
     });
 };
 
@@ -40,12 +40,13 @@ export const deleteDelivery = (packageId) => (dispatch) => {
     .deleteDelivery(packageId)
     .then(({ data }) => {
       dispatch({ type: "delete_delivery_success", payload: { packageId } });
+      toastr.success(data.message);
     })
     .catch(({ response }) => {
       let message =
         (response && response.data.message) || "Pochtalani delete qilolmadik";
-
       dispatch({ type: "delete_delivery_error", payload: message });
+      toastr(message);
     });
 };
 
@@ -68,11 +69,12 @@ export const editPackage = (id, params) => (dispatch) => {
         type: "edit_delivery_success",
         payload: { id, params: data.data },
       });
+      toastr.success(data.message);
     })
     .catch(({ response }) => {
       let message =
         (response && response.data.message) || "Urinish mufaqiyatli";
-
+      toastr.message(message);
       dispatch({
         type: "edit_delivery_error",
         payload: message,
@@ -100,8 +102,8 @@ export const fetchDeliveryOne = (id) => (dispatch) => {
     .catch(({ response }) => {
       let message =
         (response && response.data.message) || "Urinish mufaqiyatli";
-
       dispatch({ type: "fetch_delivery_one_error", payload: message });
+      toastr.error(message);
     });
 };
 
@@ -124,12 +126,13 @@ export const createDeliverysList = (params) => (dispatch) => {
         type: "create_deliverys_list_success",
         payload: data,
       });
+      toastr.success(data.message);
     })
     .catch(({ response }) => {
       let message =
         (response && response.data.message) || "Ruyhatingizni junatilmadi";
-
       dispatch({ type: "create_deliverys_list_error", payload: message });
+      toastr.error(message);
     });
 };
 /*
@@ -231,47 +234,49 @@ export const fetchPackagesListStatistics = () => (dispatch) => {
 
 /*
 =============
-Updete delivery list
+Update delivery list
 =============
 */
 
 export const updatePackageList = (id, params) => (dispatch) => {
   dispatch({
-    type: "uptede_delivery_list_start",
+    type: "update_delivery_list_start",
     payload: { id, params },
   });
 
   requests
     .updatePackageList(id, params)
     .then(({ data }) => {
-      dispatch({ type: "uptede_delivery_list_success", payload: data });
+      dispatch({ type: "update_delivery_list_success", payload: data });
+      toastr.success(data.message);
     })
     .catch(({ response }) => {
       let message =
         (response && response.data.message) ||
         "Malumotlarni saqlashga xatolik bor";
-
-      dispatch({ type: "uptede_delivery_list_error", payload: message });
+      dispatch({ type: "update_delivery_list_error", payload: message });
+      toastr.error(message);
     });
 };
 
 export const updatePackage = (id, params) => (dispatch) => {
   dispatch({
-    type: "uptede_delivery_list_start",
+    type: "update_delivery_list_start",
     payload: { id, params },
   });
 
   requests
     .updatePackage(id, params)
     .then(({ data }) => {
-      dispatch({ type: "uptede_delivery_list_success", payload: data });
+      dispatch({ type: "update_delivery_list_success", payload: data });
+      toastr.success("Ma'lumotlar o'zgartirildi");
     })
     .catch(({ response }) => {
       let message =
         (response && response.data.message) ||
         "Malumotlarni saqlashga xatolik bor";
-
-      dispatch({ type: "uptede_delivery_list_error", payload: message });
+      dispatch({ type: "update_delivery_list_error", payload: message });
+      toastr.error(message);
     });
 };
 

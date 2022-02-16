@@ -8,6 +8,9 @@ const SettingsPage = () => {
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.user.data);
   const locations = useSelector((state) => state.common.locations);
+  const { loading, message, loadingUpdateImage } = useSelector(
+    (state) => state.user
+  );
 
   const regions = locations.map((item) => {
     return {
@@ -24,7 +27,9 @@ const SettingsPage = () => {
           userData={userData}
           locations={locations}
           updateProfileDatas={(edit) => dispatch(updateProfileData(edit))}
-          loading={userData.loading}
+          loading={loading}
+          message={message}
+          loadingUpdateImage={loadingUpdateImage}
         />
       )}
     </div>

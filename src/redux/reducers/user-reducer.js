@@ -31,7 +31,7 @@ export default (state = INITIAL_STATE, { type, payload, ...rest }) => {
     case "auth_login_start":
       return { ...state, loading: true, success: false };
     case "auth_login_error":
-      return { ...state, message: payload, loading: false };
+      return { ...state, message: payload.message, loading: false };
     case "auth_login_success":
       window.localStorage.setItem("@token", payload.data);
       return {
@@ -46,19 +46,11 @@ export default (state = INITIAL_STATE, { type, payload, ...rest }) => {
         loginStep: 0,
       };
 
-    // profile
-    case "logout":
-      return { ...INITIAL_STATE };
-
-    //sidebar toggle reducer
-    case "sidebar_toggle":
-      return { ...state, ...rest };
-
     //profile info
     case "profile_info_start":
       return { ...state, loading: true };
     case "profile_info_error":
-      return { ...state, message: payload, loading: false };
+      return { ...state, message: payload.message, loading: false };
     case "profile_info_success":
       return { ...state, loading: false, data: payload.data };
 
@@ -74,7 +66,7 @@ export default (state = INITIAL_STATE, { type, payload, ...rest }) => {
       return {
         ...state,
         loading: false,
-        message: payload,
+        message: payload.message,
         loadingUpdateProfile: false,
       };
     case "update_profile_data_success":
@@ -84,7 +76,7 @@ export default (state = INITIAL_STATE, { type, payload, ...rest }) => {
         loadingUpdateProfile: false,
         data: payload.data,
         success: true,
-        messageSuccess: "Malumotlar saqlandi",
+        message: payload.message,
       };
     case "clear__success__message":
       return {
@@ -99,12 +91,18 @@ export default (state = INITIAL_STATE, { type, payload, ...rest }) => {
         loadingUpdateImage: true,
       };
     case "update_profile_avatar_error":
-      return { ...state, message: payload, loadingUpdateImage: false };
+      return {
+        ...state,
+        message: payload.message,
+        loadingUpdateImage: false,
+      };
     case "update_profile_avatar_success":
       state.data = payload.params;
       return {
         ...state,
         loadingUpdateImage: false,
+        message: payload.message,
+
         data: [...state.data],
       };
 
@@ -112,23 +110,23 @@ export default (state = INITIAL_STATE, { type, payload, ...rest }) => {
     case "amount_user_start":
       return { ...state, loading: true };
     case "amount_user_error":
-      return { ...state, message: payload, loading: false };
+      return { ...state, message: payload.message, loading: false };
     case "amount_user_success":
       return {
         ...state,
         message: payload.message,
-        loading: false,
       };
 
     // payment history
     case "payment_history_start":
       return { ...state, loading: true };
     case "payment_history_error":
-      return { ...state, message: payload, loading: false };
+      return { ...state, message: payload.message, loading: false };
     case "payment_history_success":
       return {
         ...state,
         transactions: payload.data,
+        message: payload.message,
         loading: false,
         handLink: payload.meta.current_page < payload.meta.last_page,
       };

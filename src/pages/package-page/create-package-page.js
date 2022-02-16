@@ -2,12 +2,13 @@ import React from "react";
 import requests from "../../helpers/requests";
 import { useDispatch, useSelector } from "react-redux";
 import CreatePackageComp from "../../component/package-comp/create-package-comp";
+import { toastr } from "react-redux-toastr";
 
 const CreatePackagePage = () => {
   const dispatch = useDispatch();
   const locations = useSelector((state) => state.common.locations);
   const userInfo = useSelector((state) => state.user.data);
-  const loading = useSelector((state) => state.delivery.loading);
+  const { loading } = useSelector((state) => state.delivery);
 
   const createDelivery = (params) => {
     dispatch({
@@ -19,12 +20,14 @@ const CreatePackagePage = () => {
       .createDelivery(params)
       .then((data) => {
         dispatch({ type: "create_delivery_success", payload: data });
+        toastr.success("Pochta yaratildi");
       })
       .catch(({ response }) => {
         let message =
           (response && response.data.message) ||
           "Junatolmadik hammasini tuldiring";
         dispatch({ type: "create_delivery_error", payload: message });
+        toastr.error(message);
       });
   };
 

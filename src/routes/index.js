@@ -7,10 +7,11 @@ import PackagesListPage from "../pages/packages-list-page/packages-list-page";
 import PackagesPage from "../pages/package-page/packages-page";
 import PackagesListDetailPage from "../pages/packages-list-page/packages-list-detail-page";
 import paths from "./paths";
+
 export const AppRoutes = () => {
   return (
     <Routes>
-      <Route path={paths.home} element={<ProfilePage />} />
+      <Route path={paths.home} element={<ProfilePage />} index />
       <Route path={paths.package} element={<PackagesPage />} />
       <Route path={paths.createPackage} element={<CreatePackagePage />} />
       <Route path={paths.editPackage} element={<EditPackagePage />} />

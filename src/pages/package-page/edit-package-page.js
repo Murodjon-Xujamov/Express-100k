@@ -8,7 +8,7 @@ const EditPackagePage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const dataList = useSelector((state) => state.delivery.delivery);
-  const loading = useSelector((state) => state.delivery.loading);
+  const { loading } = useSelector((state) => state.delivery);
   const locations = useSelector((state) => state.common.locations);
 
   const regions = locations.map((item) => {

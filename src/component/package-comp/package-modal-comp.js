@@ -5,6 +5,7 @@ import { IoMdClose } from "react-icons/io";
 import { FcPrint } from "react-icons/fc";
 import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
 import "react-dropdown/style.css";
+import { toastr } from "react-redux-toastr";
 
 const PackageModalComp = ({ show, onClose, deliveryList, removeDelivery }) => {
   const {
@@ -19,12 +20,9 @@ const PackageModalComp = ({ show, onClose, deliveryList, removeDelivery }) => {
     created_at,
   } = deliveryList;
 
-  const deleteDeliveryData = () => {
-    if (window.confirm("Haqiqattan ham o'chirmoqchimisiz") == true) {
-      return removeDelivery(id);
-    } else {
-      return "";
-    }
+  const logoutConfirm = {
+    onOk: () => removeDelivery(id),
+    onCancel: () => console.log("CANCEL: clicked"),
   };
 
   return (
@@ -137,7 +135,12 @@ const PackageModalComp = ({ show, onClose, deliveryList, removeDelivery }) => {
                     <button
                       className='btn bg-danger text-white px-5 w-100 d-flex flex-row 
                       justify-content-center align-items-center'
-                      onClick={() => deleteDeliveryData()}>
+                      onClick={() =>
+                        toastr.confirm(
+                          "Pochtani o'chirmoqchimisiz ?",
+                          logoutConfirm
+                        )
+                      }>
                       <AiOutlineDelete size={20} /> Delete
                     </button>
                   </div>
