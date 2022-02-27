@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import "../../assets/scss/packages.scss";
 import { Link } from "react-router-dom";
 import { IoMdClose } from "react-icons/io";
@@ -6,6 +6,8 @@ import { FcPrint } from "react-icons/fc";
 import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
 import "react-dropdown/style.css";
 import { toastr } from "react-redux-toastr";
+import PrintPackagesComp from "./print-package-comp";
+import ReactToPrint from "react-to-print";
 
 const PackageModalComp = ({ show, onClose, deliveryList, removeDelivery }) => {
   const {
@@ -19,6 +21,8 @@ const PackageModalComp = ({ show, onClose, deliveryList, removeDelivery }) => {
     delivery_fee_amount,
     created_at,
   } = deliveryList;
+
+  let printPackageRef = useRef();
 
   const logoutConfirm = {
     onOk: () => removeDelivery(id),
@@ -121,20 +125,30 @@ const PackageModalComp = ({ show, onClose, deliveryList, removeDelivery }) => {
                 <div className='row'>
                   <div className='col-12 col-lg-4 col-md-6 col-sm-12 mt-2'>
                     <Link to={`/package/edit-package/${id}`}>
-                      <button className='btn bg-warning px-5 w-100'>
+                      <button className='btn bg-warning  w-100'>
                         <AiOutlineEdit size={20} /> Edit
                       </button>
                     </Link>
                   </div>
                   <div className='col-12 col-lg-4 col-md-6 col-sm-12 mt-2'>
-                    <button className='btn btn-info bg-info px-5 text-white w-100'>
-                      <FcPrint size={20} /> Print
-                    </button>
+                    <ReactToPrint
+                      trigger={() => (
+                        <button className='btn btn-info bg-info text-white w-100'>
+                          <FcPrint size={20} /> Print
+                        </button>
+                      )}
+                      content={() => printPackageRef}
+                    />
+                    <div className='d-none'>
+                      <PrintPackagesComp
+                        ref={(el) => (printPackageRef = el)}
+                        deliveryList={deliveryList}
+                      />
+                    </div>
                   </div>
                   <div className='col-12 col-lg-4 col-md-6 col-sm-12 mt-2'>
                     <button
-                      className='btn bg-danger text-white px-5 w-100 d-flex flex-row 
-                      justify-content-center align-items-center'
+                      className='btn btn-info bg-danger  text-white w-100'
                       onClick={() =>
                         toastr.confirm(
                           "Pochtani o'chirmoqchimisiz ?",

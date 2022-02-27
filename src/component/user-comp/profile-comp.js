@@ -29,7 +29,6 @@ const ProfileComp = ({
               alt='avatar'
               className='border border-3 rounded-circle'
             />
-            -
           </div>
           <div className='col-12'>
             <header className='d-flex justify-content-center '>
