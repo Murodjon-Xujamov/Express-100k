@@ -6,7 +6,11 @@ import PackagesComp from "../../component/package-comp/packages-comp";
 
 const PackagesPage = () => {
   const dispatch = useDispatch();
-  const [filterById, setFilterById] = useState("");
+  const [filterById, setFilterById] = useState({
+    from_region_id: 0,
+    from_district_id: 0,
+    search: "",
+  });
 
   useEffect(() => {
     dispatch(fetchDelivery(filterById));
@@ -58,6 +62,8 @@ const PackagesPage = () => {
               ...filterById,
               search: search,
             };
+            setFilterById(filter);
+            dispatch(fetchDelivery(filter));
           }}
         />
       </div>

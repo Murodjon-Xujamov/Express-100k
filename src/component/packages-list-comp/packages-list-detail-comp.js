@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { BsFillCheckSquareFill } from "react-icons/bs";
@@ -7,12 +7,14 @@ import { FaRegMoneyBillAlt, FaPlus, FaMinus } from "react-icons/fa";
 import { GiTakeMyMoney } from "react-icons/gi";
 import { BiArrowBack } from "react-icons/bi";
 import { HiOutlineLockClosed } from "react-icons/hi";
-import PrintPackagesListComp from "./print-packages-list-comp";
+import TablePrintPackagesListComp from "./table-print-packages-list-comp";
+import CardPrintPackagesListComp from "./card-print-packages-list-comp";
+import ReactToPrint from "react-to-print";
+import { FcPrint } from "react-icons/fc";
 
 const PackagesListDetailComp = ({ packageListDetailData }) => {
-  const printTable = () => {
-    window.print();
-  };
+  let tablePrintRef = useRef();
+  let cardPrintRef = useRef();
   return (
     <div>
       <header className='d-flex flex-row justify-content-between align-items-start flex-wrap'>
@@ -27,7 +29,7 @@ const PackagesListDetailComp = ({ packageListDetailData }) => {
           <p>Pochtalar</p>
           <div className='d-flex flex-row justify-content-evenly align-items-center'>
             <AiOutlineDeliveredProcedure size={20} className='mb-2' />
-            <h5>1</h5>
+            <h5>0</h5>
             <h5>ta</h5>
           </div>
         </section>
@@ -177,8 +179,31 @@ const PackagesListDetailComp = ({ packageListDetailData }) => {
             </table>
           </TabPanel>
           <TabPanel>
-            <PrintPackagesListComp
+            <TablePrintPackagesListComp
+              ref={(el) => (tablePrintRef = el)}
               packageListDetailData={packageListDetailData}
+            />
+            <ReactToPrint
+              trigger={() => (
+                <button className='btn btn-info text-white mt-2 ms-1'>
+                  <FcPrint className='me-1' />
+                  Print
+                </button>
+              )}
+              content={() => tablePrintRef}
+            />
+            <CardPrintPackagesListComp
+              ref={(el) => (cardPrintRef = el)}
+              packageListDetailData={packageListDetailData}
+            />
+            <ReactToPrint
+              trigger={() => (
+                <button className='btn btn-info text-white mt-2 ms-1'>
+                  <FcPrint className='me-1' />
+                  Print
+                </button>
+              )}
+              content={() => cardPrintRef}
             />
           </TabPanel>
           <TabPanel>
@@ -188,7 +213,6 @@ const PackagesListDetailComp = ({ packageListDetailData }) => {
                   <th scope='col'>Id</th>
                   <th scope='col'>Amount</th>
                   <th scope='col'>Type</th>
-
                   <th scope='col'>Comment</th>
                   <th scope='col'>Created_at</th>
                   <th scope='col'>Target_Id</th>

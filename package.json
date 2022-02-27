@@ -24,6 +24,7 @@
     "react-scripts": "5.0.0",
     "react-select": "^5.2.2",
     "react-tabs": "^3.2.3",
+    "react-to-print": "^2.14.4",
     "redux": "^4.1.2",
     "redux-devtools-app": "^1.2.0",
     "redux-devtools-extension": "^2.13.9",

@@ -5,7 +5,13 @@ import { deleteDelivery } from "../../redux/actions/delivery-actions";
 import ContentLoading from "../loading/content-loading";
 import PackageModalComp from "./package-modal-comp";
 
-const PackagesComp = ({ deliveryList, loading, locations, regions }) => {
+const PackagesComp = ({
+  deliveryList,
+  loading,
+  locations,
+  regions,
+  search,
+}) => {
   const [showModalDelivery, setShowModalDelivery] = useState(false);
   const [modalList, setModalList] = useState([]);
   const [fromRegionId, setRegionId] = useState(regions.name);
@@ -27,6 +33,19 @@ const PackagesComp = ({ deliveryList, loading, locations, regions }) => {
       };
     });
 
+  const filterByPlaceName = (district) => {
+    const params = {
+      regionId: fromRegionId,
+      districtId: district[0].value,
+    };
+    //dispatch(fetchDelivery(params));
+    console.log("region", fromRegionId);
+    console.log("district", district[0].value);
+  };
+
+  const filterById = (e) => {
+    search(e.target.value);
+  };
   return (
     <div>
       {loading ? (
@@ -47,6 +66,7 @@ const PackagesComp = ({ deliveryList, loading, locations, regions }) => {
               <div className='col-12 col-lg-4 col-md-6 col-sm-12'>
                 <Select
                   options={districtList}
+                  onChange={filterByPlaceName}
                   className='w-100 mt-2 border-info'
                 />
               </div>
@@ -54,6 +74,7 @@ const PackagesComp = ({ deliveryList, loading, locations, regions }) => {
                 <input
                   className='p-1 w-100 mt-2  border-info'
                   type={"number"}
+                  onChange={filterById}
                   placeholder="Id bo'yicha qidirish"
                 />
               </div>

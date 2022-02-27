@@ -33,6 +33,7 @@
       .navbar__link__item {
         margin: 0 30px;
         transition: color 0.5s;
+        transition: ease-in-out 1s;
 
         &:hover {
           color: #33cccc;
@@ -55,8 +56,7 @@
 // Sidebar
 .sidebar__main {
   width: 70px;
-  height: 100vh;
-  background-color: aliceblue;
+  height: 100%;
   position: fixed;
   z-index: 998;
   background-color: #33cccc;
@@ -67,6 +67,7 @@
     color: white;
     transition: background-color 0.5s;
     transition: color 0.5s;
+    transition: ease-in-out 1s;
 
     &:hover {
       background-color: white;
@@ -77,10 +78,10 @@
 
 .main__content {
   display: flex;
+  width: 100%;
 }
 
 .content__page {
-  padding-top: 80px;
-  padding-left: 80px;
-  width: 93%;
+  padding: 80px;
+  width: 100%;
 }

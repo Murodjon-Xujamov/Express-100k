@@ -44,9 +44,9 @@ export const deleteDelivery = (packageId) => (dispatch) => {
     })
     .catch(({ response }) => {
       let message =
-        (response && response.data.message) || "Pochtalani delete qilolmadik";
+        (response && response.data.message) || "Pochtani o'chirolmadik !";
       dispatch({ type: "delete_delivery_error", payload: message });
-      toastr(message);
+      toastr.error(message);
     });
 };
 
@@ -74,7 +74,7 @@ export const editPackage = (id, params) => (dispatch) => {
     .catch(({ response }) => {
       let message =
         (response && response.data.message) || "Urinish mufaqiyatli";
-      toastr.message(message);
+      toastr.error(message);
       dispatch({
         type: "edit_delivery_error",
         payload: message,
