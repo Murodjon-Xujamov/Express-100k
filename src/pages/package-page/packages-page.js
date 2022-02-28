@@ -34,7 +34,7 @@ const PackagesPage = () => {
       <div className='container'>
         <div className='row'>
           <div className='col-6 col-lg-3 col-md-6 col-sm-6 delivery__status'>
-            <div className='delivery__box__white'></div>
+            <div className='delivery__box__gray'></div>
             Yangi
           </div>
           <div className='col-6 col-lg-3 col-md-6 col-sm-6 delivery__status'>
